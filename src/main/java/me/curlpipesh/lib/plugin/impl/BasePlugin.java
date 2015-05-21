@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.util.Keyed;
-import me.curlpipesh.lib.util.Statused;
+import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.event.Keypress;
@@ -37,7 +37,17 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
             @Override
             public void event(Keypress keypress) {
                 if(keypress.getKey() == getKey()) {
-                    toggle();
+                    boolean prevState = isEnabled();
+                    try {
+                        toggle();
+                        setStatus(Status.OK);
+                    } catch(Exception e) {
+                        if(prevState) {
+                            setStatus(Status.DISABLE_ERROR);
+                        } else {
+                            setStatus(Status.ENABLE_ERROR);
+                        }
+                    }
                 }
             }
         });
@@ -45,11 +55,13 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
 
     @Override
     public void load() {
-        Pipe.log("Configuration is not yet implemented!");
+        Pipe.log("[" + name + "] Configuration is not yet implemented!");
+        setStatus(Status.LOAD_ERROR);
     }
 
     @Override
     public void save() {
-        Pipe.log("Configuration is not yet implemented!");
+        Pipe.log("[" + name + "] Configuration is not yet implemented!");
+        setStatus(Status.SAVE_ERROR);
     }
 }

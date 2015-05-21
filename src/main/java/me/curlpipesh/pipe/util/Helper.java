@@ -55,7 +55,10 @@ public class Helper {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
+    public static Vec3 getEntityVec(Object entity) {
+        return null;
+    }
+
     public static float[] getLightBrightnessTable() {
         return new float[] {};
     }

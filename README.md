@@ -17,3 +17,18 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+----
+
+Installation:
+````
+mvn clean package
+# Replace file-roller with the archive manager of your choice
+file-roller ./target/Pipe-0.1-DEV.jar
+# Delete the class me/curlpipesh/pipe/util/Helper.java
+````
+After this, open up the Minecraft launcher. Make a new profile, and add the following under "JVM Arguments":
+````
+-javaagent:/path/to/target/Pipe-0.1-DEV.jar=/path/to/target/Pipe-0.1-DEV.jar
+````
+Once this is finished, run the game. 

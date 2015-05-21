@@ -2,14 +2,7 @@ package me.curlpipesh.pipe.util;
 
 import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.util.glu.GLU;
 
-import java.lang.reflect.InvocationTargetException;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-
-import static java.lang.Math.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 import static org.lwjgl.opengl.GL13.GL_SAMPLE_ALPHA_TO_COVERAGE;
@@ -26,6 +19,7 @@ public class Renderer {
     }
 
     public static void pre() {
+        glPushAttrib(GL_ALL_ATTRIB_BITS);
         glPushMatrix();
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -53,6 +47,7 @@ public class Renderer {
         glEnable(GL_TEXTURE_2D);
         glDisable(GL_BLEND);
         glPopMatrix();
+        glPopAttrib();
     }
 
     public static void drawRect(double x, double y, double w, double h, int c) {
@@ -62,6 +57,30 @@ public class Renderer {
                 .addVertex(x, y + h, 0)
                 .addVertex(x + w, y + h, 0)
                 .addVertex(x + w, y, 0)
+                .bindAndDraw();
+        post();
+    }
+
+    public static void drawBox(double x, double y, double z, double w, double h, double d, int c) {
+        tess.startDrawing(GL_QUADS).color(c)
+                .addVertex(x, y, z)
+                .addVertex(x, y, z + d)
+                .addVertex(x + w, y, z + d)
+                .addVertex(x + w, y, z)
+                .bindAndDraw()
+                .startDrawing(GL_QUADS).color(c)
+                .addVertex(x, y + h, z)
+                .addVertex(x, y + h, z + d)
+                .addVertex(x + w, y + h, z + d)
+                .addVertex(x + w, y + h, z)
+                .bindAndDraw();
+    }
+
+    public static void drawLine(double x, double y, double z, double xx, double yy, double zz, int c) {
+        pre();
+        tess.startDrawing(GL_LINES).color(c)
+                .addVertex(x, y, z)
+                .addVertex(xx, yy, zz)
                 .bindAndDraw();
         post();
     }

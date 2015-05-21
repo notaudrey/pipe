@@ -20,6 +20,7 @@ public class PluginOverlay implements Plugin {
     @Override
     public void init() {
         EventManager.register(new Listener<Render2D>() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void event(Render2D render2D) {
                 int yOffset = OFFSET + 2;
@@ -30,13 +31,15 @@ public class PluginOverlay implements Plugin {
                     for(Plugin p : PluginManager.getInstance().getManagedObjects()) {
                         if(p instanceof Toggleable) {
                             if(((Toggleable) p).isEnabled()) {
-                                if(p.isStatusShown()) {
-                                    int w = Helper.getStringWidth(String.format("§a%s §r(§f%s§r)",
-                                            p.getName(), p.getStatus()));
-                                    ++count;
-                                    if(w > width) {
-                                        width = w;
-                                    }
+                                String format = p.isStatusShown() ?
+                                        "§a%s §r(§f%s§r)" :
+                                        "§a%s";
+                                int w = p.isStatusShown() ?
+                                        Helper.getStringWidth(String.format(format, p.getName(), p.getStatus())) :
+                                        Helper.getStringWidth(String.format(format, p.getName()));
+                                ++count;
+                                if(w > width) {
+                                    width = w;
                                 }
                             }
                         }
@@ -47,8 +50,13 @@ public class PluginOverlay implements Plugin {
                         if(p instanceof Toggleable) {
                             if(((Toggleable) p).isEnabled()) {
                                 if(p.isStatusShown()) {
-                                    Renderer.drawString(String.format("§a%s §r(§e%s§r)",
-                                            p.getName(), p.getStatus()), 2, yOffset, 0xFFFFFFFF, false);
+                                    String format = p.isStatusShown() ?
+                                            "§a%s §r(§f%s§r)" :
+                                            "§a%s";
+                                    String s = p.isStatusShown() ?
+                                            String.format(format, p.getName(), p.getStatus()) :
+                                            String.format(format, p.getName());
+                                    Renderer.drawString(s, 2, yOffset, 0xFFFFFFFF, false);
                                     yOffset += OFFSET;
                                 }
                             }

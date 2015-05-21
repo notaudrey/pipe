@@ -26,7 +26,6 @@ public class HelperGenerator {
             mv.visitCode();
             Label l0 = new Label();
             mv.visitLabel(l0);
-            mv.visitLineNumber(12, l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
             mv.visitInsn(RETURN);
@@ -41,7 +40,6 @@ public class HelperGenerator {
             mv.visitCode();
             Label l0 = new Label();
             mv.visitLabel(l0);
-            mv.visitLineNumber(16, l0);
             mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getWorld", "()Ljava/lang/Object;", false);
             Label l1 = new Label();
             mv.visitJumpInsn(IFNONNULL, l1);
@@ -156,6 +154,41 @@ public class HelperGenerator {
             mv.visitFieldInsn(GETFIELD, "Ladm;", "f", "Ljava/util/List;");
             mv.visitInsn(ARETURN);
             mv.visitMaxs(1, 0);
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getEntityVec", "(Ljava/lang/Object;)Lme/curlpipesh/pipe/util/Vec3;", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, "me/curlpipesh/pipe/util/Vec3");
+            Label l1 = new Label();
+            mv.visitJumpInsn(IFNE, l1);
+            Label l2 = new Label();
+            mv.visitLabel(l2);
+            Label l3 = new Label();
+            mv.visitLabel(l3);
+            mv.visitTypeInsn(NEW, "me/curlpipesh/pipe/util/Vec3");
+            mv.visitInsn(DUP);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, "pk");
+            mv.visitFieldInsn(GETFIELD, "Lpk;", "s", "D");
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, "pk");
+            mv.visitFieldInsn(GETFIELD, "Lpk;", "t", "D");
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, "pk");
+            mv.visitFieldInsn(GETFIELD, "Lpk;", "u", "D");
+            mv.visitMethodInsn(INVOKESPECIAL, "me/curlpipesh/pipe/util/Vec3", "<init>", "(DDD)V", false);
+            mv.visitInsn(ARETURN);
+            mv.visitLabel(l1);
+            mv.visitFrame(Opcodes.F_SAME, 0, null, 0, null);
+            mv.visitInsn(ACONST_NULL);
+            mv.visitInsn(ARETURN);
+            Label l4 = new Label();
+            mv.visitLabel(l4);
+            mv.visitMaxs(8, 2);
+            mv.visitEnd();
         }
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getLightBrightnessTable", "()[F", null, null);
