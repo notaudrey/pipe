@@ -1,137 +1,60 @@
 package me.curlpipesh.pipe.util;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-import me.curlpipesh.pipe.Pipe;
-import me.curlpipesh.pipe.util.Constants;
-
 /**
+ * This class must never ever ever ever be included in the final JAR. Its only
+ * purpose is for "compatibility" so that we don't run into compile errors,
+ * since the actual version of this class is generated at runtime by
+ * {@link me.curlpipesh.pipe.util.HelperGenerator}.
+ *
  * @author audrey
  * @since 5/2/15
  */
+@SuppressWarnings("unused")
 public class Helper {
     public static boolean isWorldNull() {
-        return getWorld() == null;
-    }
-
-    public static Object getThing() {
-        return Pipe.getInstance();
+        return false;
     }
 
     public static Object getMinecraft() {
-        try {
-            getThing();
-            return Constants.GETMINECRAFT.invoke(null);
-        } catch(IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 
     public static Object getPlayer() {
-        if(!isWorldNull()) {
-            try {
-                return Constants.MINECRAFTCLASS.getDeclaredField("h").get(getMinecraft());
-            } catch(IllegalAccessException | NoSuchFieldException e) {
-                throw new RuntimeException(e);
-            }
-        } else {
-            throw new RuntimeException(new IllegalAccessException("Why are you trying to use getPlayer()? world==null!"));
-        }
+        return null;
     }
 
     public static Object getGameSettings() {
-        try {
-            return Constants.GAMESETTINGSFIELD.get(getMinecraft());
-        } catch(IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 
     public static boolean isIngameGuiInDebugMode() {
-        try {
-            return (boolean) Constants.DEBUGMODEFIELD.get(getGameSettings());
-        } catch(IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return false;
     }
 
     public static Object getFontRenderer() {
-        try {
-            return Constants.FONTRENDERERFIELD.get(getMinecraft());
-        } catch(IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 
     public static int getFontHeight() {
-        try {
-            return (Integer) Constants.FONTHEIGHTFIELD.get(getFontRenderer());
-        } catch(IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return 0;
     }
 
     public static int getStringWidth(String e) {
-        try {
-            return (Integer) Constants.GETSTRINGWIDTH.invoke(getFontRenderer(), e);
-        } catch(IllegalAccessException | InvocationTargetException e1) {
-            throw new RuntimeException(e1);
-        }
+        return 0;
     }
 
     public static Object getWorld() {
-        try {
-            return Constants.WORLDFIELD.get(getMinecraft());
-        } catch(IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static Object getNewScaledResolution() {
-        try {
-            return Constants.SCALEDRESOLUTIONCONSTRUCTOR.newInstance(getMinecraft());
-        } catch(InstantiationException | InvocationTargetException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static double getScaledResolutionHeight(Object scaledResolution) {
-        try {
-            Field f = Constants.SCALEDRESOLUTIONCLASS.cast(scaledResolution).getClass().getDeclaredField("b");
-            f.setAccessible(true);
-            return (Double) f.get(scaledResolution);
-        } catch(NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static int getScaledResolutionScaleFactor(Object scaledResolution) {
-        try {
-            Field f = Constants.SCALEDRESOLUTIONCLASS.cast(scaledResolution).getClass().getDeclaredField("e");
-            f.setAccessible(true);
-            return (Integer) f.get(scaledResolution);
-        } catch(NoSuchFieldException | IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 
     public static List<?> getLoadedEntities() {
-        try {
-            return (List<?>) Constants.LOADEDENTITIESLISTFIELD.get(getWorld());
-        } catch(IllegalAccessException e) {
-            throw new IllegalStateException(e);
-        }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
     public static float[] getLightBrightnessTable() {
-        Constants.LIGHTBRIGHTNESSTABLEFIELD.setAccessible(true);
-        try {
-            return (float[])Constants.LIGHTBRIGHTNESSTABLEFIELD.get(Constants.WORLDPROVIDERFIELD.get(getWorld()));
-        } catch (IllegalAccessException e) {
-            throw new IllegalStateException(e);
-        }
+        return new float[] {};
     }
 }
