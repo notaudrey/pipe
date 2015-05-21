@@ -3,12 +3,10 @@ package me.curlpipesh.pipe;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
 import me.curlpipesh.pipe.util.Constants;
-import me.curlpipesh.pipe.util.Helper;
 import me.curlpipesh.pipe.util.HelperGenerator;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 /**
  * @author audrey

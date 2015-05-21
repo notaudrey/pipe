@@ -134,6 +134,21 @@ public class HelperGenerator {
             mv.visitEnd();
         }
         {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "drawString", "(Ljava/lang/String;FFIZ)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getFontRenderer", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, "avn");
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitVarInsn(FLOAD, 1);
+            mv.visitVarInsn(FLOAD, 2);
+            mv.visitVarInsn(ILOAD, 3);
+            mv.visitVarInsn(ILOAD, 4);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "avn", "a", "(Ljava/lang/String;FFIZ)I", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(6, 0);
+            mv.visitEnd();
+        }
+        {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getLoadedEntities", "()Ljava/util/List;", "()Ljava/util/List<*>;", null);
             mv.visitCode();
             mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getWorld", "()Ljava/lang/Object;", false);

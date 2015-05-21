@@ -22,6 +22,17 @@ public class Constants {
             ENTITYTHEPLAYER = "bew",
             SCALEDRESOLUTION = "avr";
 
+    public static final Class<?> MINECRAFTCLASS;
+
+    static {
+        try {
+            MINECRAFTCLASS = Class.forName(MINECRAFT);
+        } catch(ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+/*
     public static final Class<?> MINECRAFTCLASS, FONTRENDERERCLASS, GAMESETTINGSCLASS, WORLDCLASS, WORLDPROVIDERCLASS, ABSTRACTWORLDCLASS,
             ENTITYCLASS, ENTITYTHEPLAYERCLASS, SCALEDRESOLUTIONCLASS;
 
@@ -87,5 +98,5 @@ public class Constants {
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 }

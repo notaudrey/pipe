@@ -1,6 +1,6 @@
 Pipe
 ----
-A "Minecraft" client that works through instrumentation. Apache 2.0-licensed.
+A "Minecraft" modded client that works through instrumentation. Apache 2.0-licensed.
 
 ----------------
 

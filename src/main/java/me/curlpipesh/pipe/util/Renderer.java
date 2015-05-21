@@ -21,12 +21,8 @@ import static org.lwjgl.opengl.GL13.GL_SAMPLE_ALPHA_TO_COVERAGE;
 public class Renderer {
     private static final Tessellator tess = new VAOTessellator(2048);
 
-    public static void drawString(String s, int x, int y, int color, boolean shadow) {
-        try {
-            Constants.DRAWSTRING.invoke(Helper.getFontRenderer(), s, x, y, color, shadow);
-        } catch(IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+    public static void drawString(String s, float x, float y, int color, boolean shadow) {
+        Helper.drawString(s, x, y, color, shadow);
     }
 
     public static void pre() {

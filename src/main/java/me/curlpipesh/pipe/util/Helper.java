@@ -45,6 +45,8 @@ public class Helper {
         return 0;
     }
 
+    public static void drawString(String s, float x, float y, int color, boolean shadow) {}
+
     public static Object getWorld() {
         return null;
     }
