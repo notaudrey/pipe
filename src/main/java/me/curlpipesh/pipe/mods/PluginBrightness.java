@@ -19,6 +19,7 @@ public class PluginBrightness extends BasePlugin {
         setKey(Keyboard.KEY_F);
         setName("Brightness");
         EventManager.register(new Listener<Tick>() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void event(Tick tick) {
                 if(PluginBrightness.this.isEnabled()) {

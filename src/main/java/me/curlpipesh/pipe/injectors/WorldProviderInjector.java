@@ -20,6 +20,7 @@ public class WorldProviderInjector extends Injector {
     @Override
     @SuppressWarnings("unchecked")
     protected void inject(ClassReader classReader, ClassNode classNode) {
+        // f -> lightBrightnessTable
         ((List<FieldNode>) classNode.fields).stream().filter(f -> f.name.equals("f"))
                 .forEach(f -> f.access = ACC_PUBLIC | ACC_FINAL);
     }

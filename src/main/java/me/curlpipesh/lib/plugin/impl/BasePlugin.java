@@ -53,6 +53,10 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
         });
     }
 
+    public void onEnable() {}
+
+    public void onDisable() {}
+
     @Override
     public void load() {
         Pipe.log("[" + name + "] Configuration is not yet implemented!");

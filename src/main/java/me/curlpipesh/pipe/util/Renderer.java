@@ -3,6 +3,8 @@ package me.curlpipesh.pipe.util;
 import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 import static org.lwjgl.opengl.GL13.GL_SAMPLE_ALPHA_TO_COVERAGE;
@@ -61,27 +63,28 @@ public class Renderer {
         post();
     }
 
-    public static void drawBox(double x, double y, double z, double w, double h, double d, int c) {
-        tess.startDrawing(GL_QUADS).color(c)
-                .addVertex(x, y, z)
-                .addVertex(x, y, z + d)
-                .addVertex(x + w, y, z + d)
-                .addVertex(x + w, y, z)
-                .bindAndDraw()
-                .startDrawing(GL_QUADS).color(c)
-                .addVertex(x, y + h, z)
-                .addVertex(x, y + h, z + d)
-                .addVertex(x + w, y + h, z + d)
-                .addVertex(x + w, y + h, z)
-                .bindAndDraw();
+    public static void drawLine(Vec3 a, Vec3 b, int color, float size) {
+        drawLine(a.x(), a.y(), a.z(), b.x(), b.y(), b.z(), color, size);
     }
 
-    public static void drawLine(double x, double y, double z, double xx, double yy, double zz, int c) {
+    public static void drawLine(double x, double y, double z, double xx, double yy, double zz, int c, float size) {
         pre();
+        glLineWidth(size);
         tess.startDrawing(GL_LINES).color(c)
                 .addVertex(x, y, z)
                 .addVertex(xx, yy, zz)
                 .bindAndDraw();
+        glLineWidth(1.0F);
         post();
+    }
+
+    public static int getScale() {
+        try {
+            return (int) Constants.getByName("ScaledResolution").getClazz().getDeclaredMethod("e")
+                    .invoke(Constants.getByName("ScaledResolution").getClazz().getConstructor(Constants.getByName("Minecraft").getClazz())
+                            .newInstance(Helper.getMinecraft()));
+        } catch(IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

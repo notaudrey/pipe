@@ -58,7 +58,7 @@ public class Pipe implements Statused {
         if(!clientModName.equals("vanilla")) {
             return "Modded (" + clientModName + ")"; // "Definitely; Client brand changed to '" + clientModName + "'";
         }
-        if(Constants.MINECRAFTCLASS.getSigners() == null) {
+        if(Constants.getByName("Minecraft").getClazz().getSigners() == null) {
             return "Invalid JAR sig."; // "Very likely; Jar signature invalidated";
         }
         return "Clean"; // "Probably not. Jar signature remains and client brand is untouched.";

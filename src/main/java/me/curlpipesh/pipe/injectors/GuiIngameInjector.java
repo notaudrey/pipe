@@ -22,21 +22,22 @@ public class GuiIngameInjector extends Injector {
     @Override
     @SuppressWarnings("unchecked")
     protected void inject(ClassReader cr, ClassNode cn) {
-        ((List<MethodNode>) cn.methods).stream().filter(m -> m.name.equals("a") && m.desc.equals("(F)V") && isVoid(m.desc) && isPublic(m.access))
+        ((List<MethodNode>) cn.methods).stream()
+                .filter(m -> m.name.equals("a") && m.desc.equals("(F)V") && isVoid(m.desc) && isPublic(m.access))
                 .forEach(m -> {
                     InsnList list = new InsnList();
                     list.add(new FieldInsnNode(GETSTATIC, "me/curlpipesh/pipe/event/Render2D", "instance", "Lme/curlpipesh/pipe/event/Render2D;"));
                     list.add(new MethodInsnNode(INVOKESTATIC, "pw/aria/event/EventManager", "push", "(Ljava/lang/Object;)Ljava/lang/Object;", false));
                     Iterator<AbstractInsnNode> i = m.instructions.iterator();
                     AbstractInsnNode node = null;
-                    while (i.hasNext()) {
+                    while(i.hasNext()) {
                         AbstractInsnNode n = i.next();
-                        if (n.getOpcode() == RETURN) {
+                        if(n.getOpcode() == RETURN) {
                             node = n;
                             break;
                         }
                     }
-                    if (node == null) {
+                    if(node == null) {
                         throw new IllegalStateException("RETURN insn node was null?!");
                     }
                     m.instructions.insertBefore(node, list);

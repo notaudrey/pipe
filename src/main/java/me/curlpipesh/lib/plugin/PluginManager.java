@@ -4,7 +4,7 @@ import lombok.Getter;
 import me.curlpipesh.bytecodetools.util.ClassEnumerator;
 import me.curlpipesh.lib.manager.AbstractManager;
 import me.curlpipesh.pipe.Pipe;
-import me.curlpipesh.pipe.annotations.Disabled;
+import me.curlpipesh.lib.annotations.Disabled;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;

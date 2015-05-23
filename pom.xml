@@ -161,15 +161,15 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-                <version>3.3</version>
-            </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                    <version>3.3</version>
+                </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -186,11 +186,13 @@
                                 <excludes>
                                     <exclude>org.ow2.asm:*:sources</exclude>
                                     <exclude>org.ow2.asm:*:javadoc</exclude>
+                                    <exclude>com.javaslang:*:sources</exclude>
+                                    <exclude>com.javaslang:*:javadoc</exclude>
                                     <exclude>org.lwjgl.*:*:*</exclude>
                                     <exclude>net.java.jinput:*:*</exclude>
                                     <exclude>net.java.jutils:*:*</exclude>
                                     <exclude>org.projectlombok:*</exclude>
-                                    <exclude>**/pipe/util/Helper.class</exclude>
+                                    <exclude>me/curlpipesh/pipe/util/Helper.class</exclude>
                                 </excludes>
                             </artifactSet>
                         </configuration>
@@ -211,7 +213,7 @@
                         <configuration>
                             <archive>
                                 <manifestEntries>
-                                    <premain-class>me.curlpipesh.bytecodetools.BytecodeTools</premain-class>
+                                    <Premain-Class>me.curlpipesh.bytecodetools.BytecodeTools</Premain-Class>
                                 </manifestEntries>
                             </archive>
                         </configuration>

@@ -8,6 +8,8 @@ package me.curlpipesh.pipe.util;
 public class Vec3 {
     private double x, y, z;
 
+    private static final Vec3 ZERO_VEC = new Vec3(0, 0, 0);
+
     public Vec3(double x, double y, double z) {
         this.x = x;
         this.y = y;
@@ -82,9 +84,15 @@ public class Vec3 {
         return this;
     }
 
+    public Vec3 addZ(double z) {
+        this.z += z;
+        return this;
+    }
+
     public Vec3 set(Vec3 v) {
         this.x = v.x;
         this.y = v.y;
+        this.z = v.z;
         return this;
     }
 
@@ -114,5 +122,9 @@ public class Vec3 {
 
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
+    }
+
+    public static Vec3 zero() {
+        return ZERO_VEC;
     }
 }

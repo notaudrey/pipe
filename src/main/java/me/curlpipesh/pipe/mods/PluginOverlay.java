@@ -68,12 +68,10 @@ public class PluginOverlay implements Plugin {
     }
 
     @Override
-    public void load() {
-    }
+    public void load() {}
 
     @Override
-    public void save() {
-    }
+    public void save() {}
 
     @Override
     public String getStatus() {
@@ -81,8 +79,7 @@ public class PluginOverlay implements Plugin {
     }
 
     @Override
-    public void setStatus(String status) {
-    }
+    public void setStatus(String status) {}
 
     @Override
     public boolean isStatusShown() {
@@ -95,7 +92,5 @@ public class PluginOverlay implements Plugin {
     }
 
     @Override
-    public void setName(String name) {
-
-    }
+    public void setName(String name) {}
 }
