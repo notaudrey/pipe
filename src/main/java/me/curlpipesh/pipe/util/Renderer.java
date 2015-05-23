@@ -2,6 +2,7 @@ package me.curlpipesh.pipe.util;
 
 import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
+import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -68,15 +69,67 @@ public class Renderer {
     }
 
     public static void drawLine(double x, double y, double z, double xx, double yy, double zz, int c, float size) {
-        pre();
         glLineWidth(size);
         tess.startDrawing(GL_LINES).color(c)
                 .addVertex(x, y, z)
                 .addVertex(xx, yy, zz)
                 .bindAndDraw();
         glLineWidth(1.0F);
-        post();
     }
+
+    public static void drawBoxFromPoints(Vec3 min, Vec3 max, int color) {
+        GL11.glDisable(GL11.GL_CULL_FACE);
+        tess
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) min.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) min.z())
+                .addVertex((float) min.x(), (float) max.y(), (float) min.z())
+                .bindAndDraw()
+
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) min.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) min.x(), (float) min.y(), (float) max.z())
+                .addVertex((float) min.x(), (float) max.y(), (float) max.z())
+                .addVertex((float) min.x(), (float) max.y(), (float) min.z())
+                .bindAndDraw()
+
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) min.x(), (float) max.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) max.z())
+                .addVertex((float) min.x(), (float) max.y(), (float) max.z())
+                .bindAndDraw()
+
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) max.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) max.z())
+                .addVertex((float) max.x(), (float) min.y(), (float) max.z())
+                .bindAndDraw()
+
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) min.x(), (float) min.y(), (float) max.z())
+                .addVertex((float) max.x(), (float) min.y(), (float) max.z())
+                .addVertex((float) max.x(), (float) max.y(), (float) max.z())
+                .addVertex((float) min.x(), (float) max.y(), (float) max.z())
+                .bindAndDraw()
+
+                .startDrawing(GL_QUADS)
+                .color(color)
+                .addVertex((float) min.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) min.y(), (float) min.z())
+                .addVertex((float) max.x(), (float) min.y(), (float) max.z())
+                .addVertex((float) min.x(), (float) min.y(), (float) max.z())
+                .bindAndDraw();
+        GL11.glEnable(GL11.GL_CULL_FACE);
+    }
+
 
     public static int getScale() {
         try {

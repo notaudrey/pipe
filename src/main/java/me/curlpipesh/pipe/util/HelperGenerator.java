@@ -202,6 +202,131 @@ public class HelperGenerator {
             mv.visitMaxs(3, 1);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityLiving", "(Ljava/lang/Object;)Z", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, Constants.getByName("EntityLiving").getName());
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(1, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityAnimal", "(Ljava/lang/Object;)Z", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, Constants.getByName("EntityAnimal").getName());
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(1, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityMonster", "(Ljava/lang/Object;)Z", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, Constants.getByName("EntityMonster").getName());
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(1, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getLoadedBlockEntities", "()Ljava/util/List;", "()Ljava/util/List<*>;", null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getWorld", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("AbstractWorld").getName());
+            mv.visitFieldInsn(GETFIELD, getByName("AbstractWorld").getDesc(), "h", "Ljava/util/List;");
+            mv.visitInsn(ARETURN);
+            mv.visitMaxs(1, 0);
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getBlockEntityVec", "(Ljava/lang/Object;)Lme/curlpipesh/pipe/util/Vec3;", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitLineNumber(91, l0);
+            mv.visitTypeInsn(NEW, "me/curlpipesh/pipe/util/Vec3");
+            mv.visitInsn(DUP);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("BlockEntity").getName());
+            mv.visitFieldInsn(GETFIELD, Constants.getByName("BlockEntity").getName(), "c", Constants.getByName("BlockPos").getDesc());
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("Vec3i").getName());
+            mv.visitMethodInsn(INVOKEVIRTUAL, Constants.getByName("Vec3i").getName(), "n", "()I", false);
+            mv.visitInsn(I2D);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("BlockEntity").getName());
+            mv.visitFieldInsn(GETFIELD, Constants.getByName("BlockEntity").getName(), "c", Constants.getByName("BlockPos").getDesc());
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("Vec3i").getName());
+            mv.visitMethodInsn(INVOKEVIRTUAL, Constants.getByName("Vec3i").getName(), "o", "()I", false);
+            mv.visitInsn(I2D);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("BlockEntity").getName());
+            mv.visitFieldInsn(GETFIELD, Constants.getByName("BlockEntity").getName(), "c", Constants.getByName("BlockPos").getDesc());
+            mv.visitTypeInsn(CHECKCAST, Constants.getByName("Vec3i").getName());
+            mv.visitMethodInsn(INVOKEVIRTUAL, Constants.getByName("Vec3i").getName(), "p", "()I", false);
+            mv.visitInsn(I2D);
+            mv.visitMethodInsn(INVOKESPECIAL, "me/curlpipesh/pipe/util/Vec3", "<init>", "(DDD)V", false);
+            mv.visitInsn(ARETURN);
+            Label l1 = new Label();
+            mv.visitLabel(l1);
+            mv.visitLocalVariable("d", "Lme/curlpipesh/pipe/util/Dummy;", null, l0, l1, 0);
+            mv.visitMaxs(8, 1);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isBlockEntityChest", "(Ljava/lang/Object;)Z", null, null);
+            mv.visitCode();
+            Label l0 = new Label();
+            mv.visitLabel(l0);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, Constants.getByName("BlockEntityChest").getName());
+            Label l1 = new Label();
+            mv.visitJumpInsn(IFNE, l1);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(INSTANCEOF, Constants.getByName("BlockEntityEnderChest").getName());
+            Label l2 = new Label();
+            mv.visitJumpInsn(IFEQ, l2);
+            mv.visitLabel(l1);
+            mv.visitFrame(Opcodes.F_SAME, 0, null, 0, null);
+            mv.visitInsn(ICONST_1);
+            Label l3 = new Label();
+            mv.visitJumpInsn(GOTO, l3);
+            mv.visitLabel(l2);
+            mv.visitFrame(Opcodes.F_SAME, 0, null, 0, null);
+            mv.visitInsn(ICONST_0);
+            mv.visitLabel(l3);
+            mv.visitFrame(Opcodes.F_SAME1, 0, null, 1, new Object[]{Opcodes.INTEGER});
+            mv.visitInsn(IRETURN);
+            Label l4 = new Label();
+            mv.visitLabel(l4);
+            mv.visitMaxs(1, 1);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "enableLightmap", "()V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, getByName("Minecraft").getName(), "A", "()" + getByName("Minecraft").getDesc(), false);
+            mv.visitFieldInsn(GETFIELD, Constants.getByName("Minecraft").getName(), "o", Constants.getByName("EntityRenderer").getDesc());
+            mv.visitMethodInsn(INVOKEVIRTUAL, Constants.getByName("EntityRenderer").getName(), "i", "()V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "disableLightmap", "()V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, getByName("Minecraft").getName(), "A", "()" + getByName("Minecraft").getDesc(), false);
+            mv.visitFieldInsn(GETFIELD, Constants.getByName("Minecraft").getName(), "o", Constants.getByName("EntityRenderer").getDesc());
+            mv.visitMethodInsn(INVOKEVIRTUAL, Constants.getByName("EntityRenderer").getName(), "i", "()V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
         cw.visitEnd();
 
         return cw.toByteArray();

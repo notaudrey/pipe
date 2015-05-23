@@ -12,6 +12,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class Constants {
     private static final List<ObfusClass> obfuscatedClasses = new CopyOnWriteArrayList<>();
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static final String
             MINECRAFT = "ave",
             GUIINGAME = "avo",
@@ -28,7 +29,15 @@ public class Constants {
             ENTITYCREATURE = "py",
             ENTITYAGEABLE = "ph",
             ENTITYANIMAL = "tm",
-            ENTITYMONSTER = "vv";
+            ENTITYMONSTER = "vv",
+            BLOCKENTITY = "akw",
+            BLOCKENTITYCHEST = "aky",
+            BLOCKENTITYENDERCHEST = "alf",
+            BLOCKPOS = "cj",
+            VEC3I = "df",
+            GUI = "avp",
+            GUISCREEN = "axu",
+            GUIMAINMENU = "aya";
 
     public static ObfusClass getByName(String name) {
         Optional<ObfusClass> o = obfuscatedClasses.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
@@ -55,6 +64,15 @@ public class Constants {
         obfuscatedClasses.add(new ObfusClass("EntityLiving", ENTITYLIVING));
         obfuscatedClasses.add(new ObfusClass("EntityCreature", ENTITYCREATURE));
         obfuscatedClasses.add(new ObfusClass("EntityAgeable", ENTITYAGEABLE));
+        obfuscatedClasses.add(new ObfusClass("EntityAnimal", ENTITYANIMAL));
         obfuscatedClasses.add(new ObfusClass("EntityMonster", ENTITYMONSTER));
+        obfuscatedClasses.add(new ObfusClass("BlockEntity", BLOCKENTITY));
+        obfuscatedClasses.add(new ObfusClass("BlockEntityChest", BLOCKENTITYCHEST));
+        obfuscatedClasses.add(new ObfusClass("BlockEntityEnderChest", BLOCKENTITYENDERCHEST));
+        obfuscatedClasses.add(new ObfusClass("BlockPos", BLOCKPOS));
+        obfuscatedClasses.add(new ObfusClass("Vec3i", VEC3I));
+        obfuscatedClasses.add(new ObfusClass("Gui", GUI));
+        obfuscatedClasses.add(new ObfusClass("GuiScreen", GUISCREEN));
+        obfuscatedClasses.add(new ObfusClass("GuiMainMenu", GUIMAINMENU));
     }
 }

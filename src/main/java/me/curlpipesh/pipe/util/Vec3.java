@@ -5,10 +5,11 @@ package me.curlpipesh.pipe.util;
  * @since 5/11/15
  */
 @SuppressWarnings("unused")
-public class Vec3 {
+public class Vec3 implements Cloneable {
     private double x, y, z;
 
     private static final Vec3 ZERO_VEC = new Vec3(0, 0, 0);
+    private static final Vec3 UNIT_VEC = new Vec3(1, 1, 1);
 
     public Vec3(double x, double y, double z) {
         this.x = x;
@@ -126,5 +127,9 @@ public class Vec3 {
 
     public static Vec3 zero() {
         return ZERO_VEC;
+    }
+
+    public static Vec3 unit() {
+        return UNIT_VEC;
     }
 }

@@ -12,8 +12,10 @@ import java.lang.reflect.Method;
  * @author audrey
  * @since 4/30/15
  */
-public class Pipe implements Statused {
+public final class Pipe implements Statused {
     private static Pipe instance;
+
+    private static final String semver = "0.1.0";
 
     private Pipe() {
         log("Starting up Pipe...");
@@ -72,5 +74,9 @@ public class Pipe implements Statused {
     @Override
     public boolean isStatusShown() {
         return true;
+    }
+
+    public static String getVersion() {
+        return semver;
     }
 }
