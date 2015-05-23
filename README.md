@@ -6,6 +6,7 @@ The point of this client is to allow for "intrusive" modifications of the game w
 
 ![Mojang EULA image 1](https://i.imgur.com/Q6pKGDA.png)
 ![Mojang EULA image 2](https://i.imgur.com/QKGkSGC.png)
+
 These conditions can be found [here](https://account.mojang.com/documents/minecraft_eula) and [here](https://account.mojang.com/terms), respectively.
 
 ----------------
@@ -32,6 +33,7 @@ Before building, one must first `mvn install` the following libraries:
  - [Event](https://github.com/curlpipesh/event)
  - [Bytecode Tools](https://github.com/curlpipesh/BytecodeTools)
  - [pipe-gl](https://github.com/curlpipesh/pipe-gl)
+ 
 Note that, due to inadequate foresight on my part, `Event` does not have a pom.xml that you can `mvn install` with. This presently must be created on your own.
 
 Once those libraries have been `mvn install`'d:
