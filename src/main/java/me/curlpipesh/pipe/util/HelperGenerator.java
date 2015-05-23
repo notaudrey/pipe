@@ -327,6 +327,20 @@ public class HelperGenerator {
             mv.visitMaxs(2, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "addChatMessage", "(Ljava/lang/String;)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getPlayer", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("EntityThePlayer").getName());
+            mv.visitTypeInsn(NEW, getByName("ChatComponentText").getName());
+            mv.visitInsn(DUP);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("ChatComponentText").getName(), "<init>", "(Ljava/lang/String;)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("EntityThePlayer").getName(), "a", "(" + getByName("IChatComponent").getDesc() + ")V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(3, 0);
+            mv.visitEnd();
+        }
         cw.visitEnd();
 
         return cw.toByteArray();

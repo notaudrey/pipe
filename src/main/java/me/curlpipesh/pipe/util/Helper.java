@@ -1,7 +1,5 @@
 package me.curlpipesh.pipe.util;
 
-import me.curlpipesh.pipe.Pipe;
-
 import java.util.List;
 
 /**
@@ -96,4 +94,6 @@ public class Helper {
     public static void enableLightmap() {}
 
     public static void disableLightmap() {}
+
+    public static void addChatMessage(String message) {}
 }

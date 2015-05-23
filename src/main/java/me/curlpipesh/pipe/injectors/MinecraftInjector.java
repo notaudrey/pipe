@@ -2,7 +2,6 @@ package me.curlpipesh.pipe.injectors;
 
 import me.curlpipesh.bytecodetools.inject.Inject;
 import me.curlpipesh.bytecodetools.inject.Injector;
-import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.util.Constants;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.*;
@@ -25,7 +24,6 @@ public class MinecraftInjector extends Injector {
     protected void inject(ClassReader cr, ClassNode cn) {
         for(MethodNode m : (List<MethodNode>)cn.methods) {
             if(m.name.equals("am") && m.desc.equals("()V") && isVoid(m.desc) && isPrivate(m.access)) {
-                Pipe.log("Injecting code into startGame()...");
                 InsnList list = new InsnList();
                 list.add(new MethodInsnNode(INVOKESTATIC, "me/curlpipesh/pipe/Pipe", "getInstance", "()Lme/curlpipesh/pipe/Pipe;", false));
                 list.add(new MethodInsnNode(INVOKEVIRTUAL, "me/curlpipesh/pipe/Pipe", "init", "()V", false));
@@ -42,9 +40,7 @@ public class MinecraftInjector extends Injector {
                     throw new IllegalStateException("RETURN insn node was null?!");
                 }
                 m.instructions.insertBefore(node, list);
-                Pipe.log("startGame() injection done!");
             } else if(m.name.equals("s") && m.desc.equals("()V") && isVoid(m.desc) && isPublic(m.access)) {
-                Pipe.log("Injecting code into runTick()...");
                 // Tick event
                 InsnList list = new InsnList();
                 list.add(new FieldInsnNode(GETSTATIC, "me/curlpipesh/pipe/event/Tick", "instance", "Lme/curlpipesh/pipe/event/Tick;"));
@@ -88,7 +84,6 @@ public class MinecraftInjector extends Injector {
                 }
                 m.instructions.insert(node, list);
 
-                Pipe.log("runTick() injection done!");
             }
         }
     }

@@ -37,7 +37,10 @@ public class Constants {
             VEC3I = "df",
             GUI = "avp",
             GUISCREEN = "axu",
-            GUIMAINMENU = "aya";
+            GUIMAINMENU = "aya",
+            ICHATCOMPONENT = "eu",
+            CHATCOMPONENTSTYLE = "es",
+            CHATCOMPONENTTEXT = "fa";
 
     public static ObfusClass getByName(String name) {
         Optional<ObfusClass> o = obfuscatedClasses.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
@@ -74,5 +77,8 @@ public class Constants {
         obfuscatedClasses.add(new ObfusClass("Gui", GUI));
         obfuscatedClasses.add(new ObfusClass("GuiScreen", GUISCREEN));
         obfuscatedClasses.add(new ObfusClass("GuiMainMenu", GUIMAINMENU));
+        obfuscatedClasses.add(new ObfusClass("IChatComponent", ICHATCOMPONENT));
+        obfuscatedClasses.add(new ObfusClass("ChatComponentStyle", CHATCOMPONENTSTYLE));
+        obfuscatedClasses.add(new ObfusClass("ChatComponentText", CHATCOMPONENTTEXT));
     }
 }

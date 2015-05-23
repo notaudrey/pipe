@@ -23,7 +23,7 @@ public final class Pipe implements Statused {
 
     @SuppressWarnings("unused")
     public void init() {
-        generateHelper();
+        defineClass(HelperGenerator.generate(), "me.curlpipesh.pipe.util.Helper");
         PluginManager.getInstance().init();
     }
 
@@ -37,13 +37,13 @@ public final class Pipe implements Statused {
         }
     }
 
-    private void generateHelper() {
+    private void defineClass(byte[] clazz, String fullName) {
+        Method define;
         try {
-            byte[] gen = HelperGenerator.generate();
-            Method define = ClassLoader.class.getDeclaredMethod("defineClass", String.class, byte[].class, int.class, int.class);
+            define = ClassLoader.class.getDeclaredMethod("defineClass", String.class, byte[].class, int.class, int.class);
             define.setAccessible(true);
-            define.invoke(Pipe.class.getClassLoader(), "me.curlpipesh.pipe.util.Helper", gen, 0, gen.length);
-        } catch(NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            define.invoke(Pipe.class.getClassLoader(), fullName, clazz, 0, clazz.length);
+        } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);
         }
     }
