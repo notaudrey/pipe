@@ -2,6 +2,12 @@ Pipe
 ----
 A "Minecraft" modded client that works through instrumentation. Apache 2.0-licensed.
 
+The point of this client is to allow for "intrusive" modifications of the game without violating Mojang's EULA, specifically the following parts:
+
+![Mojang EULA image 1](https://i.imgur.com/Q6pKGDA.png)
+![Mojang EULA image 2](https://i.imgur.com/QKGkSGC.png)
+These conditions can be found [here](https://account.mojang.com/documents/minecraft_eula) and [here](https://account.mojang.com/terms), respectively.
+
 ----------------
 
 Copyright 2015 curlpipesh
@@ -21,11 +27,20 @@ limitations under the License.
 ----
 
 Installation:
+
+Before building, one must first `mvn install` the following libraries:
+ - [Event](https://github.com/curlpipesh/event)
+ - [Bytecode Tools](https://github.com/curlpipesh/BytecodeTools)
+ - [pipe-gl](https://github.com/curlpipesh/pipe-gl)
+Note that, due to inadequate foresight on my part, `Event` does not have a pom.xml that you can `mvn install` with. This presently must be created on your own.
+
+Once those libraries have been `mvn install`'d:
+
 ````
 mvn clean package
 # Replace file-roller with the archive manager of your choice
 file-roller ./target/Pipe-0.1-DEV.jar
-# Delete the class me/curlpipesh/pipe/util/Helper.java
+# Delete the class me/curlpipesh/pipe/util/Helper from the final JAR
 ````
 After this, open up the Minecraft launcher. Make a new profile, and add the following under "JVM Arguments":
 ````
