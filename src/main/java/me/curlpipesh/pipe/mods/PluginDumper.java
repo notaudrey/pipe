@@ -24,6 +24,7 @@ public class PluginDumper extends BasePlugin {
     @Override
     public void onEnable() {
         Helper.addChatMessage("§aSo §cwe §ecan §4send §8chat §dmessages §7§l§n§mnow§r!");
+        Helper.sendChatMessage("☃☃☃ ~Snowmen~ ☃☃☃");
         toggle();
     }
 }

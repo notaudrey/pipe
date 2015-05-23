@@ -96,4 +96,6 @@ public class Helper {
     public static void disableLightmap() {}
 
     public static void addChatMessage(String message) {}
+
+    public static void sendChatMessage(String message) {}
 }
