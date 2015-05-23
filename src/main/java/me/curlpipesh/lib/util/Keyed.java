@@ -8,4 +8,10 @@ public interface Keyed {
     int getKey();
 
     void setKey(int key);
+
+    Integer[] getModifiers();
+
+    void addModifier(int mod);
+
+    void removeModifier(int mod);
 }

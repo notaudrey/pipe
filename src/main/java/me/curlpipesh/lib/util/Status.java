@@ -13,4 +13,5 @@ public interface Status {
     String LOAD_ERROR = "§cLoad error";
     String SAVE_ERROR = "§cSave error";
     String GENERIC_ERROR = "§cError";
+    String INTERNAL_ERROR = "§cInternal error";
 }

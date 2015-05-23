@@ -3,11 +3,13 @@ package me.curlpipesh.lib.plugin.impl;
 import lombok.Getter;
 import lombok.Setter;
 import me.curlpipesh.lib.plugin.Plugin;
+import me.curlpipesh.lib.util.Keybind;
 import me.curlpipesh.lib.util.Keyed;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.event.Keypress;
+import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -28,24 +30,30 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
     @Setter
     private String name;
 
-    @Getter
-    @Setter
-    private int key;
+    private final Keybind keybind = new Keybind(-1);
 
     public BasePlugin() {
         EventManager.register(new Listener<Keypress>() {
             @Override
             public void event(Keypress keypress) {
                 if(keypress.getKey() == getKey()) {
-                    boolean prevState = isEnabled();
-                    try {
-                        toggle();
-                        setStatus(Status.OK);
-                    } catch(Exception e) {
-                        if(prevState) {
-                            setStatus(Status.DISABLE_ERROR);
-                        } else {
-                            setStatus(Status.ENABLE_ERROR);
+                    int mod = 0;
+                    for(int m : getModifiers()) {
+                        if(Keyboard.isKeyDown(m)) {
+                            ++mod;
+                        }
+                    }
+                    if(mod == getModifiers().length) {
+                        boolean prevState = isEnabled();
+                        try {
+                            toggle();
+                            setStatus(Status.OK);
+                        } catch(Exception e) {
+                            if(prevState) {
+                                setStatus(Status.DISABLE_ERROR);
+                            } else {
+                                setStatus(Status.ENABLE_ERROR);
+                            }
                         }
                     }
                 }
@@ -53,8 +61,10 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
         });
     }
 
+    @Override
     public void onEnable() {}
 
+    @Override
     public void onDisable() {}
 
     @Override
@@ -67,5 +77,30 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
     public void save() {
         Pipe.log("[" + name + "] Configuration is not yet implemented!");
         setStatus(Status.SAVE_ERROR);
+    }
+
+    @Override
+    public int getKey() {
+        return keybind.getKey();
+    }
+
+    @Override
+    public void setKey(int key) {
+        keybind.setKey(key);
+    }
+
+    @Override
+    public void addModifier(int mod) {
+        keybind.addModifier(mod);
+    }
+
+    @Override
+    public void removeModifier(int mod) {
+        keybind.removeModifier(mod);
+    }
+
+    @Override
+    public Integer[] getModifiers() {
+        return keybind.getModifiers();
     }
 }
