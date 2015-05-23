@@ -13,8 +13,6 @@ import java.util.List;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * TODO This doesn't work
- *
  * @author audrey
  * @since 5/21/15
  */
