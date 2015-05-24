@@ -1,7 +1,10 @@
 package me.curlpipesh.pipe;
 
+import me.curlpipesh.bytecodetools.BytecodeTools;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
+import me.curlpipesh.pipe.generators.GuiScreenGenerator;
+import me.curlpipesh.pipe.generators.HelperGenerator;
 import me.curlpipesh.pipe.util.Constants;
 
 import java.lang.reflect.InvocationTargetException;
@@ -65,4 +68,9 @@ public final class Pipe implements Statused {
     public static String getVersion() {
         return semver;
     }
+
+    /*static {
+        BytecodeTools.defineClass(HelperGenerator.generate(), "me.curlpipesh.pipe.util.Helper");
+        BytecodeTools.defineClass(GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
+    }*/
 }

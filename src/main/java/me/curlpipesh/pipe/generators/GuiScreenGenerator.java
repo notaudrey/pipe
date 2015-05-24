@@ -2,9 +2,9 @@ package me.curlpipesh.pipe.generators;
 
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
-import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
 
+import static me.curlpipesh.pipe.util.Constants.getByName;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
@@ -17,21 +17,15 @@ public class GuiScreenGenerator {
         FieldVisitor fv;
         MethodVisitor mv;
 
-        cw.visit(49, ACC_PUBLIC + ACC_SUPER, "pw/slacks/bytey/defined/GuiScreen", null, "axu", null);
+        cw.visit(52, ACC_PUBLIC + ACC_SUPER, "me/curlpipesh/pipe/gui/GuiScreen", null, getByName("GuiScreen").getName(), null);
 
         cw.visitSource("GuiScreen.java", null);
         {
             mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
-            mv.visitLineNumber(8, l0);
             mv.visitVarInsn(ALOAD, 0);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "<init>", "()V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "<init>", "()V", false);
             mv.visitInsn(RETURN);
-            Label l1 = new Label();
-            mv.visitLabel(l1);
-            mv.visitLocalVariable("this", "Lpw/slacks/bytey/defined/GuiScreen;", null, l0, l1, 0);
             mv.visitMaxs(0, 1);
             mv.visitEnd();
         }
@@ -46,12 +40,12 @@ public class GuiScreenGenerator {
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(FLOAD, 3);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "drawScreen", "(IIF)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "drawScreen", "(IIF)V", false);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(FLOAD, 3);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "a", "(IIF)V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "a", "(IIF)V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(4, 4);
             mv.visitEnd();
@@ -66,11 +60,11 @@ public class GuiScreenGenerator {
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "keyPress", "(CI)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "keyPress", "(CI)V", false);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "a", "(CI)V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "a", "(CI)V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(3, 3);
             mv.visitEnd();
@@ -86,12 +80,12 @@ public class GuiScreenGenerator {
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "mouseClicked", "(III)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "mouseClicked", "(III)V", false);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "a", "(III)V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "a", "(III)V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(4, 4);
             mv.visitEnd();
@@ -107,12 +101,12 @@ public class GuiScreenGenerator {
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "mouseReleased", "(III)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "mouseReleased", "(III)V", false);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "b", "(III)V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "b", "(III)V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(4, 4);
             mv.visitEnd();
@@ -129,13 +123,13 @@ public class GuiScreenGenerator {
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
             mv.visitVarInsn(LLOAD, 4);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "mouseDownDrag", "(IIIJ)V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "mouseDownDrag", "(IIIJ)V", false);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitVarInsn(ILOAD, 1);
             mv.visitVarInsn(ILOAD, 2);
             mv.visitVarInsn(ILOAD, 3);
             mv.visitVarInsn(LLOAD, 4);
-            mv.visitMethodInsn(INVOKESPECIAL, "axu", "a", "(IIIJ)V", false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("GuiScreen").getName(), "a", "(IIIJ)V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(6, 6);
             mv.visitEnd();
@@ -148,7 +142,7 @@ public class GuiScreenGenerator {
             mv = cw.visitMethod(ACC_PUBLIC, "b", "()V", null, null);
             mv.visitCode();
             mv.visitVarInsn(ALOAD, 0);
-            mv.visitMethodInsn(INVOKEVIRTUAL, "pw/slacks/bytey/defined/GuiScreen", "initGui", "()V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "initGui", "()V", false);
             mv.visitInsn(RETURN);
             mv.visitMaxs(1, 1);
             mv.visitEnd();

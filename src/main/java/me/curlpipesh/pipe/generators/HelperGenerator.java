@@ -453,6 +453,17 @@ public class HelperGenerator {
             mv.visitMaxs(2, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "displayGuiScreen", "(Lme/curlpipesh/pipe/gui/GuiScreen;)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, getByName("Minecraft").getName(), "A", "()" + getByName("Minecraft").getDesc(), false);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, getByName("GuiScreen").getName());
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("Minecraft").getName(), "a", "(" + getByName("GuiScreen").getDesc() + ")V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
         cw.visitEnd();
 
         return cw.toByteArray();

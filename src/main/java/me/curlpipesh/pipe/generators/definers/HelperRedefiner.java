@@ -1,8 +1,8 @@
-package me.curlpipesh.pipe.redefiners;
+package me.curlpipesh.pipe.generators.definers;
 
-import me.curlpipesh.bytecodetools.redefine.Redefiner;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.bytecodetools.define.Redefiner;
 import me.curlpipesh.pipe.generators.HelperGenerator;
+import me.curlpipesh.pipe.util.Helper;
 
 import java.lang.instrument.ClassDefinition;
 

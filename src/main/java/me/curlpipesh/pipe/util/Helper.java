@@ -1,19 +1,10 @@
 package me.curlpipesh.pipe.util;
 
-import me.curlpipesh.pipe.generators.HelperGenerator;
+import me.curlpipesh.pipe.gui.GuiScreen;
 
 import java.util.List;
 
 /**
- * This class must never ever ever ever be included in the final JAR. Its only
- * purpose is for "compatibility" so that we don't run into compile errors,
- * since the actual version of this class is generated at runtime by
- * {@link HelperGenerator}. None of the methods that
- * reside within this class are expected to have sensible bodies at compile
- * time; this is because the method bodies cannot actually be created through
- * javac, due to the fact that it is not possible to access classes in the
- * default package without writing the bytecode manually.
- *
  * @author audrey
  * @since 5/2/15
  */
@@ -128,4 +119,6 @@ public class Helper {
     public static int getHeight() {
         return 0;
     }
+
+    public static void displayGuiScreen(GuiScreen gui) {}
 }

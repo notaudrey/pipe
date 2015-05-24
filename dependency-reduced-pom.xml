@@ -56,6 +56,11 @@
             </configuration>
           </execution>
         </executions>
+        <configuration>
+          <excludes>
+            <exclude>**/me/curlpipesh/pipe/gui/GuiScreen.class</exclude>
+          </excludes>
+        </configuration>
       </plugin>
     </plugins>
   </build>
