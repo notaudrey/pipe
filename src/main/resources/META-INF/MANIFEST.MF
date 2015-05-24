@@ -1,1 +1,2 @@
 Premain-Class: me.curlpipesh.bytecodetools.BytecodeTools
+Can-Redefine-Classes: true

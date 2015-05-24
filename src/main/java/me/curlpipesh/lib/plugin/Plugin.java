@@ -10,8 +10,4 @@ import me.curlpipesh.lib.util.Toggleable;
  */
 public interface Plugin extends Named, Statused {
     void init();
-
-    void load();
-
-    void save();
 }

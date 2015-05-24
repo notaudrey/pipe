@@ -40,9 +40,6 @@ Once those libraries have been `mvn install`'d:
 
 ````
 mvn clean package
-# Replace file-roller with the archive manager of your choice
-file-roller ./target/Pipe-0.1-DEV.jar
-# Delete the class me/curlpipesh/pipe/util/Helper from the final JAR
 ````
 After this, open up the Minecraft launcher. Make a new profile, and add the following under "JVM Arguments":
 ````

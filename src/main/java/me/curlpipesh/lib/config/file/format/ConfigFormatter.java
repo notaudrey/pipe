@@ -1,4 +1,4 @@
-package me.curlpipesh.pipe.config.file.format;
+package me.curlpipesh.lib.config.file.format;
 
 /**
  * @author audrey

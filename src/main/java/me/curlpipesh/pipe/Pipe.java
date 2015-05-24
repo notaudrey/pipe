@@ -3,10 +3,8 @@ package me.curlpipesh.pipe;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
 import me.curlpipesh.pipe.util.Constants;
-import me.curlpipesh.pipe.util.HelperGenerator;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * @author audrey
@@ -15,7 +13,7 @@ import java.lang.reflect.Method;
 public final class Pipe implements Statused {
     private static Pipe instance;
 
-    private static final String semver = "0.1.0";
+    private static final String semver = "0.2.0";
 
     private Pipe() {
         log("Starting up Pipe...");
@@ -23,7 +21,6 @@ public final class Pipe implements Statused {
 
     @SuppressWarnings("unused")
     public void init() {
-        defineClass(HelperGenerator.generate(), "me.curlpipesh.pipe.util.Helper");
         PluginManager.getInstance().init();
     }
 
@@ -34,17 +31,6 @@ public final class Pipe implements Statused {
     public static void log(String... messages) {
         for(String e : messages) {
             System.out.println("> " + e);
-        }
-    }
-
-    private void defineClass(byte[] clazz, String fullName) {
-        Method define;
-        try {
-            define = ClassLoader.class.getDeclaredMethod("defineClass", String.class, byte[].class, int.class, int.class);
-            define.setAccessible(true);
-            define.invoke(Pipe.class.getClassLoader(), fullName, clazz, 0, clazz.length);
-        } catch(NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
         }
     }
 

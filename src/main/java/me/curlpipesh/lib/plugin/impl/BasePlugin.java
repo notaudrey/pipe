@@ -2,6 +2,7 @@ package me.curlpipesh.lib.plugin.impl;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.curlpipesh.lib.config.BasicConfigurable;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.util.Keybind;
 import me.curlpipesh.lib.util.Keyed;
@@ -17,7 +18,7 @@ import pw.aria.event.Listener;
  * @author audrey
  * @since 5/9/15
  */
-public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
+public abstract class BasePlugin extends BasicConfigurable implements Plugin, Keyed, Toggleable {
     @Getter
     @Setter
     private boolean enabled = false;
@@ -66,18 +67,6 @@ public abstract class BasePlugin implements Plugin, Keyed, Toggleable {
 
     @Override
     public void onDisable() {}
-
-    @Override
-    public void load() {
-        Pipe.log("[" + name + "] Configuration is not yet implemented!");
-        setStatus(Status.LOAD_ERROR);
-    }
-
-    @Override
-    public void save() {
-        Pipe.log("[" + name + "] Configuration is not yet implemented!");
-        setStatus(Status.SAVE_ERROR);
-    }
 
     @Override
     public int getKey() {

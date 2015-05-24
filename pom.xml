@@ -192,7 +192,6 @@
                                     <exclude>net.java.jinput:*:*</exclude>
                                     <exclude>net.java.jutils:*:*</exclude>
                                     <exclude>org.projectlombok:*</exclude>
-                                    <exclude>me/curlpipesh/pipe/util/Helper.class</exclude>
                                 </excludes>
                             </artifactSet>
                         </configuration>
@@ -212,9 +211,7 @@
                         </goals>
                         <configuration>
                             <archive>
-                                <manifestEntries>
-                                    <Premain-Class>me.curlpipesh.bytecodetools.BytecodeTools</Premain-Class>
-                                </manifestEntries>
+                                <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
                             </archive>
                         </configuration>
                     </execution>

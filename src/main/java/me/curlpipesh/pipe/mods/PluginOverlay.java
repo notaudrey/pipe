@@ -68,14 +68,6 @@ public class PluginOverlay implements Plugin {
     }
 
     @Override
-    public void load() {
-    }
-
-    @Override
-    public void save() {
-    }
-
-    @Override
     public String getStatus() {
         return "";
     }
