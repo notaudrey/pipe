@@ -1,6 +1,6 @@
 package me.curlpipesh.pipe.mods;
 
-import me.curlpipesh.lib.plugin.impl.BasePlugin;
+import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.input.Keyboard;
 
@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
  * @author audrey
  * @since 5/23/15
  */
-public class PluginArmorMagic extends BasePlugin {
+public class PluginArmorMagic extends ExecutablePlugin {
     @Override
     public void init() {
         setName("Armor hake");
@@ -16,21 +16,13 @@ public class PluginArmorMagic extends BasePlugin {
         addModifier(Keyboard.KEY_LCONTROL);
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Override
-    public void onEnable() {
+    protected void execute() {
         int itemSlot = 36;
-        int armorSlot = 5;
-        Object stack = Helper.getStackInSlot(Helper.getPlayer(), itemSlot);
-        Helper.inventoryClick(itemSlot, 0, 0, Helper.getPlayer());
-        //Helper.inventoryClickPacket(0, itemSlot, 0, 0, stack, (short)0);
+        int armorSlot = 8;
+        Object stack = Helper.inventoryClick(itemSlot, 0, 0, Helper.getPlayer());
+        Helper.inventoryClickPacket(0, itemSlot, 0, 0, stack, (short)0);
         Helper.inventoryClick(armorSlot, 0, 0, Helper.getPlayer());
-        //Helper.inventoryClickPacket(0, armorSlot, 0, 0, stack, (short)0);
-        toggle();
-    }
-
-    @Override
-    public boolean isStatusShown() {
-        return false;
+        Helper.inventoryClickPacket(0, armorSlot, 0, 0, stack, (short)0);
     }
 }

@@ -1,6 +1,6 @@
 package me.curlpipesh.pipe.mods;
 
-import me.curlpipesh.lib.plugin.impl.BasePlugin;
+import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.input.Keyboard;
 
@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
  * @author audrey
  * @since 5/23/15
  */
-public class PluginSnowmen extends BasePlugin {
+public class PluginSnowmen extends ExecutablePlugin {
     @Override
     public void init() {
         setName("Snowmen!");
@@ -17,13 +17,7 @@ public class PluginSnowmen extends BasePlugin {
     }
 
     @Override
-    public boolean isStatusShown() {
-        return false;
-    }
-
-    @Override
-    public void onEnable() {
+    protected void execute() {
         Helper.addChatMessage("☃☃☃ ~Snowmen~ ☃☃☃");
-        toggle();
     }
 }

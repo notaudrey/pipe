@@ -6,23 +6,16 @@ import me.curlpipesh.lib.config.BasicConfigurable;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.util.Keybind;
 import me.curlpipesh.lib.util.Keyed;
-import me.curlpipesh.lib.util.Status;
-import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.event.Keypress;
 import me.curlpipesh.pipe.util.KeypressHelper;
-import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
  * @author audrey
- * @since 5/9/15
+ * @since 5/24/15
  */
-public abstract class BasePlugin extends BasicConfigurable implements Plugin, Keyed, Toggleable {
-    @Getter
-    @Setter
-    private boolean enabled = false;
-
+public abstract class ExecutablePlugin extends BasicConfigurable implements Plugin, Keyed {
     @Getter
     @Setter
     private String status = "§eOk";
@@ -33,34 +26,18 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
 
     private final Keybind keybind = new Keybind(-1);
 
-    public BasePlugin() {
+    public ExecutablePlugin() {
         EventManager.register(new Listener<Keypress>() {
             @Override
             public void event(Keypress keypress) {
                 if(KeypressHelper.isKeyPlusModifiersDown(keybind, keypress)) {
-                    boolean prevState = isEnabled();
-                    try {
-                        toggle();
-                        setStatus(Status.OK);
-                    } catch(Exception e) {
-                        if(prevState) {
-                            setStatus(Status.DISABLE_ERROR);
-                        } else {
-                            setStatus(Status.ENABLE_ERROR);
-                        }
-                    }
+                    execute();
                 }
             }
         });
     }
 
-    @Override
-    public void onEnable() {
-    }
-
-    @Override
-    public void onDisable() {
-    }
+    protected abstract void execute();
 
     @Override
     public int getKey() {
@@ -70,6 +47,11 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
     @Override
     public void setKey(int key) {
         keybind.setKey(key);
+    }
+
+    @Override
+    public Integer[] getModifiers() {
+        return new Integer[0];
     }
 
     @Override
@@ -83,7 +65,7 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
     }
 
     @Override
-    public Integer[] getModifiers() {
-        return keybind.getModifiers();
+    public boolean isStatusShown() {
+        return false;
     }
 }
