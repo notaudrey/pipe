@@ -98,4 +98,22 @@ public class Helper {
     public static void addChatMessage(String message) {}
 
     public static void sendChatMessage(String message) {}
+
+    public static Object getInventoryContainer() {
+        return null;
+    }
+
+    public static Object inventoryClick(int slot, int button, int mode, Object player) {
+        return null;
+    }
+
+    public static Object getStackInSlot(Object player, int slot) {
+        return null;
+    }
+
+    public static Object inventoryClickPacket(int window, int slot, int button, int mode, Object stack, short actionNumber) {
+        return null;
+    }
+
+    public static void sendPacket(Object packet) {}
 }

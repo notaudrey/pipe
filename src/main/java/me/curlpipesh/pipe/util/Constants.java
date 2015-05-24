@@ -40,7 +40,18 @@ public class Constants {
             GUIMAINMENU = "aya",
             ICHATCOMPONENT = "eu",
             CHATCOMPONENTSTYLE = "es",
-            CHATCOMPONENTTEXT = "fa";
+            CHATCOMPONENTTEXT = "fa",
+            INVENTORYPLAYER = "wm",
+            IINVENTORY = "og",
+            ITEMSTACK = "zx",
+            CONTAINER = "xi",
+            CONTAINERPLAYER = "xy",
+            ENTITYPLAYER = "wn",
+            SLOT = "yg",
+            NETWORKMANAGER = "ek",
+            PACKET = "ff",
+            C0EPACKETWINDOWCLICK = "ik",
+            NETHANDLERPLAYCLIENT = "bcy";
 
     public static ObfusClass getByName(String name) {
         Optional<ObfusClass> o = obfuscatedClasses.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
@@ -80,5 +91,16 @@ public class Constants {
         obfuscatedClasses.add(new ObfusClass("IChatComponent", ICHATCOMPONENT));
         obfuscatedClasses.add(new ObfusClass("ChatComponentStyle", CHATCOMPONENTSTYLE));
         obfuscatedClasses.add(new ObfusClass("ChatComponentText", CHATCOMPONENTTEXT));
+        obfuscatedClasses.add(new ObfusClass("IInventory", IINVENTORY));
+        obfuscatedClasses.add(new ObfusClass("InventoryPlayer", INVENTORYPLAYER));
+        obfuscatedClasses.add(new ObfusClass("ItemStack", ITEMSTACK));
+        obfuscatedClasses.add(new ObfusClass("Container", CONTAINER));
+        obfuscatedClasses.add(new ObfusClass("ContainerPlayer", CONTAINERPLAYER));
+        obfuscatedClasses.add(new ObfusClass("EntityPlayer", ENTITYPLAYER));
+        obfuscatedClasses.add(new ObfusClass("Slot", SLOT));
+        obfuscatedClasses.add(new ObfusClass("NetworkManager", NETWORKMANAGER));
+        obfuscatedClasses.add(new ObfusClass("Packet", PACKET));
+        obfuscatedClasses.add(new ObfusClass("C0EPacketWindowClick", C0EPACKETWINDOWCLICK));
+        obfuscatedClasses.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
     }
 }

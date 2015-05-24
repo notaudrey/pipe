@@ -8,11 +8,11 @@ import org.lwjgl.input.Keyboard;
  * @author audrey
  * @since 5/23/15
  */
-public class PluginDumper extends BasePlugin {
+public class PluginSnowmen extends BasePlugin {
     @Override
     public void init() {
-        setName("Dumper");
-        setKey(Keyboard.KEY_D);
+        setName("Snowmen!");
+        setKey(Keyboard.KEY_S);
         addModifier(Keyboard.KEY_LCONTROL);
     }
 
@@ -23,8 +23,7 @@ public class PluginDumper extends BasePlugin {
 
     @Override
     public void onEnable() {
-        Helper.addChatMessage("§aSo §cwe §ecan §4send §8chat §dmessages §7§l§n§mnow§r!");
-        Helper.sendChatMessage("☃☃☃ ~Snowmen~ ☃☃☃");
+        Helper.addChatMessage("☃☃☃ ~Snowmen~ ☃☃☃");
         toggle();
     }
 }

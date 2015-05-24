@@ -8,7 +8,6 @@ import me.curlpipesh.lib.util.Keybind;
 import me.curlpipesh.lib.util.Keyed;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.lib.util.Toggleable;
-import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.event.Keypress;
 import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
