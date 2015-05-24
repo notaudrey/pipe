@@ -129,15 +129,4 @@ public class Renderer {
                 .bindAndDraw();
         GL11.glEnable(GL11.GL_CULL_FACE);
     }
-
-
-    public static int getScale() {
-        try {
-            return (int) Constants.getByName("ScaledResolution").getClazz().getDeclaredMethod("e")
-                    .invoke(Constants.getByName("ScaledResolution").getClazz().getConstructor(Constants.getByName("Minecraft").getClazz())
-                            .newInstance(Helper.getMinecraft()));
-        } catch(IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 public final class Pipe implements Statused {
     private static Pipe instance;
 
-    private static final String semver = "0.2.0";
+    private static final String semver = "0.3.0";
 
     private Pipe() {
         log("Starting up Pipe...");

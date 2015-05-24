@@ -51,7 +51,8 @@ public class Constants {
             NETWORKMANAGER = "ek",
             PACKET = "ff",
             C0EPACKETWINDOWCLICK = "ik",
-            NETHANDLERPLAYCLIENT = "bcy";
+            NETHANDLERPLAYCLIENT = "bcy",
+            ITEM = "zw";
 
     public static ObfusClass getByName(String name) {
         Optional<ObfusClass> o = obfuscatedClasses.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
@@ -102,5 +103,6 @@ public class Constants {
         obfuscatedClasses.add(new ObfusClass("Packet", PACKET));
         obfuscatedClasses.add(new ObfusClass("C0EPacketWindowClick", C0EPACKETWINDOWCLICK));
         obfuscatedClasses.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
+        obfuscatedClasses.add(new ObfusClass("Item", ITEM));
     }
 }

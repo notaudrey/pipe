@@ -10,7 +10,6 @@ import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.event.Keypress;
 import me.curlpipesh.pipe.util.KeypressHelper;
-import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 

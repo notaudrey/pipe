@@ -2,7 +2,7 @@ package me.curlpipesh.pipe.redefiners;
 
 import me.curlpipesh.bytecodetools.redefine.Redefiner;
 import me.curlpipesh.pipe.util.Helper;
-import me.curlpipesh.pipe.util.HelperGenerator;
+import me.curlpipesh.pipe.generators.HelperGenerator;
 
 import java.lang.instrument.ClassDefinition;
 

@@ -1,4 +1,4 @@
-package me.curlpipesh.pipe.util;
+package me.curlpipesh.pipe.generators;
 
 import org.objectweb.asm.*;
 
@@ -395,7 +395,6 @@ public class HelperGenerator {
             mv.visitCode();
             mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getPlayer", "()Ljava/lang/Object;", false);
             mv.visitTypeInsn(CHECKCAST, getByName("EntityThePlayer").getName());
-            //mv.visitFieldInsn(GETFIELD, getByName("EntityThePlayer").getDesc(), "", getByName("NetClientPlay").getDesc());
             mv.visitTypeInsn(NEW, getByName("C0EPacketWindowClick").getName());
             mv.visitInsn(DUP);
             mv.visitVarInsn(ILOAD, 0);
@@ -421,6 +420,37 @@ public class HelperGenerator {
             mv.visitMethodInsn(INVOKEVIRTUAL, getByName("NetHandlerPlayClient").getName(), "a", "(" + getByName("Packet").getDesc() + ")V", false);
             mv.visitInsn(ARETURN);
             mv.visitMaxs(5, 5);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "transmuteStack", "(Ljava/lang/Object;Ljava/lang/String;)V", null, null);
+            mv.visitCode();
+            mv.visitVarInsn(ALOAD, 1);
+            mv.visitMethodInsn(INVOKESTATIC, getByName("Item").getName(), "d", "(Ljava/lang/String;)" + getByName("Item").getDesc(), false);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("ItemStack").getDesc(), "a", "(" + getByName("Item").getDesc() + ")V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getWidth", "()I", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getMinecraft", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("Minecraft").getName());
+            mv.visitFieldInsn(GETFIELD, getByName("Minecraft").getDesc(), "d", "I");
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getHeight", "()I", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getMinecraft", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("Minecraft").getName());
+            mv.visitFieldInsn(GETFIELD, getByName("Minecraft").getDesc(), "e", "I");
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(2, 0);
             mv.visitEnd();
         }
         cw.visitEnd();
