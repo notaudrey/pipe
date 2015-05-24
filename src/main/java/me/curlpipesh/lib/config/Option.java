@@ -1,4 +1,4 @@
-package me.curlpipesh.lib.config.option;
+package me.curlpipesh.lib.config;
 
 /**
  * @author audrey

@@ -1,7 +1,6 @@
 package me.curlpipesh.lib.config;
 
 import me.curlpipesh.lib.config.file.ConfigFile;
-import me.curlpipesh.lib.config.option.Option;
 
 import java.util.List;
 

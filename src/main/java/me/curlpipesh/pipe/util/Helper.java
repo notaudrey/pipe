@@ -1,5 +1,6 @@
 package me.curlpipesh.pipe.util;
 
+import me.curlpipesh.pipe.gui.GuiModule;
 import me.curlpipesh.pipe.gui.GuiScreen;
 
 import java.util.List;
@@ -121,4 +122,6 @@ public class Helper {
     }
 
     public static void displayGuiScreen(GuiScreen gui) {}
+
+    public static void displayGuiModule(GuiModule module) {}
 }

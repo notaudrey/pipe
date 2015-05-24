@@ -3,7 +3,7 @@ package me.curlpipesh.pipe.mods;
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.pipe.event.Render3D;
 import me.curlpipesh.pipe.util.Helper;
-import me.curlpipesh.pipe.util.Renderer;
+import me.curlpipesh.pipe.util.GLRenderer;
 import me.curlpipesh.pipe.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -24,7 +24,7 @@ public class PluginStorageESP extends BasePlugin {
             @Override
             public void event(Render3D render3D) {
                 if(PluginStorageESP.this.isEnabled()) {
-                    Renderer.pre();
+                    GLRenderer.pre();
                     GL11.glDisable(GL11.GL_DEPTH_TEST);
                     Helper.disableLightmap();
                     Vec3 p = Helper.getEntityVec(Helper.getPlayer());
@@ -34,12 +34,12 @@ public class PluginStorageESP extends BasePlugin {
                         if(v != null) {
                             v.sub(p);
                             v2.sub(p);
-                            Renderer.drawBoxFromPoints(v, v2, 0x7700FFFF);
+                            GLRenderer.drawBoxFromPoints(v, v2, 0x7700FFFF);
                         }
                     });
                     Helper.enableLightmap();
                     GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    Renderer.post();
+                    GLRenderer.post();
                 }
             }
         });

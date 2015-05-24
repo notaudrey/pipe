@@ -3,9 +3,8 @@ package me.curlpipesh.pipe.mods;
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.event.Render3D;
-import me.curlpipesh.pipe.util.Constants;
 import me.curlpipesh.pipe.util.Helper;
-import me.curlpipesh.pipe.util.Renderer;
+import me.curlpipesh.pipe.util.GLRenderer;
 import me.curlpipesh.pipe.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -28,7 +27,7 @@ public class PluginTracers extends BasePlugin {
                 if(PluginTracers.this.isEnabled()) {
                     int count = 0;
                     Vec3 p = Helper.getEntityVec(Helper.getPlayer());
-                    Renderer.pre();
+                    GLRenderer.pre();
                     GL11.glDisable(GL11.GL_DEPTH_TEST);
                     for(Object o : Helper.getLoadedEntities()) {
                         if(!o.equals(Helper.getPlayer())) {
@@ -36,7 +35,7 @@ public class PluginTracers extends BasePlugin {
                                 Vec3 e = Helper.getEntityVec(o);
                                 if(e != null) {
                                     e.sub(p);
-                                    Renderer.drawLine(Vec3.zero(), e,
+                                    GLRenderer.drawLine(Vec3.zero(), e,
                                             Helper.isEntityAnimal(o) ? 0xFF00FF00 :
                                                     Helper.isEntityMonster(o) ? 0xFFFF0000 :
                                                             0xFFFFFFFF,
@@ -47,7 +46,7 @@ public class PluginTracers extends BasePlugin {
                         }
                     }
                     GL11.glEnable(GL11.GL_DEPTH_TEST);
-                    Renderer.post();
+                    GLRenderer.post();
                     setStatus(count > 0 ? Status.OK + " §r(§a" + count + "§r)" : Status.NOT_RENDERING);
                 }
             }

@@ -6,7 +6,7 @@ import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.event.Render2D;
 import me.curlpipesh.pipe.util.Helper;
-import me.curlpipesh.pipe.util.Renderer;
+import me.curlpipesh.pipe.util.GLRenderer;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -44,8 +44,8 @@ public class PluginOverlay implements Plugin {
                             }
                         }
                     }
-                    Renderer.drawRect(0, 0, width + 4, OFFSET * count, 0x77000000);
-                    Renderer.drawString(status, 2, 2, 0xFFFFFFFF, false);
+                    GLRenderer.drawRect(0, 0, width + 4, OFFSET * count, 0x77000000);
+                    GLRenderer.drawString(status, 2, 2, 0xFFFFFFFF, false);
                     for(Plugin p : PluginManager.getInstance().getManagedObjects()) {
                         if(p instanceof Toggleable) {
                             if(((Toggleable) p).isEnabled()) {
@@ -56,7 +56,7 @@ public class PluginOverlay implements Plugin {
                                     String s = p.isStatusShown() ?
                                             String.format(format, p.getName(), p.getStatus()) :
                                             String.format(format, p.getName());
-                                    Renderer.drawString(s, 2, yOffset, 0xFFFFFFFF, false);
+                                    GLRenderer.drawString(s, 2, yOffset, 0xFFFFFFFF, false);
                                     yOffset += OFFSET;
                                 }
                             }

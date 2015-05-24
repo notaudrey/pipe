@@ -464,6 +464,18 @@ public class HelperGenerator {
             mv.visitMaxs(2, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "displayGuiModule", "(Lme/curlpipesh/pipe/gui/GuiModule;)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/gui/GuiScreen", "getInstance", "()Lme/curlpipesh/pipe/gui/GuiScreen;", false);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKEVIRTUAL, "me/curlpipesh/pipe/gui/GuiScreen", "setCurrentModule", "(Lme/curlpipesh/pipe/gui/GuiModule;)V", false);
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/gui/GuiScreen", "getInstance", "()Lme/curlpipesh/pipe/gui/GuiScreen;", false);
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "displayGuiScreen", "(Lme/curlpipesh/pipe/gui/GuiScreen;)V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 0);
+            mv.visitEnd();
+        }
         cw.visitEnd();
 
         return cw.toByteArray();

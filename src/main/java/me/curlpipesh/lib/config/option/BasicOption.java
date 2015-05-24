@@ -1,5 +1,7 @@
 package me.curlpipesh.lib.config.option;
 
+import me.curlpipesh.lib.config.Option;
+
 /**
  * @author audrey
  * @since 5/23/15
