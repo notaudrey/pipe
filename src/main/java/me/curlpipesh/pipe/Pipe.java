@@ -23,6 +23,7 @@ public final class Pipe implements Statused {
 
     @SuppressWarnings("unused")
     public void init() {
+        BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
         PluginManager.getInstance().init();
     }
 
@@ -66,9 +67,5 @@ public final class Pipe implements Statused {
 
     public static String getVersion() {
         return semver;
-    }
-
-    static {
-        BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
     }
 }

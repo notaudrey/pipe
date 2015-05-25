@@ -37,7 +37,7 @@ public abstract class ExecutablePlugin extends BasicConfigurable implements Plug
         });
     }
 
-    protected abstract void execute();
+    public abstract void execute();
 
     @Override
     public int getKey() {

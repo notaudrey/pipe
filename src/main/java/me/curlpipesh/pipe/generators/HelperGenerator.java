@@ -1,6 +1,12 @@
 package me.curlpipesh.pipe.generators;
 
+import me.curlpipesh.pipe.Pipe;
 import org.objectweb.asm.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static org.objectweb.asm.Opcodes.*;
 import static me.curlpipesh.pipe.util.Constants.*;
@@ -353,63 +359,6 @@ public class HelperGenerator {
             mv.visitEnd();
         }
         {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getInventoryContainer", "()Ljava/lang/Object;", null, null);
-            mv.visitCode();
-            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getPlayer", "()Ljava/lang/Object;", false);
-            mv.visitTypeInsn(CHECKCAST, getByName("EntityPlayer").getName());
-            mv.visitFieldInsn(GETFIELD, getByName("EntityPlayer").getName(), "bj", getByName("Container").getDesc());
-            mv.visitInsn(ARETURN);
-            mv.visitMaxs(2, 1);
-            mv.visitEnd();
-        }
-        {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "inventoryClick", "(IIILjava/lang/Object;)Ljava/lang/Object;", null, null);
-            mv.visitCode();
-            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getInventoryContainer", "()Ljava/lang/Object;", false);
-            mv.visitTypeInsn(CHECKCAST, getByName("Container").getName());
-            mv.visitVarInsn(ILOAD, 0);
-            mv.visitVarInsn(ILOAD, 1);
-            mv.visitVarInsn(ILOAD, 2);
-            mv.visitVarInsn(ALOAD, 3);
-            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("Container").getName(),
-                    "a", "(III" + getByName("EntityPlayer").getDesc() + ")" + getByName("ItemStack").getDesc(), false);
-            mv.visitInsn(ARETURN);
-            mv.visitMaxs(5, 5);
-            mv.visitEnd();
-        }
-        {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getStackInSlot", "(Ljava/lang/Object;I)Ljava/lang/Object;", null, null);
-            mv.visitCode();
-            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getInventoryContainer", "()Ljava/lang/Object;", false);
-            mv.visitTypeInsn(CHECKCAST, getByName("Container").getName());
-            mv.visitVarInsn(ALOAD, 0);
-            mv.visitVarInsn(ILOAD, 1);
-            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("Container").getName(),
-                    "b", "(" + getByName("EntityPlayer").getDesc() + "I)" + getByName("ItemStack").getDesc(), false);
-            mv.visitInsn(ARETURN);
-            mv.visitMaxs(5, 5);
-            mv.visitEnd();
-        }
-        {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "inventoryClickPacket", "(IIIILjava/lang/Object;S)Ljava/lang/Object;", null, null);
-            mv.visitCode();
-            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getPlayer", "()Ljava/lang/Object;", false);
-            mv.visitTypeInsn(CHECKCAST, getByName("EntityThePlayer").getName());
-            mv.visitTypeInsn(NEW, getByName("C0EPacketWindowClick").getName());
-            mv.visitInsn(DUP);
-            mv.visitVarInsn(ILOAD, 0);
-            mv.visitVarInsn(ILOAD, 1);
-            mv.visitVarInsn(ILOAD, 2);
-            mv.visitVarInsn(ILOAD, 3);
-            mv.visitVarInsn(ALOAD, 4);
-            mv.visitVarInsn(ILOAD, 5);
-            mv.visitMethodInsn(INVOKESPECIAL, getByName("C0EPacketWindowClick").getName(), "<init>", String.format("(IIII%sS)V", getByName("ItemStack").getDesc()), false);
-            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "sendPacket", "(Ljava/lang/Object;)V", false);
-            mv.visitInsn(ARETURN);
-            mv.visitMaxs(5, 5);
-            mv.visitEnd();
-        }
-        {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "sendPacket", "(Ljava/lang/Object;)V", null, null);
             mv.visitCode();
             mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getPlayer", "()Ljava/lang/Object;", false);
@@ -418,19 +367,8 @@ public class HelperGenerator {
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(CHECKCAST, getByName("Packet").getName());
             mv.visitMethodInsn(INVOKEVIRTUAL, getByName("NetHandlerPlayClient").getName(), "a", "(" + getByName("Packet").getDesc() + ")V", false);
-            mv.visitInsn(ARETURN);
-            mv.visitMaxs(5, 5);
-            mv.visitEnd();
-        }
-        {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "transmuteStack", "(Ljava/lang/Object;Ljava/lang/String;)V", null, null);
-            mv.visitCode();
-            mv.visitVarInsn(ALOAD, 1);
-            mv.visitMethodInsn(INVOKESTATIC, getByName("Item").getName(), "d", "(Ljava/lang/String;)" + getByName("Item").getDesc(), false);
-            mv.visitVarInsn(ALOAD, 0);
-            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("ItemStack").getDesc(), "a", "(" + getByName("Item").getDesc() + ")V", false);
             mv.visitInsn(RETURN);
-            mv.visitMaxs(2, 0);
+            mv.visitMaxs(5, 5);
             mv.visitEnd();
         }
         {
@@ -476,8 +414,35 @@ public class HelperGenerator {
             mv.visitMaxs(2, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getScale", "()I", null, null);
+            mv.visitCode();
+            mv.visitTypeInsn(NEW, getByName("ScaledResolution").getName());
+            mv.visitInsn(DUP);
+            mv.visitMethodInsn(INVOKESTATIC, getByName("Minecraft").getName(), "A", "()" + getByName("Minecraft").getDesc(), false);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("ScaledResolution").getName(), "<init>", "(" + getByName("Minecraft").getDesc() + ")V", false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("ScaledResolution").getName(), "e", "()I", false);
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(4, 0);
+            mv.visitEnd();
+        }
         cw.visitEnd();
+        byte[] b = cw.toByteArray();
+        try {
+            File f = new File(new File(Pipe.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getAbsoluteFile().getParentFile() + File.separator + "Helper.class");
+            if(f.exists()) {
+                //noinspection ResultOfMethodCallIgnored
+                f.delete();
+            }
+            //noinspection ResultOfMethodCallIgnored
+            f.createNewFile();
+            FileOutputStream fos = new FileOutputStream(f);
+            fos.write(b);
+            fos.close();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
 
-        return cw.toByteArray();
+        return b;
     }
 }

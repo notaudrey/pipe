@@ -141,6 +141,25 @@
             <classifier>javadoc</classifier>
         </dependency>
 
+        <!-- Guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+            <classifier>sources</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+            <classifier>javadoc</classifier>
+        </dependency>
+
         <!-- Yay my stuff o-o -->
         <dependency>
             <groupId>me.curlpipesh.bytecodetools</groupId>
@@ -188,6 +207,7 @@
                                     <exclude>org.ow2.asm:*:javadoc</exclude>
                                     <exclude>com.javaslang:*:sources</exclude>
                                     <exclude>com.javaslang:*:javadoc</exclude>
+                                    <exclude>com.google.guava:*:*</exclude>
                                     <exclude>org.lwjgl.*:*:*</exclude>
                                     <exclude>net.java.jinput:*:*</exclude>
                                     <exclude>net.java.jutils:*:*</exclude>
@@ -205,6 +225,7 @@
                 <version>2.6</version>
                 <configuration>
                     <excludes>
+                        <!--exclude>**/me/curlpipesh/pipe/util/Helper.class</exclude-->
                         <exclude>**/me/curlpipesh/pipe/gui/GuiScreen.class</exclude>
                     </excludes>
                 </configuration>

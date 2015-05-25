@@ -30,6 +30,7 @@
                   <exclude>org.ow2.asm:*:javadoc</exclude>
                   <exclude>com.javaslang:*:sources</exclude>
                   <exclude>com.javaslang:*:javadoc</exclude>
+                  <exclude>com.google.guava:*:*</exclude>
                   <exclude>org.lwjgl.*:*:*</exclude>
                   <exclude>net.java.jinput:*:*</exclude>
                   <exclude>net.java.jutils:*:*</exclude>
@@ -178,6 +179,26 @@
       <groupId>com.javaslang</groupId>
       <artifactId>javaslang</artifactId>
       <version>1.2.2</version>
+      <classifier>javadoc</classifier>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>17.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>17.0</version>
+      <classifier>sources</classifier>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>17.0</version>
       <classifier>javadoc</classifier>
       <scope>compile</scope>
     </dependency>

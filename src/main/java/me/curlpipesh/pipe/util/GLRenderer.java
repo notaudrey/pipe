@@ -129,4 +129,15 @@ public class GLRenderer {
                 .bindAndDraw();
         GL11.glEnable(GL11.GL_CULL_FACE);
     }
+
+    public static void scissor(final double x, final double y, final double w, final double h) {
+        final int factor = Helper.getScale();
+        final int height = Helper.getHeight() / factor;
+
+        final double x2 = x + w;
+        final double y2 = y + h;
+
+        glScissor((int) (x * factor), (int) ((height - y2) * factor),
+                (int) ((x2 - x) * factor), (int) ((y2 - y) * factor));
+    }
 }

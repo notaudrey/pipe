@@ -19,7 +19,7 @@ public class PluginEventProfiler extends ExecutablePlugin {
     private final DecimalFormat df = new DecimalFormat("#.##");
 
     @Override
-    protected void execute() {
+    public void execute() {
         long total = 0L;
         List<ProfiledEvent> events = new ArrayList<>();
         for(Map.Entry<Class<?>, Long> entry : EventManager.getEventFireTimes().entrySet()) {

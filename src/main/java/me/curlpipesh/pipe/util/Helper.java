@@ -93,25 +93,7 @@ public class Helper {
 
     public static void sendChatMessage(String message) {}
 
-    public static Object getInventoryContainer() {
-        return null;
-    }
-
-    public static Object inventoryClick(int slot, int button, int mode, Object player) {
-        return null;
-    }
-
-    public static Object getStackInSlot(Object player, int slot) {
-        return null;
-    }
-
-    public static Object inventoryClickPacket(int window, int slot, int button, int mode, Object stack, short actionNumber) {
-        return null;
-    }
-
     public static void sendPacket(Object packet) {}
-
-    public static void transmuteStack(Object stack, String itemId) {}
 
     public static int getWidth() {
         return 0;
@@ -124,4 +106,8 @@ public class Helper {
     public static void displayGuiScreen(GuiScreen gui) {}
 
     public static void displayGuiModule(GuiModule module) {}
+
+    public static int getScale() {
+        return 0;
+    }
 }

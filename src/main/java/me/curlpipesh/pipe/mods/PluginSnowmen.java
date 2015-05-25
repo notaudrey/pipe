@@ -17,7 +17,7 @@ public class PluginSnowmen extends ExecutablePlugin {
     }
 
     @Override
-    protected void execute() {
+    public void execute() {
         Helper.addChatMessage("☃☃☃ ~Snowmen~ ☃☃☃");
     }
 }

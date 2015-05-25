@@ -10,8 +10,7 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.util.List;
 
-import static org.objectweb.asm.Opcodes.ICONST_1;
-import static org.objectweb.asm.Opcodes.RETURN;
+import static org.objectweb.asm.Opcodes.*;
 
 /**
  * @author audrey
@@ -27,7 +26,7 @@ public class ArmorSlotInjector extends Injector {
                 .forEach(m -> {
             m.instructions.clear();
             m.instructions.add(new InsnNode(ICONST_1));
-            m.instructions.add(new InsnNode(RETURN));
+            m.instructions.add(new InsnNode(IRETURN));
         });
     }
 }
