@@ -1,6 +1,7 @@
 package me.curlpipesh.pipe.mods;
 
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
+import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.event.Render3D;
 import me.curlpipesh.pipe.util.Helper;
 import me.curlpipesh.pipe.util.GLRenderer;
@@ -24,22 +25,27 @@ public class PluginStorageESP extends BasePlugin {
             @Override
             public void event(Render3D render3D) {
                 if(PluginStorageESP.this.isEnabled()) {
+                    int count = 0;
                     GLRenderer.pre();
                     GL11.glDisable(GL11.GL_DEPTH_TEST);
                     Helper.disableLightmap();
                     Vec3 p = Helper.getEntityVec(Helper.getPlayer());
-                    Helper.getLoadedBlockEntities().stream().filter(Helper::isBlockEntityChest).forEach(o -> {
-                        Vec3 v = Helper.getBlockEntityVec(o);
-                        Vec3 v2 = Helper.getBlockEntityVec(o).add(Vec3.unit());
-                        if(v != null) {
-                            v.sub(p);
-                            v2.sub(p);
-                            GLRenderer.drawBoxFromPoints(v, v2, 0x7700FFFF);
+                    for(Object o : Helper.getLoadedBlockEntities()) {
+                        if(Helper.isBlockEntityChest(o)) {
+                            Vec3 v = Helper.getBlockEntityVec(o);
+                            Vec3 v2 = Helper.getBlockEntityVec(o);
+                            if(v != null && v2 != null) {
+                                v.sub(p);
+                                v2.add(Vec3.unit()).sub(p);
+                                GLRenderer.drawBoxFromPoints(v, v2, 0x7700FFFF);
+                                ++count;
+                            }
                         }
-                    });
+                    }
                     Helper.enableLightmap();
                     GL11.glEnable(GL11.GL_DEPTH_TEST);
                     GLRenderer.post();
+                    setStatus(count > 0 ? Status.OK + " §r(§a" + count + "§r)" : Status.NOT_RENDERING);
                 }
             }
         });
