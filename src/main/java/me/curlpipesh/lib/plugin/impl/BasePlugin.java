@@ -14,7 +14,9 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Base plugin class that allows for toggling on and off
+ *
+ * @author c
  * @since 5/9/15
  */
 public abstract class BasePlugin extends BasicConfigurable implements Plugin, Keyed, Toggleable {

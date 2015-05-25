@@ -7,7 +7,7 @@ import me.curlpipesh.pipe.gui.api.view.layout.Layout;
 /**
  * The single most common type of layout used in Minecraft clients.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public class StandardLayout extends Layout {

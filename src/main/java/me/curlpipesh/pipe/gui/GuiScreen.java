@@ -7,7 +7,7 @@ import lombok.Setter;
  * This class must not be present in the final JAR. The configuration in
  * <tt>pom.xml</tt> should take care of this for you.
  *
- * @author audrey
+ * @author c
  * @since 5/24/15
  */
 @SuppressWarnings("unused")

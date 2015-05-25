@@ -15,10 +15,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author audrey
+ * Plugin that displays a GUI with information about event timings, memory
+ * usage, and other statistics.
+ *
+ * @author c
  * @since 5/24/15
  */
 public class PluginProfiler extends ExecutablePlugin {
+    /**
+     * The {@link GuiModule} that contains profiling information
+     */
     private GuiModule profilerModule;
 
     @Override
@@ -65,14 +71,14 @@ public class PluginProfiler extends ExecutablePlugin {
                 GLRenderer.drawRect(128, 2, ((double) totalMemory / (double) maxMemory) * 100, 10, 0xFF00FF00);
                 // freeMemory
                 GLRenderer.drawRect(128, 2, ((double) freeMemory / (double) maxMemory) * 100, 10, 0xFFFF0000);
-                GLRenderer.drawString("Available Memory: " + (long) (maxMemory / 1_000_000D) + "MB", 280, 2, 0xFFFFFFFF, true);
-                GLRenderer.drawString("Allocated Memory: " + (long) (totalMemory / 1_000_000D) + "MB", 280, 13, 0xFFFFFFFF, true);
-                GLRenderer.drawString("Used Memory:      " + (long) (freeMemory / 1_000_000D) + "MB", 280, 24, 0xFFFFFFFF, true);
+                Helper.drawString("Available Memory: " + (long) (maxMemory / 1_000_000D) + "MB", 280, 2, 0xFFFFFFFF, true);
+                Helper.drawString("Allocated Memory: " + (long) (totalMemory / 1_000_000D) + "MB", 280, 13, 0xFFFFFFFF, true);
+                Helper.drawString("Used Memory:      " + (long) (freeMemory / 1_000_000D) + "MB", 280, 24, 0xFFFFFFFF, true);
 
-                GLRenderer.drawString("Total event time: " + (long) (totalEventTime / 1_000_000D) + "ms", 128, 12, 0xFFFFFFFF, true);
+                Helper.drawString("Total event time: " + (long) (totalEventTime / 1_000_000D) + "ms", 128, 12, 0xFFFFFFFF, true);
                 int yOffset = 12;
                 for(ProfiledEvent e : events) {
-                    GLRenderer.drawString(e.getEvent() + ": " + e.getTimeMillis() + "ms (" + df.format(e.getTime() / totalEventTime) + ")%",
+                    Helper.drawString(e.getEvent() + ": " + e.getTimeMillis() + "ms (" + df.format(e.getTime() / totalEventTime) + ")%",
                             128, yOffset += Helper.getFontHeight() + 2, 0xFFFFFFFF, true);
                 }
             }

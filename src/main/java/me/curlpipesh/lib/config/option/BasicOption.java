@@ -3,7 +3,10 @@ package me.curlpipesh.lib.config.option;
 import me.curlpipesh.lib.config.Option;
 
 /**
- * @author audrey
+ * Simple implementation of the {@link Option} interface.
+ *
+ * @param <T> The type of this option
+ * @author c
  * @since 5/23/15
  */
 public abstract class BasicOption<T> implements Option<T> {

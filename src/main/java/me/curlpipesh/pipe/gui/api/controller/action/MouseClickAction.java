@@ -11,7 +11,7 @@ import me.curlpipesh.pipe.gui.api.util.IAction;
  *
  * @param <T> The specific type of component.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public interface MouseClickAction<T extends IWidget> extends IAction<T> {

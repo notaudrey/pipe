@@ -11,10 +11,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 
 /**
- * @author audrey
+ * Manager for plugins.
+ *
+ * @author c
  * @since 5/9/15
  */
 public class PluginManager extends AbstractManager<Plugin> {
+    /**
+     * Singleton instance of the plugin manager
+     */
     @Getter
     private static final PluginManager instance = new PluginManager();
 

@@ -12,7 +12,10 @@ import static org.objectweb.asm.Opcodes.*;
 import static me.curlpipesh.pipe.util.Constants.*;
 
 /**
- * @author audrey
+ * Generates bytecode to fill in the methods in
+ * {@link me.curlpipesh.pipe.util.Helper}.
+ *
+ * @author c
  * @since 5/20/15
  */
 public class HelperGenerator {

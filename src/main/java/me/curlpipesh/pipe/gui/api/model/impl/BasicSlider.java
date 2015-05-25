@@ -10,7 +10,7 @@ import lombok.Getter;
 /**
  * A simple slider that is usable for most tasks.
  *
- * @author audrey
+ * @author c
  * @since 09.09.2014
  */
 public class BasicSlider extends BasicWidget {

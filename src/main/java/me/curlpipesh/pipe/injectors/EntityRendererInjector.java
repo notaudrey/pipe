@@ -13,7 +13,9 @@ import java.util.List;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Adds the {@link me.curlpipesh.pipe.event.Render3D} event firing.
+ *
+ * @author c
  * @since 5/21/15
  */
 @Inject(Constants.ENTITYRENDERER)

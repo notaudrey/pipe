@@ -5,7 +5,10 @@ import me.curlpipesh.lib.config.file.ConfigFile;
 import java.util.List;
 
 /**
- * @author audrey
+ * Simple implementation of the <tt>Configurable</tt> interface. Presently
+ * unused.
+ *
+ * @author c
  * @since 5/23/15
  */
 public class BasicConfigurable implements Configurable {

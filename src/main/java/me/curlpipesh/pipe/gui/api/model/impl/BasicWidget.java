@@ -7,7 +7,7 @@ import me.curlpipesh.pipe.gui.api.util.Tuple;
  * The simplest possible "implementation" of
  * {@link Widget}.
  *
- * @author audrey
+ * @author c
  * @since 08.18.2014
  */
 public class BasicWidget extends Widget {

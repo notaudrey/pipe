@@ -17,7 +17,7 @@ import java.awt.*;
  * {@link Container} that allows for
  * the container to be dragged.
  *
- * @author audrey
+ * @author c
  * @since 08.18.2014
  */
 public class BasicWindow extends Container {

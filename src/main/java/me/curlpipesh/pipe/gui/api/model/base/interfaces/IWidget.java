@@ -15,7 +15,7 @@ import me.curlpipesh.pipe.gui.api.model.base.Widget;
  * a button - that can be created simply through defining various actions that
  * are invoked on the widget.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public interface IWidget extends ITaggable {

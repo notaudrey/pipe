@@ -13,10 +13,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author audrey
+ * Prints timing information about event firing to the in-game chat
+ *
+ * @author c
  * @since 5/24/15
  */
 public class PluginEventProfiler extends ExecutablePlugin {
+    /**
+     * Formatter used for event time percentages. Made an instance variable so
+     * that it doesn't get reinstantiated every run.
+     */
     private final DecimalFormat df = new DecimalFormat("#.##");
 
     @Override

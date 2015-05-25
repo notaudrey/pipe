@@ -8,10 +8,16 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Brightens up the world
+ *
+ * @author c
  * @since 5/9/15
  */
 public class PluginBrightness extends BasePlugin {
+    /**
+     * A backup of the field <tt>lightBrightnessTable</tt> from Minecraft's
+     * "WorldProvider" class.
+     */
     private float[] lightBrightnessTableBackup = new float[16];
 
     @Override

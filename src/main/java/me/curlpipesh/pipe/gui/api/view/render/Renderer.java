@@ -15,7 +15,7 @@ import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
  * {@link java.lang.IllegalArgumentException} will be thrown.
  *
  * @param <T> The type of widget being rendered.
- * @author audrey
+ * @author c
  * @since 08.17.2014
  */
 public interface Renderer<T extends IWidget> {

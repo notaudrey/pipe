@@ -3,7 +3,10 @@ package me.curlpipesh.lib.config.option;
 import me.curlpipesh.lib.util.Toggleable;
 
 /**
- * @author audrey
+ * An extension of {@link BooleanOption} that can be toggled between states
+ * easily.
+ *
+ * @author c
  * @since 5/23/15
  */
 public class ToggleOption extends BooleanOption implements Toggleable {

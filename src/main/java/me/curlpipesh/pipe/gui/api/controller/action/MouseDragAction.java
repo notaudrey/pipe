@@ -11,7 +11,7 @@ import me.curlpipesh.pipe.gui.api.model.base.Widget;
  *
  * @param <T> The specific type of component.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public interface MouseDragAction<T extends IWidget> extends IAction<T> {

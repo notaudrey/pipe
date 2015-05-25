@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * manipulate arbitrary metadata tags that have been attached to them, allowing
  * for information to be stored and transmitted in an easier way.
  *
- * @author audrey
+ * @author c
  * @since 08.19.2014
  */
 public class Taggable implements ITaggable {

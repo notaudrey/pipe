@@ -19,7 +19,7 @@ import java.util.List;
  * {@link ILayout}s, or some
  * combination thereof.
  *
- * @author audrey
+ * @author c
  * @since 08.18.2014
  * @see Widget
  */

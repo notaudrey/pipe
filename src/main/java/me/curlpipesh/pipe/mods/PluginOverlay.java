@@ -11,10 +11,15 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Renders an informative overlay on the in-game GUI.
+ *
+ * @author c
  * @since 5/15/15
  */
 public class PluginOverlay implements Plugin {
+    /**
+     * Offset for active plugin name/information rendering
+     */
     private final int OFFSET = Helper.getFontHeight() + 2;
 
     @Override
@@ -45,7 +50,7 @@ public class PluginOverlay implements Plugin {
                         }
                     }
                     GLRenderer.drawRect(0, 0, width + 4, OFFSET * count, 0x77000000);
-                    GLRenderer.drawString(status, 2, 2, 0xFFFFFFFF, false);
+                    Helper.drawString(status, 2, 2, 0xFFFFFFFF, false);
                     for(Plugin p : PluginManager.getInstance().getManagedObjects()) {
                         if(p instanceof Toggleable) {
                             if(((Toggleable) p).isEnabled()) {
@@ -56,7 +61,7 @@ public class PluginOverlay implements Plugin {
                                     String s = p.isStatusShown() ?
                                             String.format(format, p.getName(), p.getStatus()) :
                                             String.format(format, p.getName());
-                                    GLRenderer.drawString(s, 2, yOffset, 0xFFFFFFFF, false);
+                                    Helper.drawString(s, 2, yOffset, 0xFFFFFFFF, false);
                                     yOffset += OFFSET;
                                 }
                             }

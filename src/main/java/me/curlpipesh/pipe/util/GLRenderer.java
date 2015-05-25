@@ -4,23 +4,31 @@ import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
 import org.lwjgl.opengl.GL11;
 
-import java.lang.reflect.InvocationTargetException;
-
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_MULTISAMPLE;
 import static org.lwjgl.opengl.GL13.GL_SAMPLE_ALPHA_TO_COVERAGE;
 
 /**
- * @author audrey
+ * Used for all rendering with OpenGL, save for a few calls into Minecraft's
+ * methods.
+ *
+ * @author c
  * @since 4/30/15
  */
 public class GLRenderer {
+    /**
+     * The {@link Tessellator} to be used for rendering. By default, this is a
+     * {@link VAOTessellator} with a capacity of <tt>2048</tt>.
+     */
     private static final Tessellator tess = new VAOTessellator(2048);
 
-    public static void drawString(String s, float x, float y, int color, boolean shadow) {
-        Helper.drawString(s, x, y, color, shadow);
-    }
-
+    /**
+     * Does OpenGL cap enables/disables in preparation for rendering. If one is
+     * going to be doing a large number of render calls, it is suggested that
+     * render calls are created that do not call {@link #pre()} and
+     * {@link #post()} at the beginning and end of the method (respectively),
+     * so as to not have an impact on render performance.
+     */
     public static void pre() {
         glPushAttrib(GL_ALL_ATTRIB_BITS);
         glPushMatrix();
@@ -39,6 +47,13 @@ public class GLRenderer {
         glEnable(GL_SAMPLE_ALPHA_TO_COVERAGE);
     }
 
+    /**
+     * Undoes all the OpenGL cap enables/disables done by {@link #pre()} If one
+     * is going to be doing a large number of render calls, it is suggested
+     * that render calls are created that do not call {@link #pre()} and
+     * {@link #post()} at the beginning and end of the method (respectively),
+     * so as to not have an impact on render performance.
+     */
     public static void post() {
         glDisable(GL_SAMPLE_ALPHA_TO_COVERAGE);
         glDisable(GL_POLYGON_SMOOTH);
@@ -53,6 +68,15 @@ public class GLRenderer {
         glPopAttrib();
     }
 
+    /**
+     * Renders a rectangle on the screen
+     *
+     * @param x X coordinate of the rectangle
+     * @param y Y coordinate of the rectangle
+     * @param w Width of the rectangle
+     * @param h Height of the rectangle
+     * @param c Color of the rectangle, in 0xAARRGGBB format
+     */
     public static void drawRect(double x, double y, double w, double h, int c) {
         pre();
         tess.startDrawing(GL_QUADS).color(c)
@@ -64,10 +88,30 @@ public class GLRenderer {
         post();
     }
 
+    /**
+     * Renders a 3-dimensional line on the screen.
+     *
+     * @param a The starting vector
+     * @param b The ending vector
+     * @param color The color of the line, in 0xAARRGGBB format
+     * @param size The width of the line
+     */
     public static void drawLine(Vec3 a, Vec3 b, int color, float size) {
         drawLine(a.x(), a.y(), a.z(), b.x(), b.y(), b.z(), color, size);
     }
 
+    /**
+     * Renders a 3-dimensional line on the screen
+     *
+     * @param x Starting x-coordinate
+     * @param y Starting y-coordinate
+     * @param z Starting z-coordinate
+     * @param xx Ending x-coordinate
+     * @param yy Ending y-coordinate
+     * @param zz Ending z-coordinate
+     * @param c Color of the ine, in 0xAARRGGBB format
+     * @param size The width of the line
+     */
     public static void drawLine(double x, double y, double z, double xx, double yy, double zz, int c, float size) {
         glLineWidth(size);
         tess.startDrawing(GL_LINES).color(c)
@@ -77,8 +121,15 @@ public class GLRenderer {
         glLineWidth(1.0F);
     }
 
+    /**
+     * Draws a box from the supplied vectors
+     *
+     * @param min Minimum vector of all three axes
+     * @param max Maximum vector of all three axes
+     * @param color Color of the box, in 0xAARRGGBB format
+     */
     public static void drawBoxFromPoints(Vec3 min, Vec3 max, int color) {
-        GL11.glDisable(GL11.GL_CULL_FACE);
+        glDisable(GL_CULL_FACE);
         tess
                 .startDrawing(GL_QUADS)
                 .color(color)
@@ -127,9 +178,17 @@ public class GLRenderer {
                 .addVertex((float) max.x(), (float) min.y(), (float) max.z())
                 .addVertex((float) min.x(), (float) min.y(), (float) max.z())
                 .bindAndDraw();
-        GL11.glEnable(GL11.GL_CULL_FACE);
+        glEnable(GL_CULL_FACE);
     }
 
+    /**
+     * Applies a scaled {@link GL11#glScissor(int, int, int, int)} operation.
+     *
+     * @param x Starting x-coordinate of the scissor
+     * @param y Starting y-coordinate of the scissor
+     * @param w Width of the scissor
+     * @param h Height of the scissor
+     */
     public static void scissor(final double x, final double y, final double w, final double h) {
         final int factor = Helper.getScale();
         final int height = Helper.getHeight() / factor;

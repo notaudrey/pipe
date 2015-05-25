@@ -23,7 +23,7 @@ import me.curlpipesh.pipe.gui.api.model.base.Container;
  * {@link java.awt.geom.Rectangle2D.Double}, since
  * {@link Area} is just a wrapper around that.
  *
- * @author audrey
+ * @author c
  * @since 08.18.2014
  */
 public interface IControl {

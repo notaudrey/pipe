@@ -13,7 +13,10 @@ import java.util.List;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Tinkers with the armor slots in the inventory in an attempt to allow the
+ * player to wear invalid armor
+ *
+ * @author c
  * @since 5/23/15
  */
 @Inject(Constants.CONTAINERPLAYER + "$1")

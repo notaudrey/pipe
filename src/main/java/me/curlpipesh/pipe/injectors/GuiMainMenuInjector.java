@@ -14,7 +14,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * @author audrey
+ * Adds a little bit of information to the main menu.
+ *
+ * @author c
  * @since 5/23/15
  */
 @Inject(Constants.GUIMAINMENU)

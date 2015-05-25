@@ -6,7 +6,9 @@ import me.curlpipesh.lib.config.file.format.ConfigFormat;
 import java.io.File;
 
 /**
- * @author audrey
+ * Representation of a config file.
+ *
+ * @author c
  * @since 5/23/15
  */
 @Data

@@ -6,7 +6,7 @@ import java.awt.geom.Rectangle2D;
  * Basic wrapper around {@link java.awt.geom.Rectangle2D.Double} to provide
  * both a shorter name and a few convenience methods.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public class Area extends Rectangle2D.Double {

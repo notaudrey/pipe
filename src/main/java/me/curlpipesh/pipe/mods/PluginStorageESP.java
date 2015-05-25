@@ -12,7 +12,9 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Draws a nice box around blocks used for storing items.
+ *
+ * @author c
  * @since 5/23/15
  */
 public class PluginStorageESP extends BasePlugin {

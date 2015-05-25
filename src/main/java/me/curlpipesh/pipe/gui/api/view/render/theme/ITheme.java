@@ -19,7 +19,7 @@ import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
  * a standalone {@code Widget} as well as rendering a
  * {@link Container} and its children.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public interface ITheme {

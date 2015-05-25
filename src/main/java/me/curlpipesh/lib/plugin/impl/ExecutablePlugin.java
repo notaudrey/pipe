@@ -12,7 +12,9 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Base plugin class that allows for one-shot execution
+ *
+ * @author c
  * @since 5/24/15
  */
 public abstract class ExecutablePlugin extends BasicConfigurable implements Plugin, Keyed {

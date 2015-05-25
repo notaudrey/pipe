@@ -5,7 +5,9 @@ import me.curlpipesh.lib.util.Statused;
 import me.curlpipesh.lib.util.Toggleable;
 
 /**
- * @author audrey
+ * Interface that denotes something as a plugin
+ *
+ * @author c
  * @since 5/9/15
  */
 public interface Plugin extends Named, Statused {

@@ -1,7 +1,9 @@
 package me.curlpipesh.lib.config.option;
 
 /**
- * @author audrey
+ * Option that contains a single boolean
+ *
+ * @author c
  * @since 5/23/15
  */
 public class BooleanOption extends BasicOption<Boolean> {

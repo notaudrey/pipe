@@ -5,7 +5,9 @@ import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.input.Keyboard;
 
 /**
- * @author audrey
+ * Sends a happy message about snowmen to the in-game chat
+ *
+ * @author c
  * @since 5/23/15
  */
 public class PluginSnowmen extends ExecutablePlugin {

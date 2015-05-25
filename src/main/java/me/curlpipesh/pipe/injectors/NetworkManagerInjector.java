@@ -10,7 +10,9 @@ import org.objectweb.asm.tree.MethodNode;
 import java.util.List;
 
 /**
- * @author audrey
+ * Presently does nothing. Will eventually be responsible for packet events.
+ *
+ * @author c
  * @since 5/24/15
  */
 //@Inject(Constants.NETWORKMANAGER)

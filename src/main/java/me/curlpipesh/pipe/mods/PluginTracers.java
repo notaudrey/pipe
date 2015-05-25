@@ -12,7 +12,10 @@ import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
 /**
- * @author audrey
+ * Draws lines from the player to other entities in the world. Presently very
+ * ugly.
+ *
+ * @author c
  * @since 5/21/15
  */
 public class PluginTracers extends BasePlugin {

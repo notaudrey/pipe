@@ -10,14 +10,20 @@ import me.curlpipesh.pipe.gui.api.model.impl.BasicWidget;
 import me.curlpipesh.pipe.gui.api.model.impl.BasicWindow;
 import me.curlpipesh.pipe.gui.api.view.layout.impl.TwoColumnLayout;
 import me.curlpipesh.pipe.gui.module.ContainerGuiModule;
+import me.curlpipesh.pipe.gui.theme.PipeTheme;
 import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.input.Keyboard;
 
 /**
- * @author audrey
+ * Plugin that displays a GUI
+ *
+ * @author c
  * @since 5/24/15
  */
 public class PluginGui extends ExecutablePlugin {
+    /**
+     * The {@link GuiModule} that is going to be displayed
+     */
     private GuiModule module;
 
     @Override
@@ -27,6 +33,7 @@ public class PluginGui extends ExecutablePlugin {
         module = new ContainerGuiModule() {
             @Override
             protected void subInit() {
+                setTheme(new PipeTheme());
                 IContainer toggleContainer = new BasicWindow("Toggle");
                 IContainer exeContainer = new BasicWindow("Exe");
                 PluginManager.getInstance().getManagedObjects().forEach(p -> {

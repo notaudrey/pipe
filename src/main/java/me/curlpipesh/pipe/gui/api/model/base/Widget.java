@@ -29,7 +29,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * discouraged because maintaining feature-parity with this implementation of
  * may be more work than expected.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 @SuppressWarnings("unused")

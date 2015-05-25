@@ -13,7 +13,10 @@ import static me.curlpipesh.bytecodetools.util.AccessHelper.*;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Adds the instructions necessary for starting the client. Also adds the
+ * {@link me.curlpipesh.pipe.event.Keypress} event firing.
+ *
+ * @author c
  * @since 4/30/15
  */
 @Inject(Constants.MINECRAFT)

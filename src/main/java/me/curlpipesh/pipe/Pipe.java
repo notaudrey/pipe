@@ -9,28 +9,55 @@ import me.curlpipesh.pipe.util.Constants;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * @author audrey
+ * Main class of the client
+ *
+ * @author c
  * @since 4/30/15
  */
 public final class Pipe implements Statused {
+    /**
+     * Singleton instance of the client
+     */
     private static Pipe instance;
 
+    /**
+     * Version of the client. Follows <a href="http://semver.org/">semver</a> rules, at
+     * least somewhat
+     */
     private static final String semver = "0.5.2";
 
     private Pipe() {
         log("Starting up Pipe...");
     }
 
+    /**
+     * Initializes the client. This method is called from code injected into
+     * the game's main class
+     */
     @SuppressWarnings("unused")
     public void init() {
         BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
         PluginManager.getInstance().init();
     }
 
+    /**
+     * Returns the singleton instance of the client, initializing it as
+     * necessary. Note that this style of initialization is probably a bad
+     * idea.
+     *
+     * TODO Change to proper singleton at some point in the future
+     *
+     * @return The singleton instance of the client
+     */
     public static Pipe getInstance() {
         return instance == null ? instance = new Pipe() : instance;
     }
 
+    /**
+     * Logs messages to <tt>stdout</tt>
+     *
+     * @param messages The messages to be logged
+     */
     public static void log(String... messages) {
         for(String e : messages) {
             System.out.println("> " + e);
@@ -65,6 +92,11 @@ public final class Pipe implements Statused {
         return true;
     }
 
+    /**
+     * Returns the semver number of the client
+     *
+     * @return The semver number of the client
+     */
     public static String getVersion() {
         return semver;
     }

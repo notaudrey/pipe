@@ -12,7 +12,9 @@ import java.util.List;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Makes the position of BlockEntities accessible
+ *
+ * @author c
  * @since 5/23/15
  */
 @Inject(Constants.BLOCKENTITY)

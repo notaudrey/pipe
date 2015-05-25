@@ -26,7 +26,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * {@code List<IControl>} of controls, which may only be updated by a subclass
  * thereof; external access to the list is not permitted.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  * @see Widget
  */

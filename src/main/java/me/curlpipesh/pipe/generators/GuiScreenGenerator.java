@@ -7,7 +7,11 @@ import static me.curlpipesh.pipe.util.Constants.getByName;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Generates bytecode to fill in the methods in
+ * {@link me.curlpipesh.pipe.gui.GuiScreen}, as well as making it extend the
+ * Minecraft GuiScreen class.
+ *
+ * @author c
  * @since 5/24/15
  */
 public class GuiScreenGenerator {

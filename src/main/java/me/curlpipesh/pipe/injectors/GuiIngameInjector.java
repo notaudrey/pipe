@@ -14,7 +14,9 @@ import static me.curlpipesh.bytecodetools.util.AccessHelper.isVoid;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Adds the {@link me.curlpipesh.pipe.event.Render2D} event firing.
+ *
+ * @author c
  * @since 4/30/15
  */
 @Inject(Constants.GUIINGAME)

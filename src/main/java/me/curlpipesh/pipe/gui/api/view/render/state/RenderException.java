@@ -9,7 +9,7 @@ import me.curlpipesh.pipe.gui.api.view.render.Renderer;
  * some sort of problem while rendering a
  * {@link Widget}.
  *
- * @author audrey
+ * @author c
  * @since 08.17.2014
  */
 public class RenderException extends Exception {

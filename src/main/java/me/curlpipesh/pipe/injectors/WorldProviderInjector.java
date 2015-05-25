@@ -12,7 +12,9 @@ import java.util.List;
 import static org.objectweb.asm.Opcodes.*;
 
 /**
- * @author audrey
+ * Makes the lightBrightnessTable field accessible
+ *
+ * @author c
  * @since 5/21/15
  */
 @Inject(Constants.WORLDPROVIDER)

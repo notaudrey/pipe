@@ -7,7 +7,7 @@ import me.curlpipesh.pipe.gui.api.view.layout.Layout;
 /**
  * Simple layout that places {@code Widget}s into two columns.
  *
- * @author audrey
+ * @author c
  * @since 08.17.2014
  */
 public class TwoColumnLayout extends Layout {

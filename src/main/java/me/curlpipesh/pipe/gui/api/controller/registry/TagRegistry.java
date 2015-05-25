@@ -8,7 +8,7 @@ import java.util.*;
  * is thus not ideal to use tags to store numerical values, but to instead
  * store less-mutable values such as a render type.
  *
- * @author audrey
+ * @author c
  * @since 08.17.2014
  */
 @SuppressWarnings({"unchecked", "unused"})

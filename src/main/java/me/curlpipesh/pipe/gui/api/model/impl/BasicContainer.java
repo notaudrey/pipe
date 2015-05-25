@@ -8,7 +8,7 @@ import me.curlpipesh.pipe.gui.api.view.layout.impl.StandardLayout;
  * The simplest possible "implementation" of
  * {@link Container}.
  *
- * @author audrey
+ * @author c
  * @since 08.18.2014
  */
 public class BasicContainer extends Container {

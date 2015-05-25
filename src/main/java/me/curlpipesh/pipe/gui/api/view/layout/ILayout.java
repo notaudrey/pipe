@@ -17,7 +17,7 @@ import java.util.List;
  * manipulate the locations and sizes of all the components in a given
  * {@link Container}.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 public interface ILayout {

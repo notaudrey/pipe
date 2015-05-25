@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author audrey
+ * Simple implementation of the <tt>Manager</tt> interface
+ *
+ * @author c
  * @since 5/9/15
  */
 public abstract class AbstractManager<T> implements Manager<T> {
-    private final ArrayList<T> objects;
+    /**
+     * The objects that are being managed
+     */
+    private final List<T> objects;
 
     public AbstractManager() {
         objects = new ArrayList<>();

@@ -13,7 +13,7 @@ import java.util.List;
  * {@link Widget}s in a given
  * {@link Container}.
  *
- * @author audrey
+ * @author c
  * @since 08.16.2014
  */
 @FunctionalInterface

@@ -17,7 +17,7 @@ import me.curlpipesh.pipe.gui.api.view.layout.ILayout;
  * {@link Taggable}, which
  * allows for easy tag management.
  *
- * @author audrey
+ * @author c
  * @since 08.19.2014
  */
 public class Control extends Taggable implements IControl {
