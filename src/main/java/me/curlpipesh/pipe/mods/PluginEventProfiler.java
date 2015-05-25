@@ -3,6 +3,7 @@ package me.curlpipesh.pipe.mods;
 import lombok.Getter;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.ProfiledEvent;
 import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 
@@ -29,7 +30,7 @@ public class PluginEventProfiler extends ExecutablePlugin {
         Helper.addChatMessage("§7Event times:");
         Helper.addChatMessage("§7------------");
         for(ProfiledEvent e : events) {
-            Helper.addChatMessage("§7" + e.getEvent() + ": " + (e.getTime()/1_000_000L) + "ms (" +
+            Helper.addChatMessage("§7" + e.getEvent() + ": " + e.getTimeMillis() + "ms (" +
                     df.format((e.getTime() / (double)total) * 100) + "%)");
         }
         Helper.addChatMessage("");
@@ -42,18 +43,5 @@ public class PluginEventProfiler extends ExecutablePlugin {
         setName("Event Profiler");
         setKey(Keyboard.KEY_P);
         addModifier(Keyboard.KEY_LCONTROL);
-    }
-
-    private final class ProfiledEvent {
-        @Getter
-        private final String event;
-
-        @Getter
-        private final long time;
-
-        public ProfiledEvent(String event, long time) {
-            this.event = event;
-            this.time = time;
-        }
     }
 }

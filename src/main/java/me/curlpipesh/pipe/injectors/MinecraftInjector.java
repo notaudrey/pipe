@@ -55,6 +55,7 @@ public class MinecraftInjector extends Injector {
                 list.add(new MethodInsnNode(INVOKESPECIAL, "me/curlpipesh/pipe/event/Keypress", "<init>", "(I)V", false));
                 list.add(new MethodInsnNode(INVOKESTATIC, "pw/aria/event/EventManager", "push", "(Ljava/lang/Object;)Ljava/lang/Object;", false));
                 list.add(new InsnNode(POP));
+
                 Iterator<AbstractInsnNode> i = m.instructions.iterator();
                 AbstractInsnNode node = null;
                 boolean merp = false; // haveWeFoundThatStupidManuallyTriggeredDebugWhateverThingThatMeansWereInTheRightPlace
