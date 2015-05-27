@@ -1,15 +1,9 @@
 package me.curlpipesh.pipe.generators;
 
-import me.curlpipesh.pipe.Pipe;
 import org.objectweb.asm.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
+import static me.curlpipesh.pipe.util.Constants.getByName;
 import static org.objectweb.asm.Opcodes.*;
-import static me.curlpipesh.pipe.util.Constants.*;
 
 /**
  * Generates bytecode to fill in the methods in
@@ -34,22 +28,15 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC, "<init>", "()V", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitMethodInsn(INVOKESPECIAL, "java/lang/Object", "<init>", "()V", false);
             mv.visitInsn(RETURN);
-            Label l1 = new Label();
-            mv.visitLabel(l1);
-            mv.visitLocalVariable("this", "Lme/curlpipesh/pipe/util/Helper;", null, l0, l1, 0);
             mv.visitMaxs(1, 1);
             mv.visitEnd();
         }
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isWorldNull", "()Z", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getWorld", "()Ljava/lang/Object;", false);
             Label l1 = new Label();
             mv.visitJumpInsn(IFNONNULL, l1);
@@ -168,16 +155,10 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getEntityVec", "(Ljava/lang/Object;)Lme/curlpipesh/pipe/util/Vec3;", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(INSTANCEOF, "me/curlpipesh/pipe/util/Vec3");
             Label l1 = new Label();
             mv.visitJumpInsn(IFNE, l1);
-            Label l2 = new Label();
-            mv.visitLabel(l2);
-            Label l3 = new Label();
-            mv.visitLabel(l3);
             mv.visitTypeInsn(NEW, "me/curlpipesh/pipe/util/Vec3");
             mv.visitInsn(DUP);
             mv.visitVarInsn(ALOAD, 0);
@@ -195,8 +176,6 @@ public class HelperGenerator {
             mv.visitFrame(Opcodes.F_SAME, 0, null, 0, null);
             mv.visitInsn(ACONST_NULL);
             mv.visitInsn(ARETURN);
-            Label l4 = new Label();
-            mv.visitLabel(l4);
             mv.visitMaxs(8, 2);
             mv.visitEnd();
         }
@@ -214,8 +193,6 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityLiving", "(Ljava/lang/Object;)Z", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(INSTANCEOF, getByName("EntityLiving").getName());
             mv.visitInsn(IRETURN);
@@ -225,8 +202,6 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityAnimal", "(Ljava/lang/Object;)Z", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(INSTANCEOF, getByName("EntityAnimal").getName());
             mv.visitInsn(IRETURN);
@@ -236,8 +211,6 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntityMonster", "(Ljava/lang/Object;)Z", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(INSTANCEOF, getByName("EntityMonster").getName());
             mv.visitInsn(IRETURN);
@@ -256,9 +229,6 @@ public class HelperGenerator {
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getBlockEntityVec", "(Ljava/lang/Object;)Lme/curlpipesh/pipe/util/Vec3;", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
-            mv.visitLineNumber(91, l0);
             mv.visitTypeInsn(NEW, "me/curlpipesh/pipe/util/Vec3");
             mv.visitInsn(DUP);
             mv.visitVarInsn(ALOAD, 0);
@@ -281,17 +251,12 @@ public class HelperGenerator {
             mv.visitInsn(I2D);
             mv.visitMethodInsn(INVOKESPECIAL, "me/curlpipesh/pipe/util/Vec3", "<init>", "(DDD)V", false);
             mv.visitInsn(ARETURN);
-            Label l1 = new Label();
-            mv.visitLabel(l1);
-            mv.visitLocalVariable("d", "Lme/curlpipesh/pipe/util/Dummy;", null, l0, l1, 0);
             mv.visitMaxs(8, 1);
             mv.visitEnd();
         }
         {
             mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isBlockEntityChest", "(Ljava/lang/Object;)Z", null, null);
             mv.visitCode();
-            Label l0 = new Label();
-            mv.visitLabel(l0);
             mv.visitVarInsn(ALOAD, 0);
             mv.visitTypeInsn(INSTANCEOF, getByName("BlockEntityChest").getName());
             Label l1 = new Label();
@@ -311,8 +276,6 @@ public class HelperGenerator {
             mv.visitLabel(l3);
             mv.visitFrame(Opcodes.F_SAME1, 0, null, 1, new Object[]{Opcodes.INTEGER});
             mv.visitInsn(IRETURN);
-            Label l4 = new Label();
-            mv.visitLabel(l4);
             mv.visitMaxs(1, 1);
             mv.visitEnd();
         }
@@ -429,23 +392,30 @@ public class HelperGenerator {
             mv.visitMaxs(4, 0);
             mv.visitEnd();
         }
-        cw.visitEnd();
-        byte[] b = cw.toByteArray();
-        try {
-            File f = new File(new File(Pipe.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getAbsoluteFile().getParentFile() + File.separator + "Helper.class");
-            if(f.exists()) {
-                //noinspection ResultOfMethodCallIgnored
-                f.delete();
-            }
-            //noinspection ResultOfMethodCallIgnored
-            f.createNewFile();
-            FileOutputStream fos = new FileOutputStream(f);
-            fos.write(b);
-            fos.close();
-        } catch(IOException e) {
-            e.printStackTrace();
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isViewBobbingEnabled", "()Z", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getGameSettings", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("GameSettings").getName());
+            mv.visitFieldInsn(GETFIELD, getByName("GameSettings").getDesc(), "d", "Z");
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(4, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "setViewBobbing", "(Z)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getGameSettings", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("GameSettings").getName());
+            mv.visitVarInsn(ILOAD, 0);
+            mv.visitFieldInsn(PUTFIELD, getByName("GameSettings").getDesc(), "d", "Z");
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(2, 1);
+            mv.visitEnd();
         }
 
-        return b;
+        cw.visitEnd();
+
+        return cw.toByteArray();
     }
 }

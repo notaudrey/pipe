@@ -275,4 +275,20 @@ public class Helper {
     public static int getScale() {
         return 0;
     }
+
+    /**
+     * Returns whether or not view bobbing is enabled in the in-game settings.
+     *
+     * @return True if enabled, false otherwise
+     */
+    public static boolean isViewBobbingEnabled() {
+        return false;
+    }
+
+    /**
+     * Sets view bobbing to be either enabled or disabled
+     *
+     * @param state The new state of view bobbing
+     */
+    public static void setViewBobbing(boolean state) {}
 }

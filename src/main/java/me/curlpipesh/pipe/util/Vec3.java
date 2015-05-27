@@ -24,6 +24,11 @@ public class Vec3 implements Cloneable {
     private static final Vec3 UNIT_VEC = new Vec3(1, 1, 1);
 
     /**
+     * Stereotypical up vector
+     */
+    private static final Vec3 UP_VEC = new Vec3(0, 1, 0);
+
+    /**
      * Creates a new vector with the supplied coordinates
      *
      * @param x The x-coordinate
@@ -273,5 +278,14 @@ public class Vec3 implements Cloneable {
      */
     public static Vec3 unit() {
         return UNIT_VEC;
+    }
+
+    /**
+     * Returns the up vector
+     *
+     * @return The stereotypical up vector
+     */
+    public static Vec3 up() {
+        return UP_VEC;
     }
 }

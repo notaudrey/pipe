@@ -5,6 +5,10 @@ import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.event.Render2D;
+import me.curlpipesh.pipe.gui.GuiModule;
+import me.curlpipesh.pipe.gui.api.model.base.interfaces.IContainer;
+import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
+import me.curlpipesh.pipe.gui.module.ContainerGuiModule;
 import me.curlpipesh.pipe.util.Helper;
 import me.curlpipesh.pipe.util.GLRenderer;
 import pw.aria.event.EventManager;
@@ -25,8 +29,8 @@ public class PluginOverlay implements Plugin {
     @Override
     public void init() {
         EventManager.register(new Listener<Render2D>() {
-            @SuppressWarnings("ConstantConditions")
             @Override
+            @SuppressWarnings({"ConstantConditions", "Convert2streamapi"})
             public void event(Render2D render2D) {
                 int yOffset = OFFSET + 2;
                 int count = 1;
@@ -67,6 +71,19 @@ public class PluginOverlay implements Plugin {
                             }
                         }
                     }
+                    PluginGui gui = (PluginGui) PluginManager.getInstance().<PluginGui>getObjectByClass(PluginGui.class);
+                    GuiModule m = gui.getModule();
+                    for(IContainer c : ((ContainerGuiModule)m).getContainers()) {
+                        if(c.isPinnable()) {
+                            if(c.getPinControl().getState()) {
+                                try {
+                                    ((ContainerGuiModule) m).getTheme().renderContainer(c);
+                                } catch(RenderException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -88,7 +105,7 @@ public class PluginOverlay implements Plugin {
 
     @Override
     public String getName() {
-        return "";
+        return "Pipe Overlay";
     }
 
     @Override

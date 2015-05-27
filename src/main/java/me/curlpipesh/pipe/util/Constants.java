@@ -16,7 +16,7 @@ public class Constants {
     /**
      * Mappings of obfuscated classes to usable names
      */
-    private static final List<ObfusClass> obfuscatedClasses = new CopyOnWriteArrayList<>();
+    private static final List<ObfusClass> OBFUSCATED_CLASSES = new CopyOnWriteArrayList<>();
 
     @SuppressWarnings("SpellCheckingInspection")
     public static final String
@@ -24,157 +24,157 @@ public class Constants {
              * Name of the Minecraft class
              */
             MINECRAFT = "ave",
-    /**
-     * Name of the GuiIngame class
-     */
+            /**
+             * Name of the GuiIngame class
+             */
             GUIINGAME = "avo",
-    /**
-     * Name of the FontRenderer class
-     */
+            /**
+             * Name of the FontRenderer class
+             */
             FONTRENDERER = "avn",
-    /**
-     * Name of the GameSettings class
-     */
+            /**
+             * Name of the GameSettings class
+             */
             GAMESETTINGS = "avh",
-    /**
-     * Name of the World class
-     */
+            /**
+             * Name of the World class
+             */
             WORLD = "bdb",
-    /**
-     * Name of the AbstractWorld class
-     */
+            /**
+             * Name of the AbstractWorld class
+             */
             ABSTRACTWORLD = "adm",
-    /**
-     * Name of the WorldProvider class
-     */
+            /**
+             * Name of the WorldProvider class
+             */
             WORLDPROVIDER = "anm",
-    /**
-     * Name of the Entity class
-     */
+            /**
+             * Name of the Entity class
+             */
             ENTITY = "pk",
-    /**
-     * Name of the EntityClientPlayer class
-     */
+            /**
+             * Name of the EntityClientPlayer class
+             */
             ENTITYTHEPLAYER = "bew",
-    /**
-     * Name of the ScaledResolution class
-     */
+            /**
+             * Name of the ScaledResolution class
+             */
             SCALEDRESOLUTION = "avr",
-    /**
-     * Name of the EntityRenderer class
-     */
+            /**
+             * Name of the EntityRenderer class
+             */
             ENTITYRENDERER = "bfk",
-    /**
-     * Name of the EntityLiving class
-     */
+            /**
+             * Name of the EntityLiving class
+             */
             ENTITYLIVING = "ps",
-    /**
-     * Name of the EntityCreature class
-     */
+            /**
+             * Name of the EntityCreature class
+             */
             ENTITYCREATURE = "py",
-    /**
-     * Name of the EntityAgeable class
-     */
+            /**
+             * Name of the EntityAgeable class
+             */
             ENTITYAGEABLE = "ph",
-    /**
-     * Name of the EntityAnimal class
-     */
+            /**
+             * Name of the EntityAnimal class
+             */
             ENTITYANIMAL = "tm",
-    /**
-     * Name of the EntityMonster class
-     */
+            /**
+             * Name of the EntityMonster class
+             */
             ENTITYMONSTER = "vv",
-    /**
-     * Name of the BlockEntity class (formerly TileEntity)
-     */
+            /**
+             * Name of the BlockEntity class (formerly TileEntity)
+             */
             BLOCKENTITY = "akw",
-    /**
-     * Name of the BlockEntityChest class
-     */
+            /**
+             * Name of the BlockEntityChest class
+             */
             BLOCKENTITYCHEST = "aky",
-    /**
-     * Name of the BlockEntityEnderChest class
-     */
+            /**
+             * Name of the BlockEntityEnderChest class
+             */
             BLOCKENTITYENDERCHEST = "alf",
-    /**
-     * Name of the BlockPos class
-     */
+            /**
+             * Name of the BlockPos class
+             */
             BLOCKPOS = "cj",
-    /**
-     * Name of the Vec3i class
-     */
+            /**
+             * Name of the Vec3i class
+             */
             VEC3I = "df",
-    /**
-     * Name of the Gui class
-     */
+            /**
+             * Name of the Gui class
+             */
             GUI = "avp",
-    /**
-     * Name of the GuiScreen class
-     */
+            /**
+             * Name of the GuiScreen class
+             */
             GUISCREEN = "axu",
-    /**
-     * Name of the GuiMainMenu class
-     */
+            /**
+             * Name of the GuiMainMenu class
+             */
             GUIMAINMENU = "aya",
-    /**
-     * Name of the IChatComponent class
-     */
+            /**
+             * Name of the IChatComponent class
+             */
             ICHATCOMPONENT = "eu",
-    /**
-     * Name of the ChatComponentStyle class
-     */
+            /**
+             * Name of the ChatComponentStyle class
+             */
             CHATCOMPONENTSTYLE = "es",
-    /**
-     * Name of the ChatComponentText class
-     */
+            /**
+             * Name of the ChatComponentText class
+             */
             CHATCOMPONENTTEXT = "fa",
-    /**
-     * Name of the InventoryPlayer class
-     */
+            /**
+             * Name of the InventoryPlayer class
+             */
             INVENTORYPLAYER = "wm",
-    /**
-     * Name of the IInventory class
-     */
+            /**
+             * Name of the IInventory class
+             */
             IINVENTORY = "og",
-    /**
-     * Name of the ItemStack class
-     */
+            /**
+             * Name of the ItemStack class
+             */
             ITEMSTACK = "zx",
-    /**
-     * Name of the Container class. Used for some inventory stuff
-     */
+            /**
+             * Name of the Container class. Used for some inventory stuff
+             */
             CONTAINER = "xi",
-    /**
-     * Name of the ContainerPlayer class
-     */
+            /**
+             * Name of the ContainerPlayer class
+             */
             CONTAINERPLAYER = "xy",
-    /**
-     * Name of the EntityPlayer class
-     */
+            /**
+             * Name of the EntityPlayer class
+             */
             ENTITYPLAYER = "wn",
-    /**
-     * Name of the Slot class. Used for some inventory stuff
-     */
+            /**
+             * Name of the Slot class. Used for some inventory stuff
+             */
             SLOT = "yg",
-    /**
-     * Name of the NetworkManager class
-     */
+            /**
+             * Name of the NetworkManager class
+             */
             NETWORKMANAGER = "ek",
-    /**
-     * Name of the Packet class
-     */
+            /**
+             * Name of the Packet class
+             */
             PACKET = "ff",
-    /**
-     * Name of the C0EPacketWindowClick class
-     */
+            /**
+             * Name of the C0EPacketWindowClick class
+             */
             C0EPACKETWINDOWCLICK = "ik",
-    /**
-     * Name of the NetHandlerPlayClient class
-     */
+            /**
+             * Name of the NetHandlerPlayClient class
+             */
             NETHANDLERPLAYCLIENT = "bcy",
-    /**
-     * Name of the Item class
-     */
+            /**
+             * Name of the Item class
+             */
             ITEM = "zw";
 
     /**
@@ -184,7 +184,7 @@ public class Constants {
      * @return <tt>ObfusClass</tt> representation of the obfuscated class
      */
     public static ObfusClass getByName(String name) {
-        Optional<ObfusClass> o = obfuscatedClasses.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
+        Optional<ObfusClass> o = OBFUSCATED_CLASSES.stream().filter(c -> c.getRealName().equalsIgnoreCase(name))
                 .findFirst();
         if(o.isPresent()) {
             return o.get();
@@ -194,44 +194,44 @@ public class Constants {
     }
 
     static {
-        obfuscatedClasses.add(new ObfusClass("Minecraft", MINECRAFT));
-        obfuscatedClasses.add(new ObfusClass("GuiIngame", GUIINGAME));
-        obfuscatedClasses.add(new ObfusClass("FontRenderer", FONTRENDERER));
-        obfuscatedClasses.add(new ObfusClass("GameSettings", GAMESETTINGS));
-        obfuscatedClasses.add(new ObfusClass("World", WORLD));
-        obfuscatedClasses.add(new ObfusClass("AbstractWorld", ABSTRACTWORLD));
-        obfuscatedClasses.add(new ObfusClass("WorldProvider", WORLDPROVIDER));
-        obfuscatedClasses.add(new ObfusClass("Entity", ENTITY));
-        obfuscatedClasses.add(new ObfusClass("EntityThePlayer", ENTITYTHEPLAYER));
-        obfuscatedClasses.add(new ObfusClass("ScaledResolution", SCALEDRESOLUTION));
-        obfuscatedClasses.add(new ObfusClass("EntityRenderer", ENTITYRENDERER));
-        obfuscatedClasses.add(new ObfusClass("EntityLiving", ENTITYLIVING));
-        obfuscatedClasses.add(new ObfusClass("EntityCreature", ENTITYCREATURE));
-        obfuscatedClasses.add(new ObfusClass("EntityAgeable", ENTITYAGEABLE));
-        obfuscatedClasses.add(new ObfusClass("EntityAnimal", ENTITYANIMAL));
-        obfuscatedClasses.add(new ObfusClass("EntityMonster", ENTITYMONSTER));
-        obfuscatedClasses.add(new ObfusClass("BlockEntity", BLOCKENTITY));
-        obfuscatedClasses.add(new ObfusClass("BlockEntityChest", BLOCKENTITYCHEST));
-        obfuscatedClasses.add(new ObfusClass("BlockEntityEnderChest", BLOCKENTITYENDERCHEST));
-        obfuscatedClasses.add(new ObfusClass("BlockPos", BLOCKPOS));
-        obfuscatedClasses.add(new ObfusClass("Vec3i", VEC3I));
-        obfuscatedClasses.add(new ObfusClass("Gui", GUI));
-        obfuscatedClasses.add(new ObfusClass("GuiScreen", GUISCREEN));
-        obfuscatedClasses.add(new ObfusClass("GuiMainMenu", GUIMAINMENU));
-        obfuscatedClasses.add(new ObfusClass("IChatComponent", ICHATCOMPONENT));
-        obfuscatedClasses.add(new ObfusClass("ChatComponentStyle", CHATCOMPONENTSTYLE));
-        obfuscatedClasses.add(new ObfusClass("ChatComponentText", CHATCOMPONENTTEXT));
-        obfuscatedClasses.add(new ObfusClass("IInventory", IINVENTORY));
-        obfuscatedClasses.add(new ObfusClass("InventoryPlayer", INVENTORYPLAYER));
-        obfuscatedClasses.add(new ObfusClass("ItemStack", ITEMSTACK));
-        obfuscatedClasses.add(new ObfusClass("Container", CONTAINER));
-        obfuscatedClasses.add(new ObfusClass("ContainerPlayer", CONTAINERPLAYER));
-        obfuscatedClasses.add(new ObfusClass("EntityPlayer", ENTITYPLAYER));
-        obfuscatedClasses.add(new ObfusClass("Slot", SLOT));
-        obfuscatedClasses.add(new ObfusClass("NetworkManager", NETWORKMANAGER));
-        obfuscatedClasses.add(new ObfusClass("Packet", PACKET));
-        obfuscatedClasses.add(new ObfusClass("C0EPacketWindowClick", C0EPACKETWINDOWCLICK));
-        obfuscatedClasses.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
-        obfuscatedClasses.add(new ObfusClass("Item", ITEM));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Minecraft", MINECRAFT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiIngame", GUIINGAME));
+        OBFUSCATED_CLASSES.add(new ObfusClass("FontRenderer", FONTRENDERER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GameSettings", GAMESETTINGS));
+        OBFUSCATED_CLASSES.add(new ObfusClass("World", WORLD));
+        OBFUSCATED_CLASSES.add(new ObfusClass("AbstractWorld", ABSTRACTWORLD));
+        OBFUSCATED_CLASSES.add(new ObfusClass("WorldProvider", WORLDPROVIDER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Entity", ENTITY));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityThePlayer", ENTITYTHEPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("ScaledResolution", SCALEDRESOLUTION));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityRenderer", ENTITYRENDERER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityLiving", ENTITYLIVING));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityCreature", ENTITYCREATURE));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityAgeable", ENTITYAGEABLE));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityAnimal", ENTITYANIMAL));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityMonster", ENTITYMONSTER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntity", BLOCKENTITY));
+        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntityChest", BLOCKENTITYCHEST));
+        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntityEnderChest", BLOCKENTITYENDERCHEST));
+        OBFUSCATED_CLASSES.add(new ObfusClass("BlockPos", BLOCKPOS));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Vec3i", VEC3I));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Gui", GUI));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiScreen", GUISCREEN));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiMainMenu", GUIMAINMENU));
+        OBFUSCATED_CLASSES.add(new ObfusClass("IChatComponent", ICHATCOMPONENT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("ChatComponentStyle", CHATCOMPONENTSTYLE));
+        OBFUSCATED_CLASSES.add(new ObfusClass("ChatComponentText", CHATCOMPONENTTEXT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("IInventory", IINVENTORY));
+        OBFUSCATED_CLASSES.add(new ObfusClass("InventoryPlayer", INVENTORYPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("ItemStack", ITEMSTACK));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Container", CONTAINER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("ContainerPlayer", CONTAINERPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("EntityPlayer", ENTITYPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Slot", SLOT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("NetworkManager", NETWORKMANAGER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Packet", PACKET));
+        OBFUSCATED_CLASSES.add(new ObfusClass("C0EPacketWindowClick", C0EPACKETWINDOWCLICK));
+        OBFUSCATED_CLASSES.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("Item", ITEM));
     }
 }

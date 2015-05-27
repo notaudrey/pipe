@@ -19,6 +19,8 @@ import pw.aria.event.Listener;
  * @since 5/21/15
  */
 public class PluginTracers extends BasePlugin {
+    private final Vec3 offset = new Vec3(0, 1.62D, 0);
+
     @Override
     public void init() {
         setKey(Keyboard.KEY_R);
@@ -38,11 +40,10 @@ public class PluginTracers extends BasePlugin {
                                 Vec3 e = Helper.getEntityVec(o);
                                 if(e != null) {
                                     e.sub(p);
-                                    GLRenderer.drawLine(Vec3.zero(), e,
+                                    GLRenderer.drawLine(offset, e,
                                             Helper.isEntityAnimal(o) ? 0xFF00FF00 :
                                                     Helper.isEntityMonster(o) ? 0xFFFF0000 :
-                                                            0xFFFFFFFF,
-                                            2.235F);
+                                                            0xFFFFFFFF, 2.235F);
                                     ++count;
                                 }
                             }

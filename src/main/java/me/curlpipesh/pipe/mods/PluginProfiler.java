@@ -33,6 +33,7 @@ public class PluginProfiler extends ExecutablePlugin {
         setKey(Keyboard.KEY_D);
         addModifier(Keyboard.KEY_LCONTROL);
         addModifier(Keyboard.KEY_LSHIFT);
+
         profilerModule = new GuiModule() {
             private final DecimalFormat df = new DecimalFormat("#.##");
             private final List<ProfiledEvent> events = new ArrayList<>();

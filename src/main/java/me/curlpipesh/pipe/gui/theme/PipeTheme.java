@@ -77,7 +77,7 @@ public class PipeTheme extends Theme {
                     widget.getArea().getHeight(), 0x34FFFFFF);
             Helper.drawString(widget.getText(), (float) widget.getArea().getX() + 0.5F,
                     (float) widget.getArea().getY() + 0.5F,
-                    widget.isFocused() ? 0xFF00FF00 : widget.isState() ? 0xFF009900 : 0xFFFFFFFF, false);
+                    widget.isFocused() ? 0xFF00FF00 : widget.isState() ? 0xFF00CC00 : 0xFFFFFFFF, false);
         });
         //noinspection Convert2Lambda
         registerRenderer("slider", new Renderer<BasicSlider>() {

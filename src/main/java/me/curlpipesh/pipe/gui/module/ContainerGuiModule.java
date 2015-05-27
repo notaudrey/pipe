@@ -28,6 +28,7 @@ public abstract class ContainerGuiModule implements GuiModule {
     /**
      * The {@link IContainer}s that this GuiModule will contain.
      */
+    @Getter
     private final List<IContainer> containers = new CopyOnWriteArrayList<>();
 
     /**
@@ -35,22 +36,16 @@ public abstract class ContainerGuiModule implements GuiModule {
      * <tt>null</tt>; if it is <tt>null</tt>, then the default theme in
      * {@link ThemeManager} will be used.
      */
-    @Getter
     @Setter
     private ITheme theme;
 
-    @Override
-    public final void init() {
-        subInit();
+    public ContainerGuiModule() {
+        init();
         containers.forEach(IContainer::initialize);
     }
 
-    /**
-     * Initialization method intended to be used by subclasses, so as to ensure
-     * that containers will always be initialized regardless of whether or not
-     * the subclass makes a <tt>super</tt> call to {@link #init()}.
-     */
-    protected abstract void subInit();
+    @Override
+    public abstract void init();
 
     /**
      * Adds an {@link IContainer} to this <tt>module</tt>.
@@ -154,5 +149,9 @@ public abstract class ContainerGuiModule implements GuiModule {
                     return l;
                 },
                 Lists::<T>reverse);
+    }
+
+    public ITheme getTheme() {
+        return theme == null ? ThemeManager.getTheme() : theme;
     }
 }

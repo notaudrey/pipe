@@ -63,7 +63,7 @@ public interface Manager<T> {
      * @return The object, or null if no such object exists
      */
     @SuppressWarnings("unchecked")
-    default T getObjectByClass(Class<? super T> clazz) {
+    default T getObjectByClass(Class<? extends T> clazz) {
         return getManagedObjects().parallelStream().filter(o -> o.getClass().equals(clazz)).findFirst().orElse(null);
     }
 
