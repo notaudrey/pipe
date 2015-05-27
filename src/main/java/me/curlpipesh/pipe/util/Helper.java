@@ -291,4 +291,14 @@ public class Helper {
      * @param state The new state of view bobbing
      */
     public static void setViewBobbing(boolean state) {}
+
+    /**
+     * Returns the currently displayed GuiScreen (Minecraft GuiScreen, not the
+     * implementation here).
+     *
+     * @return The currently displayed GuiScreen
+     */
+    public static Object getCurrentScreen() {
+        return null;
+    }
 }

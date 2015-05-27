@@ -413,6 +413,16 @@ public class HelperGenerator {
             mv.visitMaxs(2, 1);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "getCurrentScreen", "()Ljava/lang/Object;", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "getMinecraft", "()Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("Minecraft").getName());
+            mv.visitFieldInsn(GETFIELD, getByName("Minecraft").getDesc(), "m", getByName("GuiScreen").getDesc());
+            mv.visitInsn(ARETURN);
+            mv.visitMaxs(4, 0);
+            mv.visitEnd();
+        }
 
         cw.visitEnd();
 

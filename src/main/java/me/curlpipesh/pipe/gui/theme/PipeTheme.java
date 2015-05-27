@@ -50,7 +50,8 @@ public class PipeTheme extends Theme {
                     control.getArea().getHeight(), color);
             GL11.glColor4d(1, 1, 1, 1);
             // Control indicator character
-            Helper.drawString(letter, (float) control.getArea().getX(), (float) control.getArea().getY(), 0xFFFFFFFF, false);
+            Helper.drawString(letter, (float) control.getArea().getX() + (float) control.getArea().getWidth() / 4,
+                    (float) control.getArea().getY() + (float) control.getArea().getHeight() / 4, 0xFFFFFFFF, false);
         }
         GL11.glColor4d(1, 1, 1, 1);
         // Title

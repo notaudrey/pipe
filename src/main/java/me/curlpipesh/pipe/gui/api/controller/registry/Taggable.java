@@ -1,6 +1,7 @@
 package me.curlpipesh.pipe.gui.api.controller.registry;
 
 import lombok.Getter;
+import me.curlpipesh.pipe.Pipe;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -53,10 +54,12 @@ public class Taggable implements ITaggable {
             throw new IllegalArgumentException(String.format("Illegal tag/value pair: (%s, %s)", tag, value));
         }
         if(!tags.containsKey(tag)) {
-            System.out.println(String.format("[%s/%s/WARNING] Tag %s is not applicable in this context (%s)",
-                    toString(), Thread.currentThread().getName(), tag, toString()));
+            Pipe.log(String.format("%s: Tag %s is not applicable in this context (%s)",
+                    toString(), tag, toString()));
         } else {
-            tags.replace(tag, value);
+            if(tags.replace(tag, value) == null) {
+                throw new NullPointerException(String.format("%s: Unable to replace tag! (%s => %s)", toString(), tag, value));
+            }
         }
     }
 }

@@ -122,25 +122,6 @@
             <classifier>javadoc</classifier>
         </dependency>
 
-        <!-- Javaslang -->
-        <dependency>
-            <groupId>com.javaslang</groupId>
-            <artifactId>javaslang</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.javaslang</groupId>
-            <artifactId>javaslang</artifactId>
-            <version>1.2.2</version>
-            <classifier>sources</classifier>
-        </dependency>
-        <dependency>
-            <groupId>com.javaslang</groupId>
-            <artifactId>javaslang</artifactId>
-            <version>1.2.2</version>
-            <classifier>javadoc</classifier>
-        </dependency>
-
         <!-- Guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -205,8 +186,6 @@
                                 <excludes>
                                     <exclude>org.ow2.asm:*:sources</exclude>
                                     <exclude>org.ow2.asm:*:javadoc</exclude>
-                                    <exclude>com.javaslang:*:sources</exclude>
-                                    <exclude>com.javaslang:*:javadoc</exclude>
                                     <exclude>com.google.guava:*:*</exclude>
                                     <exclude>org.lwjgl.*:*:*</exclude>
                                     <exclude>net.java.jinput:*:*</exclude>

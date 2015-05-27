@@ -28,8 +28,6 @@
                 <excludes>
                   <exclude>org.ow2.asm:*:sources</exclude>
                   <exclude>org.ow2.asm:*:javadoc</exclude>
-                  <exclude>com.javaslang:*:sources</exclude>
-                  <exclude>com.javaslang:*:javadoc</exclude>
                   <exclude>com.google.guava:*:*</exclude>
                   <exclude>org.lwjgl.*:*:*</exclude>
                   <exclude>net.java.jinput:*:*</exclude>
@@ -165,20 +163,6 @@
       <groupId>org.lwjgl.lwjgl</groupId>
       <artifactId>lwjgl_util</artifactId>
       <version>2.9.1</version>
-      <classifier>javadoc</classifier>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.javaslang</groupId>
-      <artifactId>javaslang</artifactId>
-      <version>1.2.2</version>
-      <classifier>sources</classifier>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.javaslang</groupId>
-      <artifactId>javaslang</artifactId>
-      <version>1.2.2</version>
       <classifier>javadoc</classifier>
       <scope>compile</scope>
     </dependency>

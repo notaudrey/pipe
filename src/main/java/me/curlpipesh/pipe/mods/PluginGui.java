@@ -46,22 +46,27 @@ public class PluginGui extends ExecutablePlugin {
                     PluginManager.getInstance().getManagedObjects().forEach(p -> {
                         BasicWidget btn = new BasicWidget("button", p.getName());
                         if(p instanceof Toggleable) {
+                            Toggleable t = (Toggleable) p;
                             btn.addAction((MouseClickAction<BasicWidget>) (component, button) -> {
-                                ((Toggleable) p).toggle();
-                                component.setState(((Toggleable) p).isEnabled());
+                                t.toggle();
+                                component.setState(t.isEnabled());
                             });
-                            btn.addAction((TickAction) component -> component.setState(((Toggleable)p).isEnabled()));
+                            btn.addAction((TickAction<BasicWidget>) component -> {
+                                boolean state = component.isFocused();
+                                component.setFocused(true);
+                                component.setState(t.isEnabled());
+                                component.setFocused(state);
+                            });
                             toggleContainer.addChild(btn);
                         } else if(p instanceof ExecutablePlugin) {
                             btn.addAction((MouseClickAction<BasicWidget>) (component, button) -> ((ExecutablePlugin) p).execute());
-                            btn.addAction((TickAction) component -> btn.setState(false));
+                            btn.addAction((TickAction<BasicWidget>) component -> btn.setState(false));
                             exeContainer.addChild(btn);
                         }
                     });
                     exeContainer.setLayout(new TwoColumnLayout());
                     addContainer(exeContainer);
                     addContainer(toggleContainer);
-                    getContainers().forEach(IContainer::tick);
                 }
             }
 

@@ -71,15 +71,17 @@ public class PluginOverlay implements Plugin {
                             }
                         }
                     }
-                    PluginGui gui = (PluginGui) PluginManager.getInstance().<PluginGui>getObjectByClass(PluginGui.class);
-                    GuiModule m = gui.getModule();
-                    for(IContainer c : ((ContainerGuiModule)m).getContainers()) {
-                        if(c.isPinnable()) {
-                            if(c.getPinControl().getState()) {
-                                try {
-                                    ((ContainerGuiModule) m).getTheme().renderContainer(c);
-                                } catch(RenderException e) {
-                                    e.printStackTrace();
+                    if(Helper.getCurrentScreen() == null) {
+                        PluginGui gui = (PluginGui) PluginManager.getInstance().<PluginGui>getObjectByClass(PluginGui.class);
+                        GuiModule m = gui.getModule();
+                        for(IContainer c : ((ContainerGuiModule) m).getContainers()) {
+                            if(c.isPinnable()) {
+                                if(c.getPinControl().getState()) {
+                                    try {
+                                        ((ContainerGuiModule) m).getTheme().renderContainer(c);
+                                    } catch(RenderException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         }

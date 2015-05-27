@@ -72,15 +72,15 @@ public class PluginProfiler extends ExecutablePlugin {
                 GLRenderer.drawRect(128, 2, ((double) totalMemory / (double) maxMemory) * 100, 10, 0xFF00FF00);
                 // freeMemory
                 GLRenderer.drawRect(128, 2, ((double) freeMemory / (double) maxMemory) * 100, 10, 0xFFFF0000);
-                Helper.drawString("Available Memory: " + (long) (maxMemory / 1_000_000D) + "MB", 280, 2, 0xFFFFFFFF, true);
-                Helper.drawString("Allocated Memory: " + (long) (totalMemory / 1_000_000D) + "MB", 280, 13, 0xFFFFFFFF, true);
-                Helper.drawString("Used Memory:      " + (long) (freeMemory / 1_000_000D) + "MB", 280, 24, 0xFFFFFFFF, true);
+                Helper.drawString("Available Memory: " + (long) (maxMemory / 1_000_000D) + "MB", 128, 13, 0xFFFFFFFF, true);
+                Helper.drawString("Allocated Memory: " + (long) (totalMemory / 1_000_000D) + "MB", 128, 24, 0xFFFFFFFF, true);
+                Helper.drawString("Used Memory:      " + (long) (freeMemory / 1_000_000D) + "MB", 128, 35, 0xFFFFFFFF, true);
 
-                Helper.drawString("Total event time: " + (long) (totalEventTime / 1_000_000D) + "ms", 128, 12, 0xFFFFFFFF, true);
-                int yOffset = 12;
+                Helper.drawString("Total event time: " + (long) (totalEventTime / 1_000_000D) + "ms", 280, 2, 0xFFFFFFFF, true);
+                int yOffset = 2;
                 for(ProfiledEvent e : events) {
                     Helper.drawString(e.getEvent() + ": " + e.getTimeMillis() + "ms (" + df.format(e.getTime() / totalEventTime) + ")%",
-                            128, yOffset += Helper.getFontHeight() + 2, 0xFFFFFFFF, true);
+                            280, yOffset += Helper.getFontHeight() + 2, 0xFFFFFFFF, true);
                 }
             }
 
