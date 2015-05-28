@@ -24,158 +24,201 @@ public class Constants {
              * Name of the Minecraft class
              */
             MINECRAFT = "ave",
+
             /**
              * Name of the GuiIngame class
              */
             GUIINGAME = "avo",
+
             /**
              * Name of the FontRenderer class
              */
             FONTRENDERER = "avn",
+
             /**
              * Name of the GameSettings class
              */
             GAMESETTINGS = "avh",
+
             /**
              * Name of the World class
              */
             WORLD = "bdb",
+
             /**
              * Name of the AbstractWorld class
              */
             ABSTRACTWORLD = "adm",
+
             /**
              * Name of the WorldProvider class
              */
             WORLDPROVIDER = "anm",
+
             /**
              * Name of the Entity class
              */
             ENTITY = "pk",
+
             /**
              * Name of the EntityClientPlayer class
              */
             ENTITYTHEPLAYER = "bew",
+
             /**
              * Name of the ScaledResolution class
              */
             SCALEDRESOLUTION = "avr",
+
             /**
              * Name of the EntityRenderer class
              */
             ENTITYRENDERER = "bfk",
+
             /**
              * Name of the EntityLiving class
              */
             ENTITYLIVING = "ps",
+
             /**
              * Name of the EntityCreature class
              */
             ENTITYCREATURE = "py",
+
             /**
              * Name of the EntityAgeable class
              */
             ENTITYAGEABLE = "ph",
+
             /**
              * Name of the EntityAnimal class
              */
             ENTITYANIMAL = "tm",
+
             /**
              * Name of the EntityMonster class
              */
             ENTITYMONSTER = "vv",
+
             /**
              * Name of the BlockEntity class (formerly TileEntity)
              */
             BLOCKENTITY = "akw",
+
             /**
              * Name of the BlockEntityChest class
              */
             BLOCKENTITYCHEST = "aky",
+
             /**
              * Name of the BlockEntityEnderChest class
              */
             BLOCKENTITYENDERCHEST = "alf",
+
             /**
              * Name of the BlockPos class
              */
             BLOCKPOS = "cj",
+
             /**
              * Name of the Vec3i class
              */
             VEC3I = "df",
+
             /**
              * Name of the Gui class
              */
             GUI = "avp",
+
             /**
              * Name of the GuiScreen class
              */
             GUISCREEN = "axu",
+
             /**
              * Name of the GuiMainMenu class
              */
             GUIMAINMENU = "aya",
+
             /**
              * Name of the IChatComponent class
              */
             ICHATCOMPONENT = "eu",
+
             /**
              * Name of the ChatComponentStyle class
              */
             CHATCOMPONENTSTYLE = "es",
+
             /**
              * Name of the ChatComponentText class
              */
             CHATCOMPONENTTEXT = "fa",
+
             /**
              * Name of the InventoryPlayer class
              */
             INVENTORYPLAYER = "wm",
+
             /**
              * Name of the IInventory class
              */
             IINVENTORY = "og",
+
             /**
              * Name of the ItemStack class
              */
             ITEMSTACK = "zx",
+
             /**
              * Name of the Container class. Used for some inventory stuff
              */
             CONTAINER = "xi",
+
             /**
              * Name of the ContainerPlayer class
              */
             CONTAINERPLAYER = "xy",
+
             /**
              * Name of the EntityPlayer class
              */
             ENTITYPLAYER = "wn",
+
             /**
              * Name of the Slot class. Used for some inventory stuff
              */
             SLOT = "yg",
+
             /**
              * Name of the NetworkManager class
              */
             NETWORKMANAGER = "ek",
+
             /**
              * Name of the Packet class
              */
             PACKET = "ff",
+
             /**
-             * Name of the C0EPacketWindowClick class
+             * Name of the PacketClientWindowClick class
              */
-            C0EPACKETWINDOWCLICK = "ik",
+            PACKETWINDOWCLICK_CLIENT = "ik",
+
             /**
              * Name of the NetHandlerPlayClient class
              */
             NETHANDLERPLAYCLIENT = "bcy",
+
             /**
              * Name of the Item class
              */
-            ITEM = "zw";
+            ITEM = "zw",
+
+            /**
+             * Name of the PacketClientChatMessage class
+             */
+            PACKETCHATMESSAGE_CLIENT = "ie";
 
     /**
      * Gets an {@link ObfusClass} representation of a class based on a non-obfuscated name
@@ -230,8 +273,9 @@ public class Constants {
         OBFUSCATED_CLASSES.add(new ObfusClass("Slot", SLOT));
         OBFUSCATED_CLASSES.add(new ObfusClass("NetworkManager", NETWORKMANAGER));
         OBFUSCATED_CLASSES.add(new ObfusClass("Packet", PACKET));
-        OBFUSCATED_CLASSES.add(new ObfusClass("C0EPacketWindowClick", C0EPACKETWINDOWCLICK));
+        OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientWindowClick", PACKETWINDOWCLICK_CLIENT));
         OBFUSCATED_CLASSES.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
         OBFUSCATED_CLASSES.add(new ObfusClass("Item", ITEM));
+        OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientChatMessage", PACKETCHATMESSAGE_CLIENT));
     }
 }

@@ -423,6 +423,18 @@ public class HelperGenerator {
             mv.visitMaxs(4, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "_sendChatMessage", "(Ljava/lang/String;)V", null, null);
+            mv.visitCode();
+            mv.visitTypeInsn(NEW, getByName("PacketClientChatMessage").getName());
+            mv.visitInsn(DUP);
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKESPECIAL, getByName("PacketClientChatMessage").getName(), "<init>", "(Ljava/lang/String;)V", false);
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/Helper", "sendPacket", "(Ljava/lang/Object;)V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(5, 5);
+            mv.visitEnd();
+        }
 
         cw.visitEnd();
 

@@ -301,4 +301,14 @@ public class Helper {
     public static Object getCurrentScreen() {
         return null;
     }
+
+    /**
+     * Sends a chat message directly. This method is not meant to be called by
+     * anything outside of {@link ChatHelper}, because it bypasses
+     * {@link me.curlpipesh.pipe.event.ChatSend} events firing, which can cause
+     * a large number of issues.
+     *
+     * @param message The message to be sent
+     */
+    public static void _sendChatMessage(String message) {}
 }
