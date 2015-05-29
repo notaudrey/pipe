@@ -1,5 +1,6 @@
 package me.curlpipesh.pipe.gui.api.model.base;
 
+import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.gui.api.controller.action.*;
 import me.curlpipesh.pipe.gui.api.model.Area;
 import me.curlpipesh.pipe.gui.api.model.base.controls.interfaces.IControl;
@@ -197,7 +198,7 @@ public abstract class Container extends Widget implements IContainer {
         }
         for(ComponentFilter f : filters) {
             if(!f.filter(child)) {
-                // TODO Let the user know that the component was rejected?
+                Pipe.log("Attempted to add a component, but it was filtered out!");
                 return;
             }
         }
@@ -215,7 +216,7 @@ public abstract class Container extends Widget implements IContainer {
     @Override
     public void addFilter(ComponentFilter filter) {
         if(filter == null) {
-            // TODO Let the user know that the filter was null?
+            Pipe.log("Attempted to add a null filter!");
             return;
         }
         if(!filters.contains(filter)) {
@@ -226,7 +227,7 @@ public abstract class Container extends Widget implements IContainer {
     @Override
     public void removeFilter(ComponentFilter filter) {
         if(filter == null) {
-            // TODO Let the user know that the filter was null?
+            Pipe.log("Attempted to remove a null filter!");
             return;
         }
         if(filters.contains(filter)) {

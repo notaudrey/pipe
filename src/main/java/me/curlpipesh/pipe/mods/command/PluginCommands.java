@@ -4,9 +4,9 @@ import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.plugin.loading.Load;
 import me.curlpipesh.lib.plugin.loading.LoadPriority;
 import me.curlpipesh.lib.util.Status;
-import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.commands.Command;
 import me.curlpipesh.pipe.event.ChatSend;
+import me.curlpipesh.pipe.util.Helper;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -43,10 +43,76 @@ public class PluginCommands implements Plugin {
         EventManager.register(new Listener<ChatSend>() {
             @Override
             public void event(ChatSend chatSend) {
-                if(chatSend.getMessage().startsWith(prefix)) {
-                    chatSend.setCancelled(true);
+                if(chatSend.isCancelled()) {
+                    return;
                 }
-                Pipe.log(chatSend.getMessage());
+                if(chatSend.getMessage().startsWith(prefix)) {
+                    if(!chatSend.getMessage().equals(prefix)) {
+                        chatSend.setCancelled(true);
+                        String m = chatSend.getMessage();
+                        m = m.substring(1);
+                        runCommand(m);
+                    }
+                }
+            }
+        });
+        commands.add(new Command() {
+            @Override
+            public boolean run(String command, String[] args) {
+                if(args.length > 0 && args[0].equals("hake")) {
+                    Helper.addChatMessage("Yaaaaaaaassssssssss");
+                    return true;
+                }
+                Helper.addChatMessage("command y u fail qwq");
+                return false;
+            }
+
+            @Override
+            public String getName() {
+                return "kilo";
+            }
+
+            @Override
+            public String getDescription() {
+                return "kilo";
+            }
+
+            @Override
+            public List<Command> getSubcommands() {
+                return new ArrayList<>();
+            }
+
+            @Override
+            public boolean takesRawInput() {
+                return false;
+            }
+
+            @Override
+            public void setRawInput(boolean e) {
+            }
+
+            @Override
+            public boolean generateUsage() {
+                return false;
+            }
+
+            @Override
+            public String getUsage() {
+                return "kilo hake";
+            }
+        });
+    }
+
+    private void runCommand(String command) {
+        String[] temp = command.split(" ");
+        String cmd = temp[0];
+        String[] args = new String[temp.length - 1];
+        System.arraycopy(temp, 1, args, 0, args.length);
+        commands.stream().filter(e -> e.getName().equalsIgnoreCase(cmd)).filter(e -> !e.run(command, args)).forEach(e -> {
+            if(e.generateUsage()) {
+                Helper.addChatMessage("§cHelp generation not implemented yet!");
+            } else {
+                Helper.addChatMessage("§c" + e.getUsage());
             }
         });
     }

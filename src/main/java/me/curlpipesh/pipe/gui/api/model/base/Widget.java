@@ -40,7 +40,6 @@ public abstract class Widget extends Taggable implements IWidget {
      * around {@link java.awt.geom.Rectangle2D.Double}, so all the methods
      * available in that class are available here as well.
      * <p />
-     * TODO Just a plain {@link java.awt.geom.Rectangle2D.Double}?
      */
     @Getter
     @Setter
@@ -58,7 +57,6 @@ public abstract class Widget extends Taggable implements IWidget {
      * and {@link KeyAction},
      * respectively.
      * <p />
-     * TODO More actions?
      */
     @Getter
     private final List<IAction> actions = new CopyOnWriteArrayList<>();

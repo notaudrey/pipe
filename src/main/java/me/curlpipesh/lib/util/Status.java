@@ -29,7 +29,6 @@ public interface Status {
 
     /**
      * Nothing is rendering
-     * TODO Subset of RENDER_ERROR?
      */
     String NOT_RENDERING = "§cNot rendering";
 

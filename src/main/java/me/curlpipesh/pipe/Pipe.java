@@ -18,7 +18,7 @@ public final class Pipe implements Statused {
     /**
      * Singleton instance of the client
      */
-    private static Pipe instance;
+    private static final Pipe instance = new Pipe();
 
     /**
      * Version of the client. Follows <a href="http://semver.org/">semver</a> rules, at
@@ -27,7 +27,6 @@ public final class Pipe implements Statused {
     private static final String semver = "0.5.2";
 
     private Pipe() {
-        log("Starting up Pipe...");
     }
 
     /**
@@ -36,6 +35,7 @@ public final class Pipe implements Statused {
      */
     @SuppressWarnings("unused")
     public void init() {
+        log("Starting up Pipe...");
         BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
         PluginManager.getInstance().init();
     }
@@ -45,12 +45,10 @@ public final class Pipe implements Statused {
      * necessary. Note that this style of initialization is probably a bad
      * idea.
      *
-     * TODO Change to proper singleton at some point in the future
-     *
      * @return The singleton instance of the client
      */
     public static Pipe getInstance() {
-        return instance == null ? instance = new Pipe() : instance;
+        return instance;
     }
 
     /**

@@ -218,7 +218,12 @@ public class Constants {
             /**
              * Name of the PacketClientChatMessage class
              */
-            PACKETCHATMESSAGE_CLIENT = "ie";
+            PACKETCHATMESSAGE_CLIENT = "ie",
+
+            /**
+             * Name of the GuiChatBox class
+             */
+            GUICHAT = "awv";
 
     /**
      * Gets an {@link ObfusClass} representation of a class based on a non-obfuscated name
@@ -277,5 +282,6 @@ public class Constants {
         OBFUSCATED_CLASSES.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
         OBFUSCATED_CLASSES.add(new ObfusClass("Item", ITEM));
         OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientChatMessage", PACKETCHATMESSAGE_CLIENT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiChat", GUICHAT));
     }
 }

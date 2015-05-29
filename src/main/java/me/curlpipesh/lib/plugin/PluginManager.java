@@ -79,7 +79,6 @@ public class PluginManager extends AbstractManager<Plugin> {
             }
         }
 
-        getManagedObjects().forEach(Plugin::init);
         Pipe.log(getManagedObjects().size() + " plugins loaded!");
     }
 

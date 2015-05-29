@@ -1,10 +1,11 @@
 package me.curlpipesh.pipe.util;
 
 import me.curlpipesh.pipe.event.ChatSend;
+import me.curlpipesh.pipe.injectors.GuiChatInjector;
 import pw.aria.event.EventManager;
 
 /**
- * Used in {@link me.curlpipesh.pipe.injectors.EntityThePlayerInjector} for
+ * Used in {@link GuiChatInjector} for
  * redirecting the chat messages to our custom "handler," so that we can push
  * {@link ChatSend} events without too much pain.
  *
