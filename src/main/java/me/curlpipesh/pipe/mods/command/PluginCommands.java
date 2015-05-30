@@ -1,10 +1,12 @@
 package me.curlpipesh.pipe.mods.command;
 
 import me.curlpipesh.lib.plugin.Plugin;
+import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.plugin.loading.Load;
 import me.curlpipesh.lib.plugin.loading.LoadPriority;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.commands.Command;
+import me.curlpipesh.pipe.commands.PluginCommand;
 import me.curlpipesh.pipe.event.ChatSend;
 import me.curlpipesh.pipe.util.Helper;
 import pw.aria.event.EventManager;
@@ -12,6 +14,7 @@ import pw.aria.event.Listener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Plugin for managing of a command system. Because the command system is
@@ -50,57 +53,13 @@ public class PluginCommands implements Plugin {
                     if(!chatSend.getMessage().equals(prefix)) {
                         chatSend.setCancelled(true);
                         String m = chatSend.getMessage();
-                        m = m.substring(1);
+                        m = m.substring(prefix.length());
                         runCommand(m);
                     }
                 }
             }
         });
-        commands.add(new Command() {
-            @Override
-            public boolean run(String command, String[] args) {
-                if(args.length > 0 && args[0].equals("hake")) {
-                    Helper.addChatMessage("Yaaaaaaaassssssssss");
-                    return true;
-                }
-                Helper.addChatMessage("command y u fail qwq");
-                return false;
-            }
-
-            @Override
-            public String getName() {
-                return "kilo";
-            }
-
-            @Override
-            public String getDescription() {
-                return "kilo";
-            }
-
-            @Override
-            public List<Command> getSubcommands() {
-                return new ArrayList<>();
-            }
-
-            @Override
-            public boolean takesRawInput() {
-                return false;
-            }
-
-            @Override
-            public void setRawInput(boolean e) {
-            }
-
-            @Override
-            public boolean generateUsage() {
-                return false;
-            }
-
-            @Override
-            public String getUsage() {
-                return "kilo hake";
-            }
-        });
+        commands.addAll(PluginManager.getInstance().getManagedObjects().stream().map(PluginCommand::new).collect(Collectors.toList()));
     }
 
     private void runCommand(String command) {
@@ -110,9 +69,9 @@ public class PluginCommands implements Plugin {
         System.arraycopy(temp, 1, args, 0, args.length);
         commands.stream().filter(e -> e.getName().equalsIgnoreCase(cmd)).filter(e -> !e.run(command, args)).forEach(e -> {
             if(e.generateUsage()) {
-                Helper.addChatMessage("§cHelp generation not implemented yet!");
+                Helper.addChatMessage("> §cHelp generation not implemented yet!");
             } else {
-                Helper.addChatMessage("§c" + e.getUsage());
+                Helper.addChatMessage("> §c" + e.getUsage());
             }
         });
     }
