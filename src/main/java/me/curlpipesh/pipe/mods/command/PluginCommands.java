@@ -62,18 +62,48 @@ public class PluginCommands implements Plugin {
         commands.addAll(PluginManager.getInstance().getManagedObjects().stream().map(PluginCommand::new).collect(Collectors.toList()));
     }
 
+    /**
+     * Attempts to find a command for the given String, and runs it.
+     *
+     * @param command The full String of the given command (name + args)
+     */
     private void runCommand(String command) {
         String[] temp = command.split(" ");
         String cmd = temp[0];
         String[] args = new String[temp.length - 1];
         System.arraycopy(temp, 1, args, 0, args.length);
-        commands.stream().filter(e -> e.getName().equalsIgnoreCase(cmd)).filter(e -> !e.run(command, args)).forEach(e -> {
-            if(e.generateUsage()) {
-                Helper.addChatMessage("> §cHelp generation not implemented yet!");
-            } else {
-                Helper.addChatMessage("> §c" + e.getUsage());
+        for(Command e : commands) {
+            if(e.getName().equalsIgnoreCase(cmd)) {
+                run(e, command, args);
+                return;
             }
-        });
+        }
+    }
+
+    /**
+     * Actually runs a given command. This method may recursively invoke itself
+     * as it iterates through subcommands in an attempt to find one that
+     * can be run.
+     *
+     * @param e The command to be run. May or may not be a subcommand.
+     * @param command The full String of the command to be run (name + args)
+     * @param args The arguments to be passed to the given command, or
+     *             shortened if a subcommand must be run.
+     */
+    private void run(Command e, String command, String[] args) {
+        if(!e.takesRawInput()) {
+            if(e.getSubcommands() != null) {
+                e.getSubcommands().stream().filter(s -> s.getName().equals(args[1])).forEach(s -> {
+                    String[] args2 = new String[args.length - 1];
+                    System.arraycopy(args, 1, args2, 0, args2.length);
+                    run(s, command.substring(command.split(" ")[0].length()).trim(), args2);
+                });
+            } else {
+                Helper.addChatMessage("§c> Attempted to use no args for `" + e.getName() + "', but it requires args!");
+            }
+        } else {
+            e.run(command, args);
+        }
     }
 
     @Override
