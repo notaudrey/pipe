@@ -44,6 +44,7 @@ public class RangeOption<T extends Number> extends NumberOption<T> {
         super(name, defaultValue);
         this.upperLimit = upperLimit;
         this.lowerLimit = lowerLimit;
+        this.increment = increment;
     }
 
     @Override
@@ -59,6 +60,29 @@ public class RangeOption<T extends Number> extends NumberOption<T> {
             super.set(upperLimit);
         } else {
             super.set(t);
+        }
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void set(String string) {
+        if(getNumberType().equals(Double.class)) {
+            set((T) (Double) Double.parseDouble(string));
+        }
+        if(getNumberType().equals(Float.class)) {
+            set((T) (Float) Float.parseFloat(string));
+        }
+        if(getNumberType().equals(Byte.class)) {
+            set((T) (Byte) Byte.parseByte(string));
+        }
+        if(getNumberType().equals(Integer.class)) {
+            set((T) (Integer) Integer.parseInt(string));
+        }
+        if(getNumberType().equals(Long.class)) {
+            set((T) (Long) Long.parseLong(string));
+        }
+        if(getNumberType().equals(Short.class)) {
+            set((T) (Short) Short.parseShort(string));
         }
     }
 

@@ -29,4 +29,9 @@ public class ToggleOption extends BooleanOption implements Toggleable {
     public void setEnabled(boolean e) {
         set(e);
     }
+
+    @Override
+    public void set(String string) {
+        set(Boolean.valueOf(string));
+    }
 }

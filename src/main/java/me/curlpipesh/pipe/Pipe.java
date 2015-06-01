@@ -24,7 +24,7 @@ public final class Pipe implements Statused {
      * Version of the client. Follows <a href="http://semver.org/">semver</a> rules, at
      * least somewhat
      */
-    private static final String semver = "0.5.2";
+    private static final String semver = "0.6.0";
 
     private Pipe() {
     }

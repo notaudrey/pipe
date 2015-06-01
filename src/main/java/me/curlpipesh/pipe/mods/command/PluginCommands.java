@@ -8,7 +8,7 @@ import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.commands.Command;
 import me.curlpipesh.pipe.commands.PluginCommand;
 import me.curlpipesh.pipe.event.ChatSend;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.ChatHelper;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -52,7 +52,7 @@ public class PluginCommands implements Plugin {
                 if(chatSend.getMessage().startsWith(prefix)) {
                     if(!chatSend.getMessage().equals(prefix)) {
                         chatSend.setCancelled(true);
-                        String m = chatSend.getMessage();
+                        String m = chatSend.getMessage().replaceAll("#(.*)", "");
                         m = m.substring(prefix.length());
                         runCommand(m);
                     }
@@ -91,15 +91,15 @@ public class PluginCommands implements Plugin {
      *             shortened if a subcommand must be run.
      */
     private void run(Command e, String command, String[] args) {
-        if(!e.takesRawInput()) {
+        if(!e.takesRawInput() && args.length > 0) {
             if(e.getSubcommands() != null) {
-                e.getSubcommands().stream().filter(s -> s.getName().equals(args[1])).forEach(s -> {
+                e.getSubcommands().stream().filter(s -> s.getName().equalsIgnoreCase(args[0])).forEach(s -> {
                     String[] args2 = new String[args.length - 1];
                     System.arraycopy(args, 1, args2, 0, args2.length);
                     run(s, command.substring(command.split(" ")[0].length()).trim(), args2);
                 });
             } else {
-                Helper.addChatMessage("§c> Attempted to use no args for `" + e.getName() + "', but it requires args!");
+                ChatHelper.log("§cAttempted to use no args for '§4" + e.getName() + "§c', but it requires args!");
             }
         } else {
             e.run(command, args);

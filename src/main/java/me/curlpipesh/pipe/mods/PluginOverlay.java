@@ -34,7 +34,7 @@ public class PluginOverlay implements Plugin {
             public void event(Render2D render2D) {
                 int yOffset = OFFSET + 2;
                 int count = 1;
-                final String status = String.format("§bPipe! §r(Status: §a%s§r)", Pipe.getInstance().getStatus());
+                final String status = String.format("§aPipe! §r(Status: §a%s§r)", Pipe.getInstance().getStatus());
                 int width = Helper.getStringWidth(status);
                 if(!Helper.isWorldNull() && !Helper.isIngameGuiInDebugMode()) {
                     for(Plugin p : PluginManager.getInstance().getManagedObjects()) {

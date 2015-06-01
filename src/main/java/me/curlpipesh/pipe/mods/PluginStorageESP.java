@@ -24,7 +24,7 @@ public class PluginStorageESP extends BasePlugin {
     public void init() {
         setName("Storage ESP");
         setKey(Keyboard.KEY_C);
-        addOption(new ColorOption("espColor", 0x7700FFFF));
+        addOption(new ColorOption("color", 0x7700FFFF));
         EventManager.register(new Listener<Render3D>() {
             @SuppressWarnings("ConstantConditions")
             @Override
@@ -42,7 +42,7 @@ public class PluginStorageESP extends BasePlugin {
                             if(v != null && v2 != null) {
                                 v.sub(p);
                                 v2.add(Vec3.unit()).sub(p);
-                                GLRenderer.drawBoxFromPoints(v, v2, ((ColorOption) getOptionByName("espColor").get()).get());
+                                GLRenderer.drawBoxFromPoints(v, v2, ((ColorOption) getOptionByName("color").get()).get());
                                 ++count;
                             }
                         }

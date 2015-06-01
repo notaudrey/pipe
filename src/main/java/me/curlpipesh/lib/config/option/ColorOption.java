@@ -16,4 +16,17 @@ public class ColorOption extends NumberOption<Integer> {
     public Class<Integer> getNumberType() {
         return Integer.class;
     }
+
+    @Override
+    public void set(String string) {
+        try {
+            set(Integer.decode(string));
+        } catch(Exception e) {
+            try {
+                set(Integer.parseInt(string.replaceFirst("0x", ""), 16));
+            } catch(Exception e1) {
+                set(Integer.parseInt(string.replaceFirst("0x", "")));
+            }
+        }
+    }
 }

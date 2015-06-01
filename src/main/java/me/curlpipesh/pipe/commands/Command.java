@@ -105,31 +105,4 @@ public interface Command {
      * @param e The new state of taking raw input
      */
     void setRawInput(boolean e);
-
-    /**
-     Adds an array of strings to the in-game chat. The reason why this method
-     * exists instead of just using {@link Helper#addChatMessage(String)} is
-     * because this allows us to be able to "plug in" different ways of adding
-     * the messages, if we wanted, as well as so that we don't have to add in
-     * any/all formatting in each "logging" method call.
-     *
-     * @param messages The array of messages to add to the in-game chat
-     */
-    default void addChatMessage(String... messages) {
-        addChatMessage('f', messages);
-    }
-
-    /**
-     * Adds an array of strings to the in-game chat. The reason why this method
-     * exists instead of just using {@link Helper#addChatMessage(String)} is
-     * because this allows us to be able to "plug in" different ways of adding
-     * the messages, if we wanted, as well as so that we don't have to add in
-     * any/all formatting in each "logging" method call.
-     *
-     * @param color The Minecraft color code to use for the entire message
-     * @param messages The array of messages to add to the in-game chat
-     */
-    default void addChatMessage(char color, String... messages) {
-        Arrays.stream(messages).sequential().forEach(m -> Helper.addChatMessage("§" + color + "> " + m));
-    }
 }

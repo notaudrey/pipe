@@ -10,4 +10,9 @@ public class BooleanOption extends BasicOption<Boolean> {
     public BooleanOption(String name, Boolean defaultValue) {
         super(name, defaultValue);
     }
+
+    @Override
+    public void set(String string) {
+        set(Boolean.valueOf(string));
+    }
 }
