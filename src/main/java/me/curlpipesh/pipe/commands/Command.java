@@ -1,8 +1,5 @@
 package me.curlpipesh.pipe.commands;
 
-import me.curlpipesh.pipe.util.Helper;
-
-import java.util.Arrays;
 import java.util.List;
 
 /**

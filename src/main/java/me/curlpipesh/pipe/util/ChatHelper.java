@@ -5,6 +5,10 @@ import me.curlpipesh.pipe.injectors.GuiChatInjector;
 import pw.aria.event.EventManager;
 
 import java.util.Arrays;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 /**
  * Used in {@link GuiChatInjector} for
@@ -14,9 +18,17 @@ import java.util.Arrays;
  * @author c
  * @since 5/27/15
  */
+@SuppressWarnings("unused")
 public class ChatHelper {
     /**
-     * Handles the "redirection" of chat messages.
+     * The {@link Logger} implementation for this class. Uses a custom
+     * {@link Handler} to log messages to the in-game chat.
+     */
+    private static final Logger logger = Logger.getLogger("Pipe");
+
+    /**
+     * Handles the "redirection" of chat messages. Method is "unused" because
+     * the code that uses it is generated at runtime.
      *
      * @param message The message to tinker with.
      */
@@ -26,18 +38,54 @@ public class ChatHelper {
         }
     }
 
-    // TODO Proper "Logger" implementation for this
+    /**
+     * Logs a set of "INFO" messages to the chat
+     *
+     * @param messages The messages to log
+     */
     public static void log(String... messages) {
-        Arrays.stream(messages).forEach(m -> Helper.addChatMessage("§7[§aPipe§7]§r " + m));
+        Arrays.stream(messages).forEach(logger::info);
     }
 
-    // TODO Proper "Logger" implementation for this
+    /**
+     * Logs a set of "DEBUG" messages to the chat
+     *
+     * @param messages The messages to log
+     */
     public static void debug(String... messages) {
-        Arrays.stream(messages).forEach(m -> log("§0[§4DEBUG§0]§r " + m));
+        Arrays.stream(messages).forEach(m -> logger.info("§0[§4Debug§0]§r " + m));
     }
 
-    // TODO Proper "Logger" implementation for this
+    /**
+     * Logs a set of "WARNING" messages to the chat
+     *
+     * @param messages The messages to log
+     */
     public static void warn(String... messages) {
-        Arrays.stream(messages).forEach(m -> log("§8[§cWARNING§8]§r " + m));
+        Arrays.stream(messages).forEach(logger::warning);
+    }
+
+    static {
+        logger.addHandler(new Handler() {
+            @Override
+            public void publish(LogRecord logRecord) {
+                String levelColor =
+                        logRecord.getLevel().equals(Level.SEVERE) ? "§4" :
+                                logRecord.getLevel().equals(Level.WARNING) ? "§c" :
+                                        logRecord.getLevel().equals(Level.INFO) ? "§e" : "§b";
+
+                Helper.addChatMessage(String.format("§7[§aPipe§7]§r §7[%s%s§7]§r %s", levelColor, logRecord.getLevel(),
+                        logRecord.getMessage()));
+            }
+
+            @Override
+            public void flush() {
+            }
+
+            @Override
+            public void close() throws SecurityException {
+            }
+        });
+        logger.setUseParentHandlers(false);
     }
 }

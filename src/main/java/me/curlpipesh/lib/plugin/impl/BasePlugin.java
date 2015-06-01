@@ -26,7 +26,7 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
 
     @Getter
     @Setter
-    private String status = "§eOk";
+    private String status = Status.OK;
 
     @Getter
     @Setter
@@ -86,5 +86,14 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
     @Override
     public Integer[] getModifiers() {
         return keybind.getModifiers();
+    }
+
+    @Override
+    public void init() {
+    }
+
+    @Override
+    public boolean isStatusShown() {
+        return false;
     }
 }
