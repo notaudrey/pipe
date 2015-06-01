@@ -1,10 +1,11 @@
 package me.curlpipesh.pipe.mods;
 
+import me.curlpipesh.lib.config.option.ColorOption;
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.event.Render3D;
-import me.curlpipesh.pipe.util.Helper;
 import me.curlpipesh.pipe.util.GLRenderer;
+import me.curlpipesh.pipe.util.Helper;
 import me.curlpipesh.pipe.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -19,9 +20,11 @@ import pw.aria.event.Listener;
  */
 public class PluginStorageESP extends BasePlugin {
     @Override
+    @SuppressWarnings("unchecked")
     public void init() {
         setName("Storage ESP");
         setKey(Keyboard.KEY_C);
+        addOption(new ColorOption("espColor", 0x7700FFFF));
         EventManager.register(new Listener<Render3D>() {
             @SuppressWarnings("ConstantConditions")
             @Override
@@ -39,7 +42,7 @@ public class PluginStorageESP extends BasePlugin {
                             if(v != null && v2 != null) {
                                 v.sub(p);
                                 v2.add(Vec3.unit()).sub(p);
-                                GLRenderer.drawBoxFromPoints(v, v2, 0x7700FFFF);
+                                GLRenderer.drawBoxFromPoints(v, v2, ((ColorOption) getOptionByName("espColor").get()).get());
                                 ++count;
                             }
                         }

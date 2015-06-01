@@ -61,4 +61,10 @@ public class RangeOption<T extends Number> extends NumberOption<T> {
             super.set(t);
         }
     }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public Class<T> getNumberType() {
+        return (Class<T>) this.lowerLimit.getClass();
+    }
 }
