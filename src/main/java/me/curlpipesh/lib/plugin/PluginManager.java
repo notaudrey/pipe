@@ -84,15 +84,15 @@ public class PluginManager extends AbstractManager<Plugin> {
 
     private void init(Plugin plugin) {
         plugin.init();
-        Pipe.log("Initialized plugin: " + plugin.getName());
+        Pipe.log("Loaded plugin: " + plugin.getName());
     }
 
     private void instantiate(Class<?> plugin) {
-        Pipe.log("Loading plugin: " + plugin.getName());
         try {
             addObject((Plugin) plugin.getConstructor().newInstance());
         } catch(InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
+            Pipe.log("Failed loading plugin: " + plugin.getName());
         }
     }
 }

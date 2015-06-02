@@ -5,7 +5,6 @@ import me.curlpipesh.lib.config.Configurable;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.lib.util.Toggleable;
-import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.util.ChatHelper;
 
 import java.util.ArrayList;
@@ -32,6 +31,12 @@ public class PluginCommand implements Command {
         this.plugin = plugin;
         name = plugin.getName().toLowerCase().replaceAll("\\W+", "");
 
+        // Automagic generation of subcommands for options. Yes, this is fairly
+        // messy, but there really isn't much that can be done to make this
+        // cleaner, short of refactoring it into an external class or a proper
+        // inner class.
+        //
+        // TODO Refactor out?
         if(plugin instanceof Configurable) {
             if(((Configurable) plugin).getOptions() != null) {
                 ((Configurable) plugin).getOptions().stream().sequential().forEach(o -> {
@@ -46,7 +51,7 @@ public class PluginCommand implements Command {
                             try {
                                 o.set(args[0]);
                                 ChatHelper.log("Successfully changed value for '§a" + name + "." + o.name() + "§r' to '§a"
-                                        + args[0] +  "§r'!");
+                                        + args[0] + "§r'!");
                                 return true;
                             } catch(Exception e) {
                                 ChatHelper.warn("Failed to set '§c" + name + "§r.§c" + o.name() + "§r' to '§c" + args[0] + "§r': "

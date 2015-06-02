@@ -424,7 +424,17 @@ public class HelperGenerator {
             mv.visitEnd();
         }
         {
-            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "_sendChatMessage", "(Ljava/lang/String;)V", null, null);
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "isEntitySneaking", "(Ljava/lang/Object;)Z", null, null);
+            mv.visitCode();
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitTypeInsn(CHECKCAST, getByName("Entity").getName());
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("Entity").getName(), "av", "()Z", false);
+            mv.visitInsn(IRETURN);
+            mv.visitMaxs(4, 0);
+            mv.visitEnd();
+        }
+        {
+            mv = cw.visitMethod(ACC_STATIC, "_sendChatMessage", "(Ljava/lang/String;)V", null, null);
             mv.visitCode();
             mv.visitTypeInsn(NEW, getByName("PacketClientChatMessage").getName());
             mv.visitInsn(DUP);

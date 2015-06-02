@@ -9,6 +9,7 @@ import me.curlpipesh.pipe.commands.Command;
 import me.curlpipesh.pipe.commands.PluginCommand;
 import me.curlpipesh.pipe.event.ChatSend;
 import me.curlpipesh.pipe.util.ChatHelper;
+import me.curlpipesh.pipe.util.StringHelper;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -68,6 +69,7 @@ public class PluginCommands implements Plugin {
      * @param command The full String of the given command (name + args)
      */
     private void runCommand(String command) {
+        List<String> similars = new ArrayList<>();
         String[] temp = command.split(" ");
         String cmd = temp[0];
         String[] args = new String[temp.length - 1];
@@ -76,6 +78,19 @@ public class PluginCommands implements Plugin {
             if(e.getName().equalsIgnoreCase(cmd)) {
                 run(e, command, args);
                 return;
+            } else {
+                if(StringHelper.levenshteinDistance(e.getName().toLowerCase(), cmd.toLowerCase()) <= 5) {
+                    if(similars.size() < 5) {
+                        similars.add(e.getName());
+                    }
+                }
+            }
+        }
+        ChatHelper.warn("Command not found: '§c" + cmd + "§r'");
+        if(!similars.isEmpty()) {
+            ChatHelper.log("Did you perhaps mean?:");
+            for(String string : similars) {
+                ChatHelper.log("  §7*§r " + string);
             }
         }
     }
@@ -102,8 +117,27 @@ public class PluginCommands implements Plugin {
                 ChatHelper.log("§cAttempted to use no args for '§4" + e.getName() + "§c', but it requires args!");
             }
         } else {
-            e.run(command, args);
+            if(!e.run(command, args)) {
+                ChatHelper.warn("Failed to run command: §c'" + e.getName() + "'",
+                        e.generateUsage() ? generateUsage(e) : e.getUsage());
+            }
         }
+    }
+
+    /**
+     * Generates the usage information for a given command.
+     *
+     * @param command The command to generate usage for
+     * @return The generate usage information
+     */
+    private String generateUsage(Command command) {
+        StringBuilder sb = new StringBuilder();
+        if(command instanceof PluginCommand) {
+            sb.append(command.getName()).append(" [<option> [value]]");
+        } else {
+            sb.append(command.getName()).append(" [command [argument]]");
+        }
+        return sb.toString().trim();
     }
 
     @Override

@@ -303,6 +303,17 @@ public class Helper {
     }
 
     /**
+     * Returns whether or not the given entity is sneaking
+     *
+     * @param entity The entity to get the sneaking status of
+     * @return <tt>true</tt> if the entity is sneaking, <tt>false</tt>
+     *         otherwise
+     */
+    public static boolean isEntitySneaking(Object entity) {
+        return false;
+    }
+
+    /**
      * Sends a chat message directly. This method is not meant to be called by
      * anything outside of {@link ChatHelper}, because it bypasses
      * {@link me.curlpipesh.pipe.event.ChatSend} events firing, which can cause
@@ -310,5 +321,5 @@ public class Helper {
      *
      * @param message The message to be sent
      */
-    public static void _sendChatMessage(String message) {}
+    static void _sendChatMessage(String message) {}
 }
