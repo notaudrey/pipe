@@ -1,5 +1,7 @@
 package me.curlpipesh.lib.config.option;
 
+import me.curlpipesh.pipe.util.ChatHelper;
+
 /**
  * Option for storing a color. Colors need to be passed in using the
  * <tt>0xAARRGGBB</tt> format.
@@ -20,12 +22,16 @@ public class ColorOption extends NumberOption<Integer> {
     @Override
     public void set(String string) {
         try {
-            set(Integer.decode(string));
+            set(Long.decode(string).intValue());
         } catch(Exception e) {
+            ChatHelper.warn("Failed parsing '" + string + "': " + e.getLocalizedMessage(), "Falling back to hex-parse!");
+            e.printStackTrace();
             try {
                 set(Integer.parseInt(string.replaceFirst("0x", ""), 16));
             } catch(Exception e1) {
-                set(Integer.parseInt(string.replaceFirst("0x", "")));
+                ChatHelper.warn("Failed parsing '" + string + "': " + e.getLocalizedMessage(), "Falling back to dec-parse!");
+                e1.printStackTrace();
+                set(Integer.parseInt(string));
             }
         }
     }

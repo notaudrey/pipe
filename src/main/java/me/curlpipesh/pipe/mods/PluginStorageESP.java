@@ -19,12 +19,14 @@ import pw.aria.event.Listener;
  * @since 5/23/15
  */
 public class PluginStorageESP extends BasePlugin {
+    private ColorOption color = new ColorOption("color", 0x7700FFFF);
+
     @Override
     @SuppressWarnings("unchecked")
     public void init() {
         setName("Storage ESP");
         setKey(Keyboard.KEY_C);
-        addOption(new ColorOption("color", 0x7700FFFF));
+        addOption(color);
         EventManager.register(new Listener<Render3D>() {
             @SuppressWarnings("ConstantConditions")
             @Override
@@ -42,7 +44,7 @@ public class PluginStorageESP extends BasePlugin {
                             if(v != null && v2 != null) {
                                 v.sub(p);
                                 v2.add(Vec3.unit()).sub(p);
-                                GLRenderer.drawBoxFromPoints(v, v2, ((ColorOption) getOptionByName("color").get()).get());
+                                GLRenderer.drawBoxFromPoints(v, v2, color.get());
                                 ++count;
                             }
                         }

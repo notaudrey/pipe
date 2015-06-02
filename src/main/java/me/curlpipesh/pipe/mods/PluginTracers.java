@@ -1,5 +1,6 @@
 package me.curlpipesh.pipe.mods;
 
+import me.curlpipesh.lib.config.option.ColorOption;
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.event.Render3D;
@@ -21,10 +22,17 @@ import pw.aria.event.Listener;
 public class PluginTracers extends BasePlugin {
     private final Vec3 offset = new Vec3(0, 1.62D, 0);
 
+    private ColorOption color = new ColorOption("color", 0xFFFFFFFF),
+            animal = new ColorOption("animalColor", 0xFFFFFFFF),
+            monster = new ColorOption("monsterColor", 0xFFFFFFFF);
+
     @Override
     public void init() {
         setKey(Keyboard.KEY_R);
         setName("Tracers");
+        addOption(color);
+        addOption(animal);
+        addOption(monster);
         EventManager.register(new Listener<Render3D>() {
             @SuppressWarnings("ConstantConditions")
             @Override
@@ -41,9 +49,8 @@ public class PluginTracers extends BasePlugin {
                                 if(e != null) {
                                     e.sub(p);
                                     GLRenderer.drawLine(offset, e,
-                                            Helper.isEntityAnimal(o) ? 0xFF00FF00 :
-                                                    Helper.isEntityMonster(o) ? 0xFFFF0000 :
-                                                            0xFFFFFFFF, 2.235F);
+                                            Helper.isEntityAnimal(o) ? animal.get() :
+                                                    Helper.isEntityMonster(o) ? monster.get() : color.get(), 2.235F);
                                     ++count;
                                 }
                             }
