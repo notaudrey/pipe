@@ -31,6 +31,7 @@ public class PluginSnowmen extends ExecutablePlugin {
         setName("Snowmen!");
         setKey(Keyboard.KEY_S);
         addModifier(Keyboard.KEY_LCONTROL);
+        addOption(snowmenCount);
     }
 
     @Override

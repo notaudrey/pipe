@@ -5,6 +5,7 @@ import me.curlpipesh.lib.config.Configurable;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.lib.util.Toggleable;
+import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.util.ChatHelper;
 
 import java.util.ArrayList;
@@ -39,15 +40,16 @@ public class PluginCommand implements Command {
                         @Override
                         public boolean run(String command, String[] args) {
                             if(args.length == 0) {
-                                ChatHelper.warn("You didn't provide a value for '" + name + "." + o.name() + "'!");
+                                ChatHelper.warn("You didn't provide a value for '§c" + name + "." + o.name() + "§r'!");
                                 return false;
                             }
                             try {
                                 o.set(args[0]);
-                                ChatHelper.log("Successfully changed value for '" + name + "." + o.name() + "'!");
+                                ChatHelper.log("Successfully changed value for '§a" + name + "." + o.name() + "§r' to '§a"
+                                        + args[0] +  "§r'!");
                                 return true;
                             } catch(Exception e) {
-                                ChatHelper.warn("Failed to set '" + name + "." + o.name() + "' to '" + args[0] + "': "
+                                ChatHelper.warn("Failed to set '§c" + name + "§r.§c" + o.name() + "§r' to '§c" + args[0] + "§r': "
                                         + e.getClass().getSimpleName());
                                 e.printStackTrace();
                                 return false;
