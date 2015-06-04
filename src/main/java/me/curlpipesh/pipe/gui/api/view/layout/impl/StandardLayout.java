@@ -11,6 +11,21 @@ import me.curlpipesh.pipe.gui.api.view.layout.Layout;
  * @since 08.16.2014
  */
 public class StandardLayout extends Layout {
+    private final int widgetWidth, widgetHeight;
+
+    public StandardLayout() {
+        this(72);
+    }
+
+    public StandardLayout(int widgetWidth) {
+        this(widgetWidth, 8);
+    }
+
+    public StandardLayout(int widgetWidth, int widgetHeight) {
+        this.widgetWidth = widgetWidth;
+        this.widgetHeight = widgetHeight;
+    }
+
     @Override
     public double getPadding() {
         return 2;
@@ -28,7 +43,7 @@ public class StandardLayout extends Layout {
         });
         setResizer((container, layout, components) -> {
             for(IWidget e : components) {
-                e.setArea(new Area(container.getComponentArea().getX(), e.getArea().getY(), 72, 8));
+                e.setArea(new Area(container.getComponentArea().getX(), e.getArea().getY(), widgetWidth, widgetHeight));
             }
         });
     }

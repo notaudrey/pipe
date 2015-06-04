@@ -108,7 +108,7 @@ public abstract class Container extends Widget implements IContainer {
             if(layout == null) {
                 throw new IllegalStateException("The layout of a container may not be null!");
             }
-            if(!isMinimizable() && getMinimizeControl().getState()) {
+            if(isMinimizable() && getMinimizeControl().getState()) {
                 getMinimizeControl().setState(false);
             }
             resize();
@@ -121,17 +121,17 @@ public abstract class Container extends Widget implements IContainer {
         addAction((MouseClickAction<Container>) (component, button) -> {
             if(button == 0) {
                 if(getMinimizeControl() != null) {
-                    if (getMinimizeControl().getArea().contains(calculateMouseLocation())) {
+                    if(getMinimizeControl().getArea().contains(calculateMouseLocation())) {
                         getMinimizeControl().setState(!getMinimizeControl().getState());
                     }
                 }
                 if(getPinControl() != null) {
-                    if (getPinControl().getArea().contains(calculateMouseLocation())) {
+                    if(getPinControl().getArea().contains(calculateMouseLocation())) {
                         getPinControl().setState(!getPinControl().getState());
                     }
                 }
                 if(getCloseControl() != null) {
-                    if (getCloseControl().getArea().contains(calculateMouseLocation())) {
+                    if(getCloseControl().getArea().contains(calculateMouseLocation())) {
                         setVisible(false);
                     }
                 }
@@ -151,16 +151,18 @@ public abstract class Container extends Widget implements IContainer {
         // 8 is to ensure that there is enough room for fonts and stuff.
         // TODO Make that 8 customizable!
         final double TITLE_SPACING = 8 + layout.getPadding();
-        if(getMinimizeControl().getState()) {
-            setArea(new Area(getArea().getX(), getArea().getY(), getArea().getWidth(), TITLE_SPACING));
-            setComponentArea(new Area(0, 0, 0, 0));
+        if(isMinimizable()) {
+            if(getMinimizeControl().getState()) {
+                setArea(new Area(getArea().getX(), getArea().getY(), getArea().getWidth(), TITLE_SPACING));
+                setComponentArea(new Area(0, 0, 0, 0));
+            }
         } else {
             double maxX = 0, maxY = 0;
-            for (IWidget child : children) {
-                if (child.getArea().getX() + child.getArea().getWidth() > maxX) {
+            for(IWidget child : children) {
+                if(child.getArea().getX() + child.getArea().getWidth() > maxX) {
                     maxX = child.getArea().getX() + child.getArea().getWidth();
                 }
-                if (child.getArea().getY() + child.getArea().getHeight() > maxY) {
+                if(child.getArea().getY() + child.getArea().getHeight() > maxY) {
                     maxY = child.getArea().getY() + child.getArea().getHeight();
                 }
             }

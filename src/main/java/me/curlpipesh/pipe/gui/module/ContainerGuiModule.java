@@ -9,8 +9,10 @@ import me.curlpipesh.pipe.gui.api.model.base.interfaces.IWidget;
 import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
 import me.curlpipesh.pipe.gui.api.view.render.theme.ITheme;
 import me.curlpipesh.pipe.gui.api.view.render.theme.ThemeManager;
+import me.curlpipesh.pipe.util.GLRenderer;
 import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.Display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public abstract class ContainerGuiModule implements GuiModule {
     private ITheme theme;
 
     public ContainerGuiModule() {
+        containers.clear();
         init();
         containers.forEach(IContainer::initialize);
     }
@@ -58,8 +61,14 @@ public abstract class ContainerGuiModule implements GuiModule {
         }
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
-    public final void render(int mx, int my, float ptt) {
+    public void render(int mx, int my, float ptt) {
+        if(Helper.isWorldNull()) {
+            GLRenderer.drawRect(0, 0, Display.getWidth(), Display.getHeight(), 0xFF000000);
+        } else {
+            GLRenderer.drawRect(0, 0, Display.getWidth(), Display.getHeight(), 0x77000000);
+        }
         containers.stream().collect(inReverse()).stream().filter(IWidget::isVisible).sequential()
                 .forEach(container -> {
                     container.tick();
@@ -77,14 +86,14 @@ public abstract class ContainerGuiModule implements GuiModule {
     }
 
     @Override
-    public final void keypress(char c, int k) {
+    public void keypress(char c, int k) {
         if(k == Keyboard.KEY_ESCAPE) {
             Helper.displayGuiScreen(null);
         }
     }
 
     @Override
-    public final void mouseDown(int mx, int my, int mb) {
+    public void mouseDown(int mx, int my, int mb) {
         for(IContainer e : containers) {
             if(e.isMouseOver()) {
                 if(!isInFrontOfList(e)) {
@@ -98,13 +107,13 @@ public abstract class ContainerGuiModule implements GuiModule {
     }
 
     @Override
-    public final void mouseDownMove(int mx, int my, int mb, long t) {
+    public void mouseDownMove(int mx, int my, int mb, long t) {
         containers.parallelStream().filter(c -> c.isVisible() && c.isFocused()).sequential()
                 .forEach(c -> c.drag(mb));
     }
 
     @Override
-    public final void mouseUp(int mx, int my, int mb) {
+    public void mouseUp(int mx, int my, int mb) {
         containers.parallelStream().filter(c -> c.isVisible() && c.isFocused()).sequential()
                 .forEach(c -> c.release(mb));
 

@@ -4,7 +4,9 @@ import me.curlpipesh.bytecodetools.BytecodeTools;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
 import me.curlpipesh.pipe.generators.GuiScreenGenerator;
+import me.curlpipesh.pipe.gui.module.GuiModuleMainMenu;
 import me.curlpipesh.pipe.util.Constants;
+import me.curlpipesh.pipe.util.Helper;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -38,12 +40,13 @@ public final class Pipe implements Statused {
         log("Starting up Pipe...");
         BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
         PluginManager.getInstance().init();
+        log("Displaying new GUI...");
+        Helper.displayGuiModule(new GuiModuleMainMenu());
+        log("Done!");
     }
 
     /**
-     * Returns the singleton instance of the client, initializing it as
-     * necessary. Note that this style of initialization is probably a bad
-     * idea.
+     * Returns the singleton instance of the client.
      *
      * @return The singleton instance of the client
      */

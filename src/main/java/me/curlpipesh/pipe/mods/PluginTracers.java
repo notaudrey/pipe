@@ -22,7 +22,7 @@ import pw.aria.event.Listener;
 public class PluginTracers extends BasePlugin {
     private final Vec3 offset = new Vec3(0, 1.62D, 0);
 
-    private ColorOption color = new ColorOption("color", 0xFFFFFFFF),
+    private ColorOption color = new ColorOption("color", 0xFF0000FF),
             animal = new ColorOption("animalColor", 0xFF00FF00),
             monster = new ColorOption("monsterColor", 0xFFFF0000);
 
@@ -38,6 +38,7 @@ public class PluginTracers extends BasePlugin {
             @Override
             public void event(Render3D render3D) {
                 if(PluginTracers.this.isEnabled()) {
+                    // Sneak bug fix
                     offset.y(Helper.isEntitySneaking(Helper.getPlayer()) ? 1.54D : 1.62D);
                     int count = 0;
                     Vec3 p = Helper.getEntityVec(Helper.getPlayer());

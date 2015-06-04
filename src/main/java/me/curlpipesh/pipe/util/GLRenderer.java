@@ -89,6 +89,29 @@ public class GLRenderer {
     }
 
     /**
+     * Draws a rectangle with a vertical gradient, using <tt>c1</tt> at the top
+     * and <tt>c2</tt> at the bottom.
+     *
+     * @param x X coordinate of the rectangle
+     * @param y Y coordinate of the rectangle
+     * @param w Width of the rectangle
+     * @param h Height of the rectangle
+     * @param c1 Upper gradient color of the rectangle, in 0xAARRGGBB format
+     * @param c2 Lower gradient color of the rectangle, in 0xAARRGGBB format
+     */
+    public static void drawGradientRect(double x, double y, double w, double h, int c1, int c2) {
+        pre();
+        tess.startDrawing(GL_QUADS).color(c1)
+                .addVertex(x, y, 0)
+                .addVertex(x + w, y, 0)
+                .color(c2)
+                .addVertex(x + w, y + h, 0)
+                .addVertex(x, y + h, 0)
+                .bindAndDraw();
+        post();
+    }
+
+    /**
      * Renders a 3-dimensional line on the screen.
      *
      * @param a The starting vector
@@ -198,5 +221,20 @@ public class GLRenderer {
 
         glScissor((int) (x * factor), (int) ((height - y2) * factor),
                 (int) ((x2 - x) * factor), (int) ((y2 - y) * factor));
+    }
+
+    /**
+     * Draws a String with an "embossing" effect, using the provided offset and colors.
+     *
+     * @param s The String to render
+     * @param x The x position to render at
+     * @param y The y position to render at
+     * @param c The main color of the String
+     * @param c2 The "emboss" color of the String
+     * @param eOffset The amount to offset the "emboss" effect by.
+     */
+    public static void drawEmbossedString(String s, float x, float y, int c, int c2, float eOffset) {
+        Helper.drawString(s, x, y + eOffset, c2, false);
+        Helper.drawString(s, x, y, c, false);
     }
 }
