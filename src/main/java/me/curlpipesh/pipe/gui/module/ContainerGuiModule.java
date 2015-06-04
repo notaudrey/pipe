@@ -69,6 +69,7 @@ public abstract class ContainerGuiModule implements GuiModule {
         } else {
             GLRenderer.drawRect(0, 0, Display.getWidth(), Display.getHeight(), 0x77000000);
         }
+        midrender();
         containers.stream().collect(inReverse()).stream().filter(IWidget::isVisible).sequential()
                 .forEach(container -> {
                     container.tick();
@@ -82,8 +83,9 @@ public abstract class ContainerGuiModule implements GuiModule {
                         e.printStackTrace();
                     }
                 });
-
     }
+
+    protected void midrender() {}
 
     @Override
     public void keypress(char c, int k) {
@@ -103,7 +105,6 @@ public abstract class ContainerGuiModule implements GuiModule {
                 return;
             }
         }
-
     }
 
     @Override

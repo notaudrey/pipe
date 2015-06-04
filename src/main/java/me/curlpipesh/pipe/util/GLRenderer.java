@@ -2,6 +2,7 @@ package me.curlpipesh.pipe.util;
 
 import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
+import me.curlpipesh.pipe.gui.api.util.MathUtil;
 import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -18,9 +19,9 @@ import static org.lwjgl.opengl.GL13.GL_SAMPLE_ALPHA_TO_COVERAGE;
 public class GLRenderer {
     /**
      * The {@link Tessellator} to be used for rendering. By default, this is a
-     * {@link VAOTessellator} with a capacity of <tt>2048</tt>.
+     * {@link VAOTessellator}.
      */
-    private static final Tessellator tess = new VAOTessellator(2048);
+    private static final Tessellator tess = new VAOTessellator(16777216);
 
     /**
      * Does OpenGL cap enables/disables in preparation for rendering. If one is
@@ -236,5 +237,78 @@ public class GLRenderer {
     public static void drawEmbossedString(String s, float x, float y, int c, int c2, float eOffset) {
         Helper.drawString(s, x, y + eOffset, c2, false);
         Helper.drawString(s, x, y, c, false);
+    }
+
+    /**
+     * Draws a filled circle
+     *
+     * @param x X-center of the circle
+     * @param y Y-center of the circle
+     * @param r Radius of the circle
+     * @param c Color of the circle
+     */
+    public static void drawCircle(double x, double y, double r, int c) {
+        drawFilledArc(x, y, r, c, 360);
+    }
+
+    /**
+     * Draws a circular outline
+     *
+     * @param x X-center of the circle
+     * @param y Y-center of the circle
+     * @param r Radius of the circle
+     * @param c Color of the circle
+     * @param w Thickness of the outline
+     */
+    public static void drawCircleBorder(double x, double y, double r, int c, float w) {
+        drawArc(x, y, r, c, 360, w);
+    }
+
+    /**
+     * Draws a filled-in arc
+     *
+     * @param x Vertex x
+     * @param y Vertex y
+     * @param r Radius
+     * @param c Color
+     * @param degrees Number of degrees that the arc should span
+     */
+    public static void drawFilledArc(double x, double y, double r, int c, int degrees) {
+        tess.startDrawing(GL_POLYGON).color(c);
+        for (int i = 0; i <= MathUtil.wrapTo(degrees, 1, 360); i++) {
+            double x2 = Math.sin(((i * Math.PI) / 180)) * r;
+            double y2 = Math.cos(((i * Math.PI) / 180)) * r;
+            tess.addVertex(x + x2, y + y2, 0);
+        }
+        tess.bindAndDraw();
+    }
+
+    /**
+     * Draws the border of an arc
+     *
+     * @param x Vertex x
+     * @param y Vertex y
+     * @param r Radius
+     * @param c Color
+     * @param degrees Number of degrees that the arc should span
+     * @param width Thickness of the arc-line
+     */
+    public static void drawArc(double x, double y, double r, int c, int degrees, float width) {
+        glLineWidth(width);
+
+        tess.startDrawing(GL_LINE_LOOP).color(c);
+        for (int i = 0; i <= MathUtil.wrapTo(degrees, 1, 360); i++) {
+            double x2 = Math.sin(((i * Math.PI) / 180)) * r;
+            double y2 = Math.cos(((i * Math.PI) / 180)) * r;
+            tess.addVertex(x + x2, y + y2, 0);
+        }
+        for (int i = MathUtil.wrapTo(degrees, 1, 360); i > 0; i--) {
+            double x2 = Math.sin(((i * Math.PI) / 180)) * r;
+            double y2 = Math.cos(((i * Math.PI) / 180)) * r;
+            tess.addVertex(x + x2, y + y2, 0);
+        }
+        tess.bindAndDraw();
+
+        glLineWidth(1.0F);
     }
 }
