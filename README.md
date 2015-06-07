@@ -1,3 +1,5 @@
+![Client image](http://i.imgur.com/FPohCuqm.png)
+
 Pipe
 ----
 A "Minecraft" modded client that works through instrumentation. Apache 2.0-licensed.
@@ -5,6 +7,7 @@ A "Minecraft" modded client that works through instrumentation. Apache 2.0-licen
 The point of this client is to allow for "intrusive" modifications of the game without violating Mojang's EULA, specifically the following parts:
 
 ![Mojang EULA image 1](https://i.imgur.com/Q6pKGDA.png)
+
 ![Mojang EULA image 2](https://i.imgur.com/QKGkSGC.png)
 
 These conditions can be found [here](https://account.mojang.com/documents/minecraft_eula) and [here](https://account.mojang.com/terms), respectively.
