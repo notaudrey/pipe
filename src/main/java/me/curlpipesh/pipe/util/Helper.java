@@ -261,6 +261,14 @@ public class Helper {
     public static void displayGuiScreen(GuiScreen gui) {}
 
     /**
+     * Displays a "Minecraft-native" GUI. Since this requires instantiating the
+     * GuiScreens manually, usage of this method is not recommended.
+     *
+     * @param screen The GuiScreen to display
+     */
+    public static void mc_displayGuiScreen(Object screen) {};
+
+    /**
      * Displays a {@link GuiModule} on the screen.
      *
      * @param module The GuiModule to display

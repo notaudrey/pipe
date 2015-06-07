@@ -223,7 +223,22 @@ public class Constants {
             /**
              * Name of the GuiChatBox class
              */
-            GUICHAT = "awv";
+            GUICHAT = "awv",
+
+            /**
+             * Name of the GuiOptions class
+             */
+            GUIOPTIONS = "axn",
+
+            /**
+             * Name of the GuiSingleplayer class
+             */
+            GUISINGLEPLAYER = "axv",
+
+            /**
+             * Name of the GuiMultiplayer class
+             */
+            GUIMULTIPLAYER = "azh";
 
     /**
      * Gets an {@link ObfusClass} representation of a class based on a non-obfuscated name
@@ -283,5 +298,8 @@ public class Constants {
         OBFUSCATED_CLASSES.add(new ObfusClass("Item", ITEM));
         OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientChatMessage", PACKETCHATMESSAGE_CLIENT));
         OBFUSCATED_CLASSES.add(new ObfusClass("GuiChat", GUICHAT));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiSingleplayer", GUISINGLEPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiMultiplayer", GUIMULTIPLAYER));
+        OBFUSCATED_CLASSES.add(new ObfusClass("GuiOptions", GUIOPTIONS));
     }
 }

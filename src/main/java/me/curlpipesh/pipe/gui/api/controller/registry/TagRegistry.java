@@ -36,6 +36,9 @@ public final class TagRegistry {
         registerTag("control-type", new String[] {
                 "close", "pin", "minimize"
         });
+        registerTag("render-focus", new String[] {
+                "true", "false"
+        });
     }
 
     /**

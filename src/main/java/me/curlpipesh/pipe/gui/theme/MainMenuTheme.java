@@ -19,18 +19,26 @@ import org.lwjgl.opengl.GL11;
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 
 public class MainMenuTheme extends Theme {
-    private static final int LIGHT_GRADIENT_GREY = 0xFFE5E5E5, DARK_GRADIENT_GREY = 0xFFBDBDBD;
+    /*private static final int LIGHT_GRADIENT_GREY = 0xFFE5E5E5, DARK_GRADIENT_GREY = 0xFFBDBDBD;
     private static final int SOLID_GREY = 0xFFDEDEDE, BORDER_GREY = 0xFF6F6F6F;
     private static final int CONTROL_ON = 0xFF424242, CONTROL_OFF = 0xFF858585;
     private static final int BUTTON_LIGHT_GRADIENT_OFF = 0xFF999999, BUTTON_DARK_GRADIENT_OFF = 0xFF777777;
-    private static final int BUTTON_LIGHT_GRADIENT_ON = 0xFF4A90D9, BUTTON_DARK_GRADIENT_ON = 0xFF377FC9;
+    private static final int BUTTON_LIGHT_GRADIENT_ON = 0xFF4A90D9, BUTTON_DARK_GRADIENT_ON = 0xFF377FC9;*/
+
+    private static final int LIGHT_GRADIENT_GREY = 0xAA959595, DARK_GRADIENT_GREY = 0xAA656565;
+    private static final int SOLID_GREY = 0xAA9A9A9A, BORDER_GREY = 0xAA393939;
+    private static final int CONTROL_ON = 0xAA212121, CONTROL_OFF = 0xAA424242;
+    private static final int BUTTON_LIGHT_GRADIENT_OFF = 0xAA555555, BUTTON_DARK_GRADIENT_OFF = 0xAA333333;
+    private static final int BUTTON_LIGHT_GRADIENT_ON = 0xAA777777, BUTTON_DARK_GRADIENT_ON = 0xAA555555;
 
     @SuppressWarnings("FieldCanBeLocal")
     private final Renderer<IContainer> containerRenderer = container -> {
         GLRenderer.drawGradientRect(container.getArea().getX(), container.getArea().getY(),
-                container.getArea().getWidth(), container.getTitleArea().getHeight(), LIGHT_GRADIENT_GREY, DARK_GRADIENT_GREY);
+                container.getArea().getWidth(), container.getTitleArea().getHeight(), LIGHT_GRADIENT_GREY | 0xFF000000,
+                DARK_GRADIENT_GREY | 0xFF000000);
         GLRenderer.drawRect(container.getComponentArea().getX(), container.getComponentArea().getY(),
                 container.getComponentArea().getWidth(), container.getComponentArea().getHeight(), SOLID_GREY);
+
 
         for(IControl control : container.getControls()) {
             int color = 0xFFFFFFFF;
@@ -55,7 +63,7 @@ public class MainMenuTheme extends Theme {
 
         GLRenderer.drawEmbossedString(container.getText(), (float) container.getArea().getX() + 3,
                 (float) (container.getTitleArea().getY() + (container.getTitleArea().getHeight() / 2F) - (Helper.getFontHeight() / 2F)) + 1F,
-                0xFF5B5B5B, 0xFFFFFFFF, 0.5F);
+                0xFFFFFFFF, 0xFF5B5B5B, 0.5F);
     };
 
     public MainMenuTheme() {
@@ -69,13 +77,18 @@ public class MainMenuTheme extends Theme {
                         (int) widget.getArea().getY(), 0xFFFFFFFF, false));
 
         registerRenderer("button", (widget) -> {
-            GLRenderer.drawGradientRect(widget.getArea().getX(), widget.getArea().getY(), widget.getArea().getWidth(),
-                    widget.getArea().getHeight(),
-                    widget.isFocused() ? BUTTON_LIGHT_GRADIENT_ON : widget.isState() ? BUTTON_DARK_GRADIENT_ON : BUTTON_LIGHT_GRADIENT_OFF,
-                    widget.isFocused() ? BUTTON_DARK_GRADIENT_ON : widget.isState() ? BUTTON_LIGHT_GRADIENT_ON : BUTTON_DARK_GRADIENT_OFF);
-            GLRenderer.drawEmbossedString(widget.getText(), (float) widget.getArea().getX() + 3,
-                    (float) (widget.getArea().getY() + (widget.getArea().getHeight() / 2) - (Helper.getFontHeight() / 2F)),
-                    0xFFFFFFFF, 0xFF5B5B5B, -0.5F);
+            if(!widget.getTagValue("render-focus").equals("true")) {
+                GLRenderer.drawGradientRect(widget.getArea().getX(), widget.getArea().getY(), widget.getArea().getWidth(),
+                        widget.getArea().getHeight(), BUTTON_LIGHT_GRADIENT_OFF, BUTTON_DARK_GRADIENT_OFF);
+            } else {
+                GLRenderer.drawGradientRect(widget.getArea().getX(), widget.getArea().getY(), widget.getArea().getWidth(),
+                        widget.getArea().getHeight(),
+                        widget.isFocused() ? BUTTON_LIGHT_GRADIENT_ON : widget.isState() ? BUTTON_DARK_GRADIENT_ON : BUTTON_LIGHT_GRADIENT_OFF,
+                        widget.isFocused() ? BUTTON_DARK_GRADIENT_ON : widget.isState() ? BUTTON_LIGHT_GRADIENT_ON : BUTTON_DARK_GRADIENT_OFF);
+            }
+            Helper.drawString(widget.getText(), (float) widget.getArea().getX() + 3,
+                    (float) (widget.getArea().getY() + (widget.getArea().getHeight() / 2) - (Helper.getFontHeight() / 2F) + 1),
+                    0xFFFFFFFF, false);
         });
 
         //noinspection Convert2Lambda
