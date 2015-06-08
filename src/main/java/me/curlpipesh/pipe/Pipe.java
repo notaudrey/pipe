@@ -1,5 +1,7 @@
 package me.curlpipesh.pipe;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import me.curlpipesh.bytecodetools.BytecodeTools;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
@@ -26,10 +28,11 @@ public final class Pipe implements Statused {
      * Version of the client. Follows <a href="http://semver.org/">semver</a> rules, at
      * least somewhat
      */
-    private static final String semver = "0.6.1";
+    private static final String semver = "0.7.0";
 
-    private Pipe() {
-    }
+    private final Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
+
+    private Pipe() {}
 
     /**
      * Initializes the client. This method is called from code injected into

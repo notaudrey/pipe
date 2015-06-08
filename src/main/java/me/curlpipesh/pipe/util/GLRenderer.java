@@ -113,6 +113,29 @@ public class GLRenderer {
     }
 
     /**
+     * Draws a rectangle with a vertical gradient, using <tt>c1</tt> at the top
+     * and <tt>c2</tt> at the bottom.
+     *
+     * @param x X coordinate of the rectangle
+     * @param y Y coordinate of the rectangle
+     * @param w Width of the rectangle
+     * @param h Height of the rectangle
+     * @param c1 Upper gradient color of the rectangle, in 0xAARRGGBB format
+     * @param c2 Lower gradient color of the rectangle, in 0xAARRGGBB format
+     */
+    public static void drawSideGradientRect(double x, double y, double w, double h, int c1, int c2) {
+        pre();
+        tess.startDrawing(GL_QUADS).color(c1)
+                .addVertex(x, y, 0)
+                .addVertex(x, y + h, 0)
+                .color(c2)
+                .addVertex(x + w, y + h, 0)
+                .addVertex(x + w, y, 0)
+                .bindAndDraw();
+        post();
+    }
+
+    /**
      * Renders a 3-dimensional line on the screen.
      *
      * @param a The starting vector

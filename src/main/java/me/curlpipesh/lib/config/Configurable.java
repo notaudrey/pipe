@@ -1,7 +1,6 @@
 package me.curlpipesh.lib.config;
 
-import me.curlpipesh.lib.config.file.ConfigFile;
-
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,12 +63,12 @@ public interface Configurable {
      *
      * @return The config file for this class
      */
-    ConfigFile getConfig();
+    File getFile();
 
     /**
      * Sets the config file for this class
      *
      * @param configFile The new config file to use
      */
-    void setConfig(ConfigFile configFile);
+    void setFile(File configFile);
 }

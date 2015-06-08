@@ -15,6 +15,7 @@ import me.curlpipesh.pipe.util.Constants;
 import me.curlpipesh.pipe.util.GLRenderer;
 import me.curlpipesh.pipe.util.Helper;
 import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -49,13 +50,14 @@ public class GuiModuleMainMenu extends ContainerGuiModule {
 
         addContainer(container);
         IntStream.range(0, 256).forEach(i -> snowflakes.add(new Snowflake(random.nextDouble() * (Display.getWidth() / Helper.getScale()),
-                        random.nextDouble() * 4D)));
+                random.nextDouble() * 4D)));
     }
 
     @Override
     protected void midrender() {
-        GLRenderer.drawGradientRect(0, 0, Display.getWidth() / Helper.getScale(), (Display.getHeight() / Helper.getScale()) / 4,
-                0x220044FF, 0x0);
+        GLRenderer.drawRect(0, 0, Display.getWidth() / Helper.getScale(), Display.getHeight() / Helper.getScale(), 0xFF000717);
+        GLRenderer.drawSideGradientRect(0, 0, Display.getWidth() / Helper.getScale(), Display.getHeight() / Helper.getScale(),
+                0xFF000000, 0x0);
         GLRenderer.pre();
         for(Snowflake snowflake : snowflakes) {
             snowflake.x += (random.nextDouble() * 2) * (Math.random() > 0.5 ? -1 : 1);
@@ -66,6 +68,22 @@ public class GuiModuleMainMenu extends ContainerGuiModule {
             GLRenderer.drawCircle(snowflake.x, snowflake.y, snowflake.r, 0x34FFFFFF);
         }
         GLRenderer.post();
+
+        String title = "Pipe";
+        String version = Pipe.getVersion();
+        int scale = 4;
+
+        GL11.glPushMatrix();
+        GL11.glTranslated((Display.getWidth() / Helper.getScale()) / 2, (Display.getHeight() / Helper.getScale()) / (scale * 1.5), 0);
+        GL11.glScaled(scale, scale, scale);
+        Helper.drawString(title, Helper.getStringWidth(title) * -0.5F, 0, 0xFFAAAAAA, false);
+        GL11.glScaled(1 / scale, 1 / scale, 1 / scale);
+        GL11.glTranslated(-(Display.getWidth() / Helper.getScale()) / 2, -(Display.getHeight() / Helper.getScale()) / scale, 0);
+        GL11.glPopMatrix();
+
+        Helper.drawString(version, ((Display.getWidth() / Helper.getScale()) / 2) + Helper.getFontHeight(),
+                ((Display.getHeight() / Helper.getScale()) / (scale * 1.5F)) + Helper.getFontHeight() * (scale - 1) + 3,
+                0xFFAAAAAA, false);
 
         Helper.drawString("Minecraft 1.8.7 (Pipe §9" + Pipe.getVersion() + "§r)", 2,
                 (Display.getHeight() / Helper.getScale()) - 2 - Helper.getFontHeight(), 0xFFFFFFFF, false);
@@ -86,8 +104,7 @@ public class GuiModuleMainMenu extends ContainerGuiModule {
         @SafeVarargs
         @SuppressWarnings("unchecked")
         public GuiScreenButton(Class<?> guiScreen, Object parentScreen, String text, Tuple<String, String>... tags) {
-
-            super("button", text, ArrayHelper.concat(tags, new Tuple[] {new Tuple<>("render-focus", "false")}));
+            super("button", text, ArrayHelper.concat(tags, new Tuple[]{new Tuple<>("render-focus", "false")}));
             addAction((MouseClickAction<GuiScreenButton>) (component, button) -> {
                 if(guiScreen.equals(Constants.getByName("GuiOptions").getClazz())) {
                     try {

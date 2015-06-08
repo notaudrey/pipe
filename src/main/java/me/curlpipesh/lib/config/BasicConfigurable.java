@@ -1,9 +1,10 @@
 package me.curlpipesh.lib.config;
 
 import lombok.Getter;
-import me.curlpipesh.lib.config.file.ConfigFile;
+import lombok.Setter;
 import me.curlpipesh.pipe.Pipe;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,13 +18,19 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author c
  * @since 5/23/15
  */
-public class BasicConfigurable implements Configurable{
+public class BasicConfigurable implements Configurable {
     @Getter
     private final List<Option<?>> options = new CopyOnWriteArrayList<>();
 
+    @Getter
+    @Setter
+    private File file;
+
     @Override
     public void load() {
-
+        if(file != null) {
+            // Load stuff properly
+        }
     }
 
     @Override
@@ -56,15 +63,5 @@ public class BasicConfigurable implements Configurable{
     @Override
     public Optional<Option<?>> getOptionByName(String name) {
         return options.stream().filter(o -> o.name().equalsIgnoreCase(name)).findFirst();
-    }
-
-    @Override
-    public ConfigFile getConfig() {
-        return null;
-    }
-
-    @Override
-    public void setConfig(ConfigFile configFile) {
-
     }
 }
