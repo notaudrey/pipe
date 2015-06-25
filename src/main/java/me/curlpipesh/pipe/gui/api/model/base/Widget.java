@@ -11,7 +11,7 @@ import me.curlpipesh.pipe.gui.api.util.Tuple;
 import lombok.Getter;
 import lombok.Setter;
 import me.curlpipesh.pipe.gui.api.model.base.controls.interfaces.IControl;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.input.Mouse;
 
 import java.awt.*;

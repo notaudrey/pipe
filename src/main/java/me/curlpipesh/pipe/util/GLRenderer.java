@@ -3,6 +3,7 @@ package me.curlpipesh.pipe.util;
 import me.curlpipesh.gl.tessellation.Tessellator;
 import me.curlpipesh.gl.tessellation.impl.VAOTessellator;
 import me.curlpipesh.pipe.gui.api.util.MathUtil;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -26,7 +27,7 @@ public class GLRenderer {
     /**
      * Does OpenGL cap enables/disables in preparation for rendering. If one is
      * going to be doing a large number of render calls, it is suggested that
-     * render calls are created that do not call {@link #pre()} and
+     * render calls are created that do not call <tt>pre()</tt> and
      * {@link #post()} at the beginning and end of the method (respectively),
      * so as to not have an impact on render performance.
      */
@@ -52,7 +53,7 @@ public class GLRenderer {
      * Undoes all the OpenGL cap enables/disables done by {@link #pre()} If one
      * is going to be doing a large number of render calls, it is suggested
      * that render calls are created that do not call {@link #pre()} and
-     * {@link #post()} at the beginning and end of the method (respectively),
+     * <tt>post()</tt> at the beginning and end of the method (respectively),
      * so as to not have an impact on render performance.
      */
     public static void post() {

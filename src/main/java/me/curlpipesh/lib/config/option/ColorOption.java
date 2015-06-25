@@ -1,6 +1,6 @@
 package me.curlpipesh.lib.config.option;
 
-import me.curlpipesh.pipe.util.ChatHelper;
+import me.curlpipesh.pipe.util.helpers.ChatHelper;
 
 /**
  * Option for storing a color. Colors need to be passed in using the

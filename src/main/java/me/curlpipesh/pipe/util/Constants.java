@@ -21,224 +21,292 @@ public class Constants {
     @SuppressWarnings("SpellCheckingInspection")
     public static final String
             /**
-             * Name of the Minecraft class
+             * Dummy field to make sure that IntelliJ's formatter does it's job
+             * correctly. ;-;
              */
-            MINECRAFT = "ave",
+            DUMMY = "WHATEVER",
+    /**
+     * Name of the Minecraft class
+     */
+    MINECRAFT = "ave",
 
-            /**
-             * Name of the GuiIngame class
-             */
-            GUIINGAME = "avo",
+    /**
+     * Name of the GuiIngame class
+     */
+    GUIINGAME = "avo",
 
-            /**
-             * Name of the FontRenderer class
-             */
-            FONTRENDERER = "avn",
+    /**
+     * Name of the FontRenderer class
+     */
+    FONTRENDERER = "avn",
 
-            /**
-             * Name of the GameSettings class
-             */
-            GAMESETTINGS = "avh",
+    /**
+     * Name of the GameSettings class
+     */
+    GAMESETTINGS = "avh",
 
-            /**
-             * Name of the World class
-             */
-            WORLD = "bdb",
+    /**
+     * Name of the World class
+     */
+    WORLD = "bdb",
 
-            /**
-             * Name of the AbstractWorld class
-             */
-            ABSTRACTWORLD = "adm",
+    /**
+     * Name of the AbstractWorld class
+     */
+    ABSTRACTWORLD = "adm",
 
-            /**
-             * Name of the WorldProvider class
-             */
-            WORLDPROVIDER = "anm",
+    /**
+     * Name of the WorldProvider class
+     */
+    WORLDPROVIDER = "anm",
 
-            /**
-             * Name of the Entity class
-             */
-            ENTITY = "pk",
+    /**
+     * Name of the Entity class
+     */
+    ENTITY = "pk",
 
-            /**
-             * Name of the EntityClientPlayer class
-             */
-            ENTITYTHEPLAYER = "bew",
+    /**
+     * Name of the EntityClientPlayer class
+     */
+    ENTITYTHEPLAYER = "bew",
 
-            /**
-             * Name of the ScaledResolution class
-             */
-            SCALEDRESOLUTION = "avr",
+    /**
+     * Name of the ScaledResolution class
+     */
+    SCALEDRESOLUTION = "avr",
 
-            /**
-             * Name of the EntityRenderer class
-             */
-            ENTITYRENDERER = "bfk",
+    /**
+     * Name of the EntityRenderer class
+     */
+    ENTITYRENDERER = "bfk",
 
-            /**
-             * Name of the EntityLiving class
-             */
-            ENTITYLIVING = "ps",
+    /**
+     * Name of the EntityLiving class
+     */
+    ENTITYLIVING = "ps",
 
-            /**
-             * Name of the EntityCreature class
-             */
-            ENTITYCREATURE = "py",
+    /**
+     * Name of the EntityLivingBase class
+     */
+    ENTITYLIVINGBASE = "pr",
 
-            /**
-             * Name of the EntityAgeable class
-             */
-            ENTITYAGEABLE = "ph",
+    /**
+     * Name of the EntityCreature class
+     */
+    ENTITYCREATURE = "py",
 
-            /**
-             * Name of the EntityAnimal class
-             */
-            ENTITYANIMAL = "tm",
+    /**
+     * Name of the EntityAgeable class
+     */
+    ENTITYAGEABLE = "ph",
 
-            /**
-             * Name of the EntityMonster class
-             */
-            ENTITYMONSTER = "vv",
+    /**
+     * Name of the EntityAnimal class
+     */
+    ENTITYANIMAL = "tm",
 
-            /**
-             * Name of the BlockEntity class (formerly TileEntity)
-             */
-            BLOCKENTITY = "akw",
+    /**
+     * Name of the EntityMonster class
+     */
+    ENTITYMONSTER = "vv",
 
-            /**
-             * Name of the BlockEntityChest class
-             */
-            BLOCKENTITYCHEST = "aky",
+    /**
+     * Name of the BlockEntity class (formerly TileEntity)
+     */
+    BLOCKENTITY = "akw",
 
-            /**
-             * Name of the BlockEntityEnderChest class
-             */
-            BLOCKENTITYENDERCHEST = "alf",
+    /**
+     * Name of the BlockEntityChest class
+     */
+    BLOCKENTITYCHEST = "aky",
 
-            /**
-             * Name of the BlockPos class
-             */
-            BLOCKPOS = "cj",
+    /**
+     * Name of the BlockEntityEnderChest class
+     */
+    BLOCKENTITYENDERCHEST = "alf",
 
-            /**
-             * Name of the Vec3i class
-             */
-            VEC3I = "df",
+    /**
+     * Name of the BlockPos class
+     */
+    BLOCKPOS = "cj",
 
-            /**
-             * Name of the Gui class
-             */
-            GUI = "avp",
+    /**
+     * Name of the Vec3i class
+     */
+    VEC3I = "df",
 
-            /**
-             * Name of the GuiScreen class
-             */
-            GUISCREEN = "axu",
+    /**
+     * Name of the Gui class
+     */
+    GUI = "avp",
 
-            /**
-             * Name of the GuiMainMenu class
-             */
-            GUIMAINMENU = "aya",
+    /**
+     * Name of the GuiScreen class
+     */
+    GUISCREEN = "axu",
 
-            /**
-             * Name of the IChatComponent class
-             */
-            ICHATCOMPONENT = "eu",
+    /**
+     * Name of the GuiMainMenu class
+     */
+    GUIMAINMENU = "aya",
 
-            /**
-             * Name of the ChatComponentStyle class
-             */
-            CHATCOMPONENTSTYLE = "es",
+    /**
+     * Name of the IChatComponent class
+     */
+    ICHATCOMPONENT = "eu",
 
-            /**
-             * Name of the ChatComponentText class
-             */
-            CHATCOMPONENTTEXT = "fa",
+    /**
+     * Name of the ChatComponentStyle class
+     */
+    CHATCOMPONENTSTYLE = "es",
 
-            /**
-             * Name of the InventoryPlayer class
-             */
-            INVENTORYPLAYER = "wm",
+    /**
+     * Name of the ChatComponentText class
+     */
+    CHATCOMPONENTTEXT = "fa",
 
-            /**
-             * Name of the IInventory class
-             */
-            IINVENTORY = "og",
+    /**
+     * Name of the InventoryPlayer class
+     */
+    INVENTORYPLAYER = "wm",
 
-            /**
-             * Name of the ItemStack class
-             */
-            ITEMSTACK = "zx",
+    /**
+     * Name of the IInventory class
+     */
+    IINVENTORY = "og",
 
-            /**
-             * Name of the Container class. Used for some inventory stuff
-             */
-            CONTAINER = "xi",
+    /**
+     * Name of the ItemStack class
+     */
+    ITEMSTACK = "zx",
 
-            /**
-             * Name of the ContainerPlayer class
-             */
-            CONTAINERPLAYER = "xy",
+    /**
+     * Name of the Container class. Used for some inventory stuff
+     */
+    CONTAINER = "xi",
 
-            /**
-             * Name of the EntityPlayer class
-             */
-            ENTITYPLAYER = "wn",
+    /**
+     * Name of the ContainerPlayer class
+     */
+    CONTAINERPLAYER = "xy",
 
-            /**
-             * Name of the Slot class. Used for some inventory stuff
-             */
-            SLOT = "yg",
+    /**
+     * Name of the EntityPlayer class
+     */
+    ENTITYPLAYER = "wn",
 
-            /**
-             * Name of the NetworkManager class
-             */
-            NETWORKMANAGER = "ek",
+    /**
+     * Name of the Slot class. Used for some inventory stuff
+     */
+    SLOT = "yg",
 
-            /**
-             * Name of the Packet class
-             */
-            PACKET = "ff",
+    /**
+     * Name of the NetworkManager class
+     */
+    NETWORKMANAGER = "ek",
 
-            /**
-             * Name of the PacketClientWindowClick class
-             */
-            PACKETWINDOWCLICK_CLIENT = "ik",
+    /**
+     * Name of the Packet class
+     */
+    PACKET = "ff",
 
-            /**
-             * Name of the NetHandlerPlayClient class
-             */
-            NETHANDLERPLAYCLIENT = "bcy",
+    /**
+     * Name of the PacketClientWindowClick class
+     */
+    PACKETWINDOWCLICK_CLIENT = "ik",
 
-            /**
-             * Name of the Item class
-             */
-            ITEM = "zw",
+    /**
+     * Name of the NetHandlerPlayClient class
+     */
+    NETHANDLERPLAYCLIENT = "bcy",
 
-            /**
-             * Name of the PacketClientChatMessage class
-             */
-            PACKETCHATMESSAGE_CLIENT = "ie",
+    /**
+     * Name of the Item class
+     */
+    ITEM = "zw",
 
-            /**
-             * Name of the GuiChatBox class
-             */
-            GUICHAT = "awv",
+    /**
+     * Name of the PacketClientChatMessage class
+     */
+    PACKETCHATMESSAGE_CLIENT = "ie",
 
-            /**
-             * Name of the GuiOptions class
-             */
-            GUIOPTIONS = "axn",
+    /**
+     * Name of the GuiChatBox class
+     */
+    GUICHAT = "awv",
 
-            /**
-             * Name of the GuiSingleplayer class
-             */
-            GUISINGLEPLAYER = "axv",
+    /**
+     * Name of the GuiOptions class
+     */
+    GUIOPTIONS = "axn",
 
-            /**
-             * Name of the GuiMultiplayer class
-             */
-            GUIMULTIPLAYER = "azh";
+    /**
+     * Name of the GuiSingleplayer class
+     */
+    GUISINGLEPLAYER = "axv",
+
+    /**
+     * Name of the GuiMultiplayer class
+     */
+    GUIMULTIPLAYER = "azh",
+
+    /**
+     * Name of the DamageSource class
+     */
+    DAMAGESOURCE = "ow",
+
+    /**
+     * Name of the NBTBase class
+     */
+    NBTBASE = "eb",
+    /**
+     * Name of the NBTTagString class
+     */
+    NBTTAGSTRING = "ea",
+    /**
+     * Name of the NBTTagShort class
+     */
+    NBTTAGSHORT = "dz",
+    /**
+     * Name of the NBTTagLong class
+     */
+    NBTTAGLONG = "dv",
+    /**
+     * Name of the NBTTagList class
+     */
+    NBTTAGLIST = "du",
+    /**
+     * Name of the NBTTagInt class
+     */
+    NBTTAGINT = "dt",
+    /**
+     * Name of the NBTTagIntArray class
+     */
+    NBTTAGINTARRAY = "ds",
+    /**
+     * Name of the NBTTagFloat class
+     */
+    NBTTAGFLOAT = "dr",
+    /**
+     * Name of the NBTTagEnd class
+     */
+    NBTTAGEND = "dq",
+    /**
+     * Name of the NBTTagDouble class
+     */
+    NBTTAGDOUBLE = "dp",
+    /**
+     * Name of the NBTTagCompound class
+     */
+    NBTTAGCOMPOUND = "dn",
+    /**
+     * Name of the NBTTagByte class
+     */
+    NBTTAGBYTE = "dm",
+    /**
+     * Name of the NBTTagByteArray class
+     */
+    NBTTAGBYTEARRAY = "dl";
 
     /**
      * Gets an {@link ObfusClass} representation of a class based on a non-obfuscated name
@@ -256,50 +324,69 @@ public class Constants {
         }
     }
 
+    private static void add(String name, String obfusName) {
+        OBFUSCATED_CLASSES.add(new ObfusClass(name, obfusName));
+    }
+
     static {
-        OBFUSCATED_CLASSES.add(new ObfusClass("Minecraft", MINECRAFT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiIngame", GUIINGAME));
-        OBFUSCATED_CLASSES.add(new ObfusClass("FontRenderer", FONTRENDERER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GameSettings", GAMESETTINGS));
-        OBFUSCATED_CLASSES.add(new ObfusClass("World", WORLD));
-        OBFUSCATED_CLASSES.add(new ObfusClass("AbstractWorld", ABSTRACTWORLD));
-        OBFUSCATED_CLASSES.add(new ObfusClass("WorldProvider", WORLDPROVIDER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Entity", ENTITY));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityThePlayer", ENTITYTHEPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("ScaledResolution", SCALEDRESOLUTION));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityRenderer", ENTITYRENDERER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityLiving", ENTITYLIVING));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityCreature", ENTITYCREATURE));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityAgeable", ENTITYAGEABLE));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityAnimal", ENTITYANIMAL));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityMonster", ENTITYMONSTER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntity", BLOCKENTITY));
-        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntityChest", BLOCKENTITYCHEST));
-        OBFUSCATED_CLASSES.add(new ObfusClass("BlockEntityEnderChest", BLOCKENTITYENDERCHEST));
-        OBFUSCATED_CLASSES.add(new ObfusClass("BlockPos", BLOCKPOS));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Vec3i", VEC3I));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Gui", GUI));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiScreen", GUISCREEN));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiMainMenu", GUIMAINMENU));
-        OBFUSCATED_CLASSES.add(new ObfusClass("IChatComponent", ICHATCOMPONENT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("ChatComponentStyle", CHATCOMPONENTSTYLE));
-        OBFUSCATED_CLASSES.add(new ObfusClass("ChatComponentText", CHATCOMPONENTTEXT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("IInventory", IINVENTORY));
-        OBFUSCATED_CLASSES.add(new ObfusClass("InventoryPlayer", INVENTORYPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("ItemStack", ITEMSTACK));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Container", CONTAINER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("ContainerPlayer", CONTAINERPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("EntityPlayer", ENTITYPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Slot", SLOT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("NetworkManager", NETWORKMANAGER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Packet", PACKET));
-        OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientWindowClick", PACKETWINDOWCLICK_CLIENT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("NetHandlerPlayClient", NETHANDLERPLAYCLIENT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("Item", ITEM));
-        OBFUSCATED_CLASSES.add(new ObfusClass("PacketClientChatMessage", PACKETCHATMESSAGE_CLIENT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiChat", GUICHAT));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiSingleplayer", GUISINGLEPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiMultiplayer", GUIMULTIPLAYER));
-        OBFUSCATED_CLASSES.add(new ObfusClass("GuiOptions", GUIOPTIONS));
+        add("Minecraft", MINECRAFT);
+        add("GuiIngame", GUIINGAME);
+        add("FontRenderer", FONTRENDERER);
+        add("GameSettings", GAMESETTINGS);
+        add("World", WORLD);
+        add("AbstractWorld", ABSTRACTWORLD);
+        add("WorldProvider", WORLDPROVIDER);
+        add("Entity", ENTITY);
+        add("EntityThePlayer", ENTITYTHEPLAYER);
+        add("ScaledResolution", SCALEDRESOLUTION);
+        add("EntityRenderer", ENTITYRENDERER);
+        add("EntityLivingBase", ENTITYLIVINGBASE);
+        add("EntityLiving", ENTITYLIVING);
+        add("EntityCreature", ENTITYCREATURE);
+        add("EntityAgeable", ENTITYAGEABLE);
+        add("EntityAnimal", ENTITYANIMAL);
+        add("EntityMonster", ENTITYMONSTER);
+        add("BlockEntity", BLOCKENTITY);
+        add("BlockEntityChest", BLOCKENTITYCHEST);
+        add("BlockEntityEnderChest", BLOCKENTITYENDERCHEST);
+        add("BlockPos", BLOCKPOS);
+        add("Vec3i", VEC3I);
+        add("Gui", GUI);
+        add("GuiScreen", GUISCREEN);
+        add("GuiMainMenu", GUIMAINMENU);
+        add("IChatComponent", ICHATCOMPONENT);
+        add("ChatComponentStyle", CHATCOMPONENTSTYLE);
+        add("ChatComponentText", CHATCOMPONENTTEXT);
+        add("IInventory", IINVENTORY);
+        add("InventoryPlayer", INVENTORYPLAYER);
+        add("ItemStack", ITEMSTACK);
+        add("Container", CONTAINER);
+        add("ContainerPlayer", CONTAINERPLAYER);
+        add("EntityPlayer", ENTITYPLAYER);
+        add("Slot", SLOT);
+        add("NetworkManager", NETWORKMANAGER);
+        add("Packet", PACKET);
+        add("PacketClientWindowClick", PACKETWINDOWCLICK_CLIENT);
+        add("NetHandlerPlayClient", NETHANDLERPLAYCLIENT);
+        add("Item", ITEM);
+        add("PacketClientChatMessage", PACKETCHATMESSAGE_CLIENT);
+        add("GuiChat", GUICHAT);
+        add("GuiSingleplayer", GUISINGLEPLAYER);
+        add("GuiMultiplayer", GUIMULTIPLAYER);
+        add("GuiOptions", GUIOPTIONS);
+        add("DamageSource", DAMAGESOURCE);
+        add("NBTBase", NBTBASE);
+        add("NBTTagByte", NBTTAGBYTE);
+        add("NBTTagByteArray", NBTTAGBYTEARRAY);
+        add("NBTTagCompound", NBTTAGCOMPOUND);
+        add("NBTTagDouble", NBTTAGDOUBLE);
+        add("NBTTagEnd", NBTTAGEND);
+        add("NBTTagFloat", NBTTAGFLOAT);
+        add("NBTTagInt", NBTTAGINT);
+        add("NBTTagIntArray", NBTTAGINTARRAY);
+        add("NBTTagList", NBTTAGLIST);
+        add("NBTTagLong", NBTTAGLONG);
+        add("NBTTagShort", NBTTAGSHORT);
+        add("NBTTagString", NBTTAGSTRING);
     }
 }

@@ -5,7 +5,7 @@ import me.curlpipesh.lib.config.Configurable;
 import me.curlpipesh.lib.plugin.Plugin;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.lib.util.Toggleable;
-import me.curlpipesh.pipe.util.ChatHelper;
+import me.curlpipesh.pipe.util.helpers.ChatHelper;
 
 import java.util.ArrayList;
 import java.util.List;

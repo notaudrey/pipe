@@ -15,7 +15,7 @@ import me.curlpipesh.pipe.gui.api.model.impl.BasicWindow;
 import me.curlpipesh.pipe.gui.api.view.layout.impl.TwoColumnLayout;
 import me.curlpipesh.pipe.gui.module.ContainerGuiModule;
 import me.curlpipesh.pipe.gui.theme.PipeTheme;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.input.Keyboard;
 
 /**

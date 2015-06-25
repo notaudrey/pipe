@@ -1,4 +1,4 @@
-package me.curlpipesh.pipe.util;
+package me.curlpipesh.pipe.util.helpers;
 
 import me.curlpipesh.lib.util.Keybind;
 import me.curlpipesh.pipe.event.Keypress;

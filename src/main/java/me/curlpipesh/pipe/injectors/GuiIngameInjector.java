@@ -11,7 +11,6 @@ import java.util.List;
 
 import static me.curlpipesh.bytecodetools.util.AccessHelper.isPublic;
 import static me.curlpipesh.bytecodetools.util.AccessHelper.isVoid;
-import static org.objectweb.asm.Opcodes.*;
 
 /**
  * Adds the {@link me.curlpipesh.pipe.event.Render2D} event firing.

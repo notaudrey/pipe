@@ -10,10 +10,10 @@ import me.curlpipesh.pipe.gui.api.model.impl.BasicWidget;
 import me.curlpipesh.pipe.gui.api.util.Tuple;
 import me.curlpipesh.pipe.gui.api.view.layout.impl.StandardLayout;
 import me.curlpipesh.pipe.gui.theme.MainMenuTheme;
-import me.curlpipesh.pipe.util.ArrayHelper;
+import me.curlpipesh.pipe.util.helpers.ArrayHelper;
 import me.curlpipesh.pipe.util.Constants;
 import me.curlpipesh.pipe.util.GLRenderer;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.GL11;
 

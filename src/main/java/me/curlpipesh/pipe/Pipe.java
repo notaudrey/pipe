@@ -2,13 +2,13 @@ package me.curlpipesh.pipe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.Getter;
 import me.curlpipesh.bytecodetools.BytecodeTools;
 import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.util.Statused;
 import me.curlpipesh.pipe.generators.GuiScreenGenerator;
-import me.curlpipesh.pipe.gui.module.GuiModuleMainMenu;
+import me.curlpipesh.pipe.util.ClassMapper;
 import me.curlpipesh.pipe.util.Constants;
-import me.curlpipesh.pipe.util.Helper;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -22,14 +22,16 @@ public final class Pipe implements Statused {
     /**
      * Singleton instance of the client
      */
+    @Getter
     private static final Pipe instance = new Pipe();
 
     /**
      * Version of the client. Follows <a href="http://semver.org/">semver</a> rules, at
      * least somewhat
      */
-    private static final String semver = "0.7.0";
+    private static final String semver = "0.8.0";
 
+    @Getter
     private final Gson gson = new GsonBuilder().serializeNulls().setPrettyPrinting().create();
 
     private Pipe() {}
@@ -40,21 +42,13 @@ public final class Pipe implements Statused {
      */
     @SuppressWarnings("unused")
     public void init() {
+        ClassMapper.load();
         log("Starting up Pipe...");
         BytecodeTools.defineClass(Pipe.class.getClassLoader(), GuiScreenGenerator.generate(), "me.curlpipesh.pipe.gui.GuiScreen");
         PluginManager.getInstance().init();
-        log("Displaying new GUI...");
-        Helper.displayGuiModule(new GuiModuleMainMenu());
-        log("Done!");
-    }
-
-    /**
-     * Returns the singleton instance of the client.
-     *
-     * @return The singleton instance of the client
-     */
-    public static Pipe getInstance() {
-        return instance;
+        /*log("Displaying new GUI...");
+        Helper.displayGuiModule(new GuiModuleMainMenu());*/
+        log("Pipe started!");
     }
 
     /**

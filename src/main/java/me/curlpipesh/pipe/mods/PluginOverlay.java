@@ -9,7 +9,7 @@ import me.curlpipesh.pipe.gui.GuiModule;
 import me.curlpipesh.pipe.gui.api.model.base.interfaces.IContainer;
 import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
 import me.curlpipesh.pipe.gui.module.ContainerGuiModule;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import me.curlpipesh.pipe.util.GLRenderer;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;

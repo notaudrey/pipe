@@ -5,16 +5,9 @@ import me.curlpipesh.bytecodetools.inject.Injector;
 import me.curlpipesh.pipe.util.Constants;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.tree.*;
-import org.objectweb.asm.util.Printer;
-import org.objectweb.asm.util.Textifier;
-import org.objectweb.asm.util.TraceMethodVisitor;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
-
-import static org.objectweb.asm.Opcodes.*;
 
 /**
  * @author c
@@ -29,7 +22,7 @@ public class GuiChatInjector extends Injector {
             if(m.name.equals("a") && m.desc.equals("(CI)V")) {
                 InsnList list = new InsnList();
                 list.add(new VarInsnNode(ALOAD, 3));
-                list.add(new MethodInsnNode(INVOKESTATIC, "me/curlpipesh/pipe/util/ChatHelper", "handle", "(Ljava/lang/String;)V", false));
+                list.add(new MethodInsnNode(INVOKESTATIC, "me/curlpipesh/pipe/util/helpers/ChatHelper", "handle", "(Ljava/lang/String;)V", false));
                 AbstractInsnNode insn = null;
                 Iterator<AbstractInsnNode> i = m.instructions.iterator();
 

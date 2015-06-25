@@ -5,7 +5,7 @@ import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.pipe.event.Render3D;
 import me.curlpipesh.pipe.util.GLRenderer;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import me.curlpipesh.pipe.util.Vec3;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;

@@ -5,14 +5,19 @@ import me.curlpipesh.lib.plugin.PluginManager;
 import me.curlpipesh.lib.plugin.loading.Load;
 import me.curlpipesh.lib.plugin.loading.LoadPriority;
 import me.curlpipesh.lib.util.Status;
+import me.curlpipesh.pipe.Pipe;
 import me.curlpipesh.pipe.commands.Command;
 import me.curlpipesh.pipe.commands.PluginCommand;
 import me.curlpipesh.pipe.event.ChatSend;
-import me.curlpipesh.pipe.util.ChatHelper;
-import me.curlpipesh.pipe.util.StringHelper;
+import me.curlpipesh.pipe.util.ClassMapper;
+import me.curlpipesh.pipe.util.helpers.ChatHelper;
+import me.curlpipesh.pipe.util.helpers.Helper;
+import me.curlpipesh.pipe.util.helpers.StringHelper;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +35,7 @@ import java.util.stream.Collectors;
  * @author c
  * @since 5/27/15
  */
+@SuppressWarnings("unused")
 @Load(priority = LoadPriority.INIT_AFTER_ALL)
 public class PluginCommands implements Plugin {
     /**
@@ -60,7 +66,27 @@ public class PluginCommands implements Plugin {
                 }
             }
         });
-        commands.addAll(PluginManager.getInstance().getManagedObjects().stream().map(PluginCommand::new).collect(Collectors.toList()));
+        commands.addAll(PluginManager.getInstance().getManagedObjects().stream()
+                .filter(c -> !c.equals(this)).map(PluginCommand::new)
+                .filter(c -> c != null).collect(Collectors.toList()));
+        List<Class<?>> classes = ClassMapper.getMappedClasses().stream()
+                // Is a valid command, but not the Command interface
+                .filter(c -> Command.class.isAssignableFrom(c) && !Command.class.equals(c))
+                // Not the PluginCommand class either
+                .filter(c -> !c.equals(PluginCommand.class))
+                // Not abstract or interface
+                .filter(c -> !Modifier.isAbstract(c.getModifiers()) && !Modifier.isInterface(c.getModifiers()))
+                .collect(Collectors.toList());
+        commands.addAll(classes.stream().map(c -> {
+            Command command = null;
+            try {
+                command = (Command) c.getDeclaredConstructor().newInstance();
+            } catch(InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+            return command;
+        }).filter(c -> c != null).collect(Collectors.toList()));
+        Pipe.log(commands.size() + " commands loaded!");
     }
 
     /**
@@ -74,6 +100,11 @@ public class PluginCommands implements Plugin {
         String cmd = temp[0];
         String[] args = new String[temp.length - 1];
         System.arraycopy(temp, 1, args, 0, args.length);
+        if(cmd.equalsIgnoreCase("dump")) {
+            commands.stream().filter(e -> e != null)
+                    .forEach(e -> Helper.addChatMessage(String.format("§7Command: §c%s", e.getName())));
+            return;
+        }
         for(Command e : commands) {
             if(e.getName().equalsIgnoreCase(cmd)) {
                 run(e, command, args);
@@ -118,7 +149,7 @@ public class PluginCommands implements Plugin {
             }
         } else {
             if(!e.run(command, args)) {
-                ChatHelper.warn("Failed to run command: §c'" + e.getName() + "'",
+                ChatHelper.warn("Failed to run command: §c'" + e.getName().toLowerCase() + "'",
                         e.generateUsage() ? generateUsage(e) : e.getUsage());
             }
         }
@@ -133,9 +164,9 @@ public class PluginCommands implements Plugin {
     private String generateUsage(Command command) {
         StringBuilder sb = new StringBuilder();
         if(command instanceof PluginCommand) {
-            sb.append(command.getName()).append(" [<option> [value]]");
+            sb.append(command.getName().toLowerCase()).append(" [<option> [value]]");
         } else {
-            sb.append(command.getName()).append(" [command [argument]]");
+            sb.append(command.getName().toLowerCase()).append(" [command [argument]]");
         }
         return sb.toString().trim();
     }

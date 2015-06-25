@@ -2,7 +2,7 @@ package me.curlpipesh.pipe.mods;
 
 import me.curlpipesh.lib.plugin.impl.BasePlugin;
 import me.curlpipesh.pipe.event.Tick;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;

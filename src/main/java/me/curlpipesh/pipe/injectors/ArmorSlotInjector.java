@@ -10,8 +10,6 @@ import org.objectweb.asm.tree.MethodNode;
 
 import java.util.List;
 
-import static org.objectweb.asm.Opcodes.*;
-
 /**
  * Tinkers with the armor slots in the inventory in an attempt to allow the
  * player to wear invalid armor

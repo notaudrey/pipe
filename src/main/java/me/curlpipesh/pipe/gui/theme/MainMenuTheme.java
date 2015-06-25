@@ -7,7 +7,7 @@ import me.curlpipesh.pipe.gui.api.view.render.Renderer;
 import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
 import me.curlpipesh.pipe.gui.api.view.render.theme.Theme;
 import me.curlpipesh.pipe.util.GLRenderer;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.opengl.GL11;
 
 /**

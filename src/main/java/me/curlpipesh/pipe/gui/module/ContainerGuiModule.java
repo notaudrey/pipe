@@ -10,7 +10,7 @@ import me.curlpipesh.pipe.gui.api.view.render.state.RenderException;
 import me.curlpipesh.pipe.gui.api.view.render.theme.ITheme;
 import me.curlpipesh.pipe.gui.api.view.render.theme.ThemeManager;
 import me.curlpipesh.pipe.util.GLRenderer;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 

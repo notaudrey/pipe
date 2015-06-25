@@ -1,7 +1,8 @@
-package me.curlpipesh.pipe.util;
+package me.curlpipesh.pipe.util.helpers;
 
 import me.curlpipesh.pipe.gui.GuiModule;
 import me.curlpipesh.pipe.gui.GuiScreen;
+import me.curlpipesh.pipe.util.Vec3;
 
 import java.util.List;
 
@@ -266,7 +267,7 @@ public class Helper {
      *
      * @param screen The GuiScreen to display
      */
-    public static void mc_displayGuiScreen(Object screen) {};
+    public static void mc_displayGuiScreen(Object screen) {}
 
     /**
      * Displays a {@link GuiModule} on the screen.
@@ -330,4 +331,42 @@ public class Helper {
      * @param message The message to be sent
      */
     static void _sendChatMessage(String message) {}
+
+    /**
+     * Changes the name of the supplied item stack to the new name given.
+     *
+     * @param stack The item stack whose name is to be changed
+     * @param name The new name to apply to the item stack
+     */
+    public static void setItemStackDisplayName(Object stack, String name) {}
+
+    /**
+     * Returns the <tt>Container</tt> object representing the player's
+     * inventory.
+     *
+     * @return The player's inventory container object
+     */
+    public static Object getInventoryContainer() {
+        return null;
+    }
+
+    /**
+     * Returns the ItemStack in the given slot
+     *
+     * @param player unused
+     * @param slot The slot to get the ItemStack from
+     * @return The ItemStack in the slot at the given index
+     */
+    public static Object getStackInSlot(Object player, int slot) {
+        return null;
+    }
+
+    /**
+     * Returns the currently selected inventory slot
+     *
+     * @return The currently selected inventory slot
+     */
+    public static int getCurrentSlot() {
+        return 0;
+    }
 }

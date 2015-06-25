@@ -9,7 +9,7 @@ import me.curlpipesh.lib.util.Keyed;
 import me.curlpipesh.lib.util.Status;
 import me.curlpipesh.lib.util.Toggleable;
 import me.curlpipesh.pipe.event.Keypress;
-import me.curlpipesh.pipe.util.KeypressHelper;
+import me.curlpipesh.pipe.util.helpers.KeypressHelper;
 import pw.aria.event.EventManager;
 import pw.aria.event.Listener;
 
@@ -86,10 +86,6 @@ public abstract class BasePlugin extends BasicConfigurable implements Plugin, Ke
     @Override
     public Integer[] getModifiers() {
         return keybind.getModifiers();
-    }
-
-    @Override
-    public void init() {
     }
 
     @Override

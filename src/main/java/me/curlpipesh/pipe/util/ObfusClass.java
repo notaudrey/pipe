@@ -46,4 +46,9 @@ public class ObfusClass {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public String toString() {
+        return "{ name: " + realName + ", obfusName: " + name + ", desc: " + desc + " }";
+    }
 }

@@ -1,6 +1,5 @@
 package me.curlpipesh.pipe.injectors;
 
-import me.curlpipesh.bytecodetools.inject.Inject;
 import me.curlpipesh.bytecodetools.inject.Injector;
 import me.curlpipesh.pipe.util.Constants;
 import org.objectweb.asm.ClassReader;

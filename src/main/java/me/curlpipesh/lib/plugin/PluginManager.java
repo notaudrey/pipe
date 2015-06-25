@@ -1,17 +1,15 @@
 package me.curlpipesh.lib.plugin;
 
 import lombok.Getter;
-import me.curlpipesh.bytecodetools.util.ClassEnumerator;
+import me.curlpipesh.lib.annotations.Disabled;
 import me.curlpipesh.lib.manager.AbstractManager;
 import me.curlpipesh.lib.plugin.loading.Load;
 import me.curlpipesh.lib.plugin.loading.LoadPriority;
 import me.curlpipesh.pipe.Pipe;
-import me.curlpipesh.lib.annotations.Disabled;
+import me.curlpipesh.pipe.util.ClassMapper;
 
-import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,26 +32,40 @@ public class PluginManager extends AbstractManager<Plugin> {
     @Override
     public void init() {
         Pipe.log("Loading plugins...");
-        Class<?>[] classes = ClassEnumerator.getClassesFromJar(new File(Pipe.class.getProtectionDomain().getCodeSource().getLocation().getFile()), Pipe.class.getClassLoader()).stream().toArray(Class<?>[]::new);
-
-        List<Class<?>> pluginClasses = Arrays.stream(classes)
+        List<Class<?>> pluginClasses = ClassMapper.getMappedClasses().stream()
+                // Is a plugin
                 .filter(Plugin.class::isAssignableFrom)
+                // Not abstract/interface
                 .filter(c -> !Modifier.isAbstract(c.getModifiers()) && !Modifier.isInterface(c.getModifiers()))
+                // Not disabled
                 .filter(c -> !c.isAnnotationPresent(Disabled.class))
                 .collect(Collectors.toList());
-        List<Class<?>> loadFirst = pluginClasses.stream().filter(c -> c.isAnnotationPresent(Load.class))
+        // Ugly, I know. Done to ensure that @Load "directives" are followed.
+        List<Class<?>> loadFirst = pluginClasses.stream()
+                // Should be loaded weirdly
+                .filter(c -> c.isAnnotationPresent(Load.class))
+                // Load first
                 .filter(c -> c.getDeclaredAnnotation(Load.class).priority().equals(LoadPriority.BEFORE_ALL))
                 .collect(Collectors.toList());
-        List<Class<?>> loadLast = pluginClasses.stream().filter(c -> c.isAnnotationPresent(Load.class))
+        List<Class<?>> loadLast = pluginClasses.stream()
+                // Should be loaded weirdly
+                .filter(c -> c.isAnnotationPresent(Load.class))
+                // Load last
                 .filter(c -> c.getDeclaredAnnotation(Load.class).priority().equals(LoadPriority.AFTER_ALL))
                 .collect(Collectors.toList());
+        // Remove from "normal" list
         pluginClasses.removeAll(loadFirst);
         pluginClasses.removeAll(loadLast);
 
+        // Do the loading
         loadFirst.forEach(this::instantiate);
         pluginClasses.forEach(this::instantiate);
         loadLast.forEach(this::instantiate);
 
+        // Do multiple passes so that we can use the @Load annotation correctly
+        // Pass 0: Before all
+        // Pass 1: Normal
+        // Pass 2: After all
         for(int pass = 0; pass < 3; pass++) {
             for(Plugin p : getManagedObjects()) {
                 if(pass != 1) {

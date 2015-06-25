@@ -3,9 +3,9 @@ package me.curlpipesh.pipe.mods;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
 import me.curlpipesh.pipe.gui.GuiModule;
 import me.curlpipesh.pipe.util.GLRenderer;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import me.curlpipesh.pipe.util.ProfiledEvent;
-import me.curlpipesh.pipe.util.TimeHelper;
+import me.curlpipesh.pipe.util.helpers.TimeHelper;
 import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;
 

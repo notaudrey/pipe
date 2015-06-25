@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import static me.curlpipesh.bytecodetools.util.AccessHelper.*;
-import static org.objectweb.asm.Opcodes.*;
 
 /**
  * Adds the instructions necessary for starting the client. Also adds the

@@ -9,8 +9,6 @@ import org.objectweb.asm.tree.FieldNode;
 
 import java.util.List;
 
-import static org.objectweb.asm.Opcodes.*;
-
 /**
  * Makes the position of BlockEntities accessible
  *

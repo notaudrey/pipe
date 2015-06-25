@@ -1,8 +1,7 @@
 package me.curlpipesh.pipe.mods;
 
-import lombok.Getter;
 import me.curlpipesh.lib.plugin.impl.ExecutablePlugin;
-import me.curlpipesh.pipe.util.Helper;
+import me.curlpipesh.pipe.util.helpers.Helper;
 import me.curlpipesh.pipe.util.ProfiledEvent;
 import org.lwjgl.input.Keyboard;
 import pw.aria.event.EventManager;

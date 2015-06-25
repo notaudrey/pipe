@@ -5,7 +5,9 @@ import java.util.List;
 /**
  * The basis of all commands. This class must always be the base class of
  * commands for any command system made for this client, as this class is the
- * one that is always expected to be available for the client.
+ * one that is always expected to be available for the client. The reason for
+ * this is that if a plugin includes its own commands, it must be compatible
+ * with any and all command systems that are in use.
  *
  * @author c
  * @since 5/27/15
