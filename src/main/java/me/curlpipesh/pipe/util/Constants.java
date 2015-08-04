@@ -306,7 +306,11 @@ public class Constants {
     /**
      * Name of the NBTTagByteArray class
      */
-    NBTTAGBYTEARRAY = "dl";
+    NBTTAGBYTEARRAY = "dl",
+    /**
+     * Name of the JsonToNbt class
+     */
+    JSONTONBT = "ed";
 
     /**
      * Gets an {@link ObfusClass} representation of a class based on a non-obfuscated name
@@ -388,5 +392,6 @@ public class Constants {
         add("NBTTagLong", NBTTAGLONG);
         add("NBTTagShort", NBTTAGSHORT);
         add("NBTTagString", NBTTAGSTRING);
+        add("JsonToNbt", JSONTONBT);
     }
 }

@@ -503,6 +503,24 @@ public class HelperGenerator {
             mv.visitMaxs(1, 0);
             mv.visitEnd();
         }
+        {
+            mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC, "applyJsonNbtToCurrentItem", "(Ljava/lang/String;)V", null, null);
+            mv.visitCode();
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/helpers/Helper", "getPlayer", "()Ljava/lang/Object;", false);
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/helpers/Helper", "getCurrentSlot", "()I", false);
+            mv.visitIntInsn(BIPUSH, 36);
+            mv.visitInsn(IADD);
+            mv.visitMethodInsn(INVOKESTATIC, "me/curlpipesh/pipe/util/helpers/Helper", "getStackInSlot", "(Ljava/lang/Object;I)Ljava/lang/Object;", false);
+            mv.visitTypeInsn(CHECKCAST, getByName("ItemStack").getName());
+            mv.visitVarInsn(ALOAD, 0);
+            mv.visitMethodInsn(INVOKESTATIC, getByName("JsonToNbt").getName(), "a",
+                    "(Ljava/lang/String;)" + getByName("NBTTagCompound").getDesc(), false);
+            mv.visitMethodInsn(INVOKEVIRTUAL, getByName("ItemStack").getName(), "d",
+                    "(" + getByName("NBTTagCompound").getDesc() + ")V", false);
+            mv.visitInsn(RETURN);
+            mv.visitMaxs(0, 0);
+            mv.visitEnd();
+        }
 
         cw.visitEnd();
 

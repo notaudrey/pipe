@@ -72,10 +72,13 @@ public class PluginCommands implements Plugin {
         List<Class<?>> classes = ClassMapper.getMappedClasses().stream()
                 // Is a valid command, but not the Command interface
                 .filter(c -> Command.class.isAssignableFrom(c) && !Command.class.equals(c))
-                // Not the PluginCommand class either
-                .filter(c -> !c.equals(PluginCommand.class))
+                // Neither PluginCommand class nor a subclass of this class or this class itself
+                .filter(c -> !c.equals(PluginCommand.class) && !this.getClass().isAssignableFrom(c))
                 // Not abstract or interface
                 .filter(c -> !Modifier.isAbstract(c.getModifiers()) && !Modifier.isInterface(c.getModifiers()))
+                // Not an inner class. Note that this will not survive obfuscation, but this doesn't really matter
+                // too much as the client isn't intended to be obfuscated
+                .filter(c -> !c.getName().contains("$"))
                 .collect(Collectors.toList());
         commands.addAll(classes.stream().map(c -> {
             Command command = null;
@@ -148,9 +151,15 @@ public class PluginCommands implements Plugin {
                 ChatHelper.log("§cAttempted to use no args for '§4" + e.getName() + "§c', but it requires args!");
             }
         } else {
-            if(!e.run(command, args)) {
-                ChatHelper.warn("Failed to run command: §c'" + e.getName().toLowerCase() + "'",
-                        e.generateUsage() ? generateUsage(e) : e.getUsage());
+            try {
+                if(!e.run(command, args)) {
+                    ChatHelper.warn("Failed to run command: §c'" + e.getName().toLowerCase() + "'",
+                            e.generateUsage() ? generateUsage(e) : e.getUsage());
+                }
+            } catch(Exception f) {
+                ChatHelper.warn("Failed to run command '§c" + e.getName() + "§r': "
+                        + f.getClass().getSimpleName(), "§cPlease check the logs for more information.");
+                f.printStackTrace();
             }
         }
     }

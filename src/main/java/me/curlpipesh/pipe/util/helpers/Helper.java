@@ -369,4 +369,15 @@ public class Helper {
     public static int getCurrentSlot() {
         return 0;
     }
+
+    /**
+     * Takes the given JSON, converts it into valid NBT tags, and applies it to
+     * the item that the player is currently holding. JSON that is passed in to
+     * this method will be validated by the game only; no other checks will be
+     * made. This means that any valid NBT-JSON can be used here.
+     *
+     * @param json The JSON-formatted NBT data to apply to the currently held
+     *             item.
+     */
+    public static void applyJsonNbtToCurrentItem(String json) {}
 }
